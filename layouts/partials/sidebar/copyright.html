@@ -3,3 +3,11 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
     <br>
     &copy; {{ now.Format "2006"}} {{ or .Site.Language.Params.Author.name .Site.Title }}. All rights reserved.
 </p>
+
+{{ if and (.Site.Params.foot_image) (.Site.Params.foot_link) }}
+<a href="{{ .Site.Params.foot_link }}" target="_blank">
+  <img src="{{ .Site.Params.foot_image }}"/>
+</a>
+{{ else if .Site.Params.foot_image }}
+  <img src="{{ .Site.Params.foot_image }}"/>
+{{ end }}
