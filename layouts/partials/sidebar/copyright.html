@@ -1,3 +1,8 @@
+{{ if .Site.Params.blurb }}
+<hr/>
+<p class="blurb">{{ with .Site.Params.blurb }}{{.}}{{end}}</p>
+{{ end }}
+
 <p class="footnote">
 powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
     <br>
