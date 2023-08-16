@@ -1,5 +1,18 @@
 <hr>
 <div class="footer">
+    {{ if .Params.categories }}
+    {{ $Site := .Site }}
+    {{ $last := add (len .Params.categories) -1 }}
+      <p>Filed under:
+      {{ range $i, $cat := .Params.categories }}
+        <a href="{{ $Site.BaseURL }}categories/{{ $cat }}">{{ $cat }}</a>
+        {{ if lt $i $last }}
+        |
+        {{ end }}
+      {{ end }}
+      </p>
+    {{ end }}
+
     {{ if .Params.series }}
     {{ $Site := .Site }}
     {{ $postTitle := .Title }}
