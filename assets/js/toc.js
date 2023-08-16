@@ -26,7 +26,10 @@ window.addEventListener('DOMContentLoaded', () => {
                 activeElement = entry.target.getAttribute('id');
             }
             if (activeElement) {
-                document.querySelector(`nav[id='TableOfContents'] li a[href="#${activeElement}"]`).parentElement.classList.replace('inactive', 'active');
+                nav_ref = document.querySelector(`nav[id='TableOfContents'] li a[href="#${activeElement}"]`);
+                if (nav_ref) {
+                    nav_ref.parentElement.classList.replace('inactive', 'active');
+                }
             }
         });
     });
