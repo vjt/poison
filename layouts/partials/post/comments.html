@@ -1,3 +1,4 @@
+{{ if not .Params.noComments }}
 <div class="comments">
     {{ if .Site.Params.remark42 }}
         <div id="remark42"></div>
@@ -18,3 +19,4 @@
         {{ template "_internal/disqus.html" . }}
     {{ end }}
 </div>
+{{ end }}
