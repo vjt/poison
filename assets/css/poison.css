@@ -326,6 +326,9 @@ tbody tr:nth-child(odd) th {
 .previous-post {
     float: left;
 }
+.clear {
+  clear: both;
+}
 .content pre code {
     white-space: pre;
 }
