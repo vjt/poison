@@ -6,6 +6,9 @@
         {{ partial "post/info.html" . }}
         {{ if or (.Site.Params.noSummary) (.Params.noSummary) }}
         {{ .Content }}
+        <div class="read-more-link">
+            <a href="{{ .RelPermalink }}#comments">Leave a comment…</a>
+        </div>
         {{ else }}
         {{ .Summary }}
         {{ if .Truncated }}
