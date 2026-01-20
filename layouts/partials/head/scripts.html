@@ -31,3 +31,17 @@
 {{ if hugo.IsProduction -}}
   {{ template "_internal/google_analytics.html" . -}}
 {{ end -}}
+
+{{/* Pagefind search */}}
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({
+            element: "#search",
+            showSubResults: true,
+            showImages: false,
+            excerptLength: 15
+        });
+    });
+</script>

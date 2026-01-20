@@ -1,1 +1,61 @@
 /* Empty css file that users can override in their own /assets/css/custom.css file */
+
+/* Pagefind search customization */
+#search {
+    margin-bottom: 1.5rem;
+}
+
+/* Fix text contrast for dark theme */
+.pagefind-ui__form input,
+.pagefind-ui__result-title,
+.pagefind-ui__result-excerpt {
+    color: var(--text-color) !important;
+}
+
+.pagefind-ui__result-link {
+    color: var(--link-color) !important;
+}
+
+/* Pastel yellow highlight color */
+mark {
+    background-color: #f4e04d !important;
+    color: #000 !important;
+}
+
+/* Fix results count contrast */
+.pagefind-ui__message {
+    color: var(--text-color) !important;
+    opacity: 0.9 !important;
+}
+
+/* Fix search input width on mobile */
+.pagefind-ui__search-input {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Hide result thumbnails */
+.pagefind-ui__result-thumb {
+    display: none !important;
+}
+
+.pagefind-ui__result-inner {
+    padding-left: 0 !important;
+}
+
+/* Better spacing for results */
+.pagefind-ui__result {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--sidebar-a-color);
+}
+
+/* Fix background colors for dark theme */
+.pagefind-ui__form input {
+    background-color: var(--bkg-color) !important;
+    border: 1px solid var(--sidebar-a-color) !important;
+}
+
+.pagefind-ui__result:hover {
+    background-color: transparent !important;
+}
