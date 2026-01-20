@@ -1,6 +1,6 @@
 {{ partial "head/head.html" . }}
     <body class="{{if .Site.Params.layoutReverse}}layout-reverse {{end}}{{if .Site.Params.dark_mode}}dark-theme{{end}}">
-        <div class="mobile-header">
+        <div class="mobile-header" data-pagefind-ignore>
             <h1 class="brand">
                 <a href="{{ .Site.BaseURL }}">{{ .Site.Params.brand }}</a>
             </h1>
