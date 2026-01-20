@@ -132,8 +132,10 @@ body > .wrapper {
     background-color: var(--sidebar-bg-color);
 }
 .lead {
-  text-align: center;
   color: var(--sidebar-p-color);
+}
+.sidebar-about .lead {
+  text-align: center;
 }
 .sidebar-about img {
     margin-left: auto;
@@ -354,4 +356,96 @@ div.highlight pre {
 }
 .current {
     color: var(--text-color);
+}
+
+/* Mobile Header Default State */
+.mobile-header {
+    display: none;
+}
+
+.mobile-about {
+    display: none;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mobile specific overrides */
+@media (max-width: 48em) {
+    /* Mobile Header Visible */
+    .mobile-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: auto;
+        padding: 0.5rem 1rem;
+        background-color: var(--sidebar-bg-color);
+        color: var(--text-color);
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .mobile-header .brand {
+        margin: 0;
+        font-size: 1.8em;
+    }
+
+    .mobile-header .brand a {
+        color: var(--sidebar-h1-color);
+        text-decoration: none;
+    }
+
+    .mobile-header .lead {
+        margin: 0;
+        font-size: 0.8em;
+        text-align: right;
+        flex-grow: 1;
+        margin-left: 1rem;
+    }
+
+    .mobile-about {
+        display: inline-block;
+        margin-left: 1rem;
+        font-size: 0.8em;
+        color: var(--link-color);
+        text-decoration: underline;
+    }
+
+    /* Move Sidebar to Bottom */
+    body > .wrapper, body.layout-reverse .wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        order: 2;
+        width: 100%;
+    }
+
+    .container.content {
+        order: 1;
+        padding-top: 5rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Fixed Glider Position */
+    .glider-container {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        z-index: 1001;
+    }
+
+    .glider-container img {
+        width: 40px;
+        height: auto;
+        border: none;
+        border-radius: 0;
+    }
 }

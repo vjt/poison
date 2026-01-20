@@ -1,5 +1,14 @@
 {{ partial "head/head.html" . }}
     <body class="{{if .Site.Params.layoutReverse}}layout-reverse {{end}}{{if .Site.Params.dark_mode}}dark-theme{{end}}">
+        <div class="mobile-header">
+            <h1 class="brand">
+                <a href="{{ .Site.BaseURL }}">{{ .Site.Params.brand }}</a>
+            </h1>
+            <p class="lead">
+                {{ .Site.Params.description | safeHTML }}
+            </p>
+            <a href="#sidebar" class="mobile-about">about</a>
+        </div>
         <div class="wrapper">
             {{ partial "sidebar/sidebar.html" . }}
             <main class="content container">

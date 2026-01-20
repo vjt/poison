@@ -106,6 +106,7 @@ pre {
   text-align: center;
   color: var(--sidebar-p-color);
 }
+.brand,
 .sidebar-about h1 {
   color: var(--sidebar-h1-color);
   margin-top: 0;
@@ -196,11 +197,6 @@ a.sidebar-nav-item:focus {
  
 .badges {
   float: right;
-}
-
-.brand {
-  font-size: 4.0em;
-  margin-bottom: 0;
 }
 
 /*
