@@ -6,11 +6,11 @@
     {{ with .Site.GetPage "/about" }}
         {{ if .Pages }}
             {{ range .Pages }}
-                <h1 class="post-title">{{ .Title }}</h1>
+                <h1 class="post-title" data-pagefind-meta="title">{{ .Title }}</h1>
                 {{ .Content }}
             {{ end }}
         {{ else }}
-            <h1 class="post-title">{{ .Title }}</h1>
+            <h1 class="post-title" data-pagefind-meta="title">{{ .Title }}</h1>
             {{ .Content }}
         {{ end }}
     {{ end }}
