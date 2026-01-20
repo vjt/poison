@@ -11,38 +11,19 @@
                 <li class="bullet">
                     <a href="{{ $menu_item.URL }}" target="_blank" rel="noopener noreferrer">{{ $menu_item.Name }}</a>
                 </li>
-            {{ end }}
+            {{ else }}
+                {{ $matched := false }}
+                {{ $menuURL := $menu_item.URL }}
 
-            {{ range $sections }}
-                {{ $trimmedURL := (lower (strings.TrimSuffix "/" (strings.TrimPrefix "/" $menu_item.URL))) }}
-                {{ if eq (lower .Title) (replace $trimmedURL "-" " ") }}
-                    <li class="heading">
-                        <a href="{{ $menu_item.URL }}">{{ $menu_item.Name }}</a>
-                    </li>
-                    {{ if $menu_item.HasChildren }}
-                        <li class="sub-heading">
-                            {{ $menu_item.Pre }}
+                {{ range $sections }}
+                    {{ $trimmedURL := (lower (strings.TrimSuffix "/" (strings.TrimPrefix "/" $menuURL))) }}
+                    {{ $sectionURL := printf "/%s/" .Section }}
+                    {{ if or (eq (lower .Title) (replace $trimmedURL "-" " ")) (eq $sectionURL $menuURL) }}
+                        {{ $matched = true }}
+                        <li class="heading">
+                            <a href="{{ $menuURL }}">{{ $menu_item.Name }}</a>
                         </li>
-                        {{ range (first $menu_item.Limit .Pages) }}
-                            <li class="bullet">
-                                <a href="{{ .Permalink }}">{{ .Title }}</a>
-                            </li>
-                        {{ end }}
-                    {{ end }}
-                {{ end }}
-            {{ end }}
-            {{ range $name, $taxonomy := $taxonomies }}
-                {{ if eq (lower $name) (lower $menu_item.Name) }}
-                    <li class="heading">
-                        <a href="{{$menu_item.URL }}">{{ $menu_item.Name }}</a>
-                    </li>
-                {{ end }}
-                {{ range $term, $page := $taxonomy }}
-                        {{ if eq (lower $term) (lower $menu_item.Name) }}
-                            <li class="heading">
-                                <a href="{{$menu_item.URL }}">{{ $menu_item.Name }}</a>
-                            </li>
-                            {{ if $menu_item.HasChildren }}
+                        {{ if $menu_item.HasChildren }}
                             <li class="sub-heading">
                                 {{ $menu_item.Pre }}
                             </li>
@@ -53,6 +34,37 @@
                             {{ end }}
                         {{ end }}
                     {{ end }}
+                {{ end }}
+                {{ range $name, $taxonomy := $taxonomies }}
+                    {{ if eq (lower $name) (lower $menu_item.Name) }}
+                        {{ $matched = true }}
+                        <li class="heading">
+                            <a href="{{$menuURL }}">{{ $menu_item.Name }}</a>
+                        </li>
+                    {{ end }}
+                    {{ range $term, $page := $taxonomy }}
+                            {{ if eq (lower $term) (lower $menu_item.Name) }}
+                                {{ $matched = true }}
+                                <li class="heading">
+                                    <a href="{{$menuURL }}">{{ $menu_item.Name }}</a>
+                                </li>
+                                {{ if $menu_item.HasChildren }}
+                                <li class="sub-heading">
+                                    {{ $menu_item.Pre }}
+                                </li>
+                                {{ range (first $menu_item.Limit .Pages) }}
+                                    <li class="bullet">
+                                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                                    </li>
+                                {{ end }}
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+                {{ if not $matched }}
+                    <li class="heading">
+                        <a href="{{ $menuURL }}">{{ $menu_item.Name }}</a>
+                    </li>
                 {{ end }}
             {{ end }}
         {{ end }}
