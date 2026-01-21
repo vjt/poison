@@ -5,15 +5,15 @@
     margin-bottom: 1.5rem;
 }
 
-/* Fix text contrast for dark theme */
+/* Fix text contrast - use sidebar colors since search is in sidebar */
 .pagefind-ui__form input,
 .pagefind-ui__result-title,
 .pagefind-ui__result-excerpt {
-    color: var(--text-color) !important;
+    color: var(--sidebar-p-color) !important;
 }
 
 .pagefind-ui__result-link {
-    color: var(--link-color) !important;
+    color: var(--sidebar-a-color) !important;
 }
 
 /* Pastel yellow highlight color */
@@ -24,7 +24,7 @@ mark {
 
 /* Fix results count contrast */
 .pagefind-ui__message {
-    color: var(--text-color) !important;
+    color: var(--sidebar-p-color) !important;
     opacity: 0.9 !important;
 }
 
@@ -50,9 +50,9 @@ mark {
     border-bottom: 1px solid var(--sidebar-a-color);
 }
 
-/* Fix background colors for dark theme */
+/* Fix background colors - use sidebar colors */
 .pagefind-ui__form input {
-    background-color: var(--bkg-color) !important;
+    background-color: var(--sidebar-bg-color) !important;
     border: 1px solid var(--sidebar-a-color) !important;
 }
 
