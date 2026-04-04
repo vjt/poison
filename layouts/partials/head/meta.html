@@ -48,13 +48,14 @@
 
 {{/* 2. First image from page bundle resources */ -}}
 {{- if not $og_image -}}
-  {{- $images := .Resources.ByType "image" -}}
-  {{- with index $images 0 -}}
-    {{- $og_image = .Permalink -}}
-    {{- $og_image_width = .Width -}}
-    {{- $og_image_height = .Height -}}
-    {{- $ext := trim (path.Ext .Name | lower) "." -}}
-    {{- $og_image_type = (printf "image/%s" (replaceRE `^jpg$` `jpeg` $ext)) -}}
+  {{- range .Resources.ByType "image" -}}
+    {{- if and (not $og_image) (gt .Width 0) -}}
+      {{- $og_image = .Permalink -}}
+      {{- $og_image_width = .Width -}}
+      {{- $og_image_height = .Height -}}
+      {{- $ext := trim (path.Ext .Name | lower) "." -}}
+      {{- $og_image_type = (printf "image/%s" (replaceRE `^jpg$` `jpeg` $ext)) -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 
