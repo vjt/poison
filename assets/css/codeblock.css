@@ -19,6 +19,7 @@
 .copy-button {
   background: none;
   border: none;
+  border-radius: 4px;
 
   width: 24px;
   height: 24px;
@@ -50,6 +51,10 @@
   position: relative;
   display: inline-block;
   width: 100%;
+}
+
+.highlight pre {
+  border-radius: 6px;
 }
 
 /* Syntax highlighting styling*/
