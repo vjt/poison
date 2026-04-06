@@ -1,5 +1,6 @@
 {{/* JS bundle: light/dark + hamburger + toc + codeblock */}}
 {{ $js := slice
+    (resources.Get "js/boot-splash.js")
     (resources.Get "js/light_dark.js")
     (resources.Get "js/hamburger.js")
 }}
