@@ -1,6 +1,9 @@
 <aside class="sidebar" id="sidebar" data-pagefind-ignore>
     <div class="container sidebar-sticky">
-        {{ partial "light_dark.html" . }}
+        <div class="sidebar-top-controls">
+            {{ partial "language_switcher.html" . }}
+            {{ partial "light_dark.html" . }}
+        </div>
         {{ partial "sidebar/title.html" . }}
         {{ partial "sidebar/search.html" . }}
         {{ partial "sidebar/menu.html" . }}

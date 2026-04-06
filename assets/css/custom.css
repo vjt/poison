@@ -59,3 +59,40 @@ mark {
 .pagefind-ui__result:hover {
     background-color: transparent !important;
 }
+
+/* Language switcher */
+.lang-switcher {
+    display: inline-flex;
+    gap: 0.3rem;
+    font-size: 1.2em;
+}
+
+.lang-current {
+    opacity: 1;
+}
+
+.lang-link {
+    opacity: 0.5;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.lang-link:hover {
+    opacity: 1;
+    text-decoration: none;
+}
+
+.lang-no-translation {
+    opacity: 0.3;
+}
+
+.sidebar-top-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Mobile header language switcher */
+.mobile-header .lang-switcher {
+    margin-left: 0.5rem;
+}

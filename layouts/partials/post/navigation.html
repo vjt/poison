@@ -3,9 +3,9 @@
     {{ if .Params.categories }}
     {{ $Site := .Site }}
     {{ $last := add (len .Params.categories) -1 }}
-      <p>Filed under:
+      <p>{{ i18n "filed_under" }}
       {{ range $i, $cat := .Params.categories }}
-        <a href="{{ $Site.BaseURL }}categories/{{ $cat }}">{{ $cat }}</a>
+        <a href="{{ "categories/" | absLangURL }}{{ $cat }}">{{ $cat }}</a>
         {{ if lt $i $last }}
         |
         {{ end }}
@@ -17,8 +17,8 @@
     {{ $Site := .Site }}
     {{ $postTitle := .Title }}
     <p>
-    This is a post in the <b><a href="{{ $Site.BaseURL }}series/{{ .Params.series | urlize }}">{{ .Params.series }}</a></b> series.
-        <br>Other posts in this series:
+    {{ i18n "series_label" }} <b><a href="{{ "series/" | absLangURL }}{{ .Params.series | urlize }}">{{ .Params.series }}</a></b> {{ i18n "series_suffix" }}
+        <br>{{ i18n "series_other" }}
         <ul class="series">
             {{ $seriesUrl := print "series/" (.Params.series | urlize) }}
             {{ $series := .Site.GetPage $seriesUrl }}
@@ -37,12 +37,12 @@
     {{ else }}
 	    {{ if .PrevInSection }}
         <div class="previous-post">
-          <a href="{{ .PrevInSection.Permalink }}?ref=footer"><span style="font-weight:bold;">« Previous</span><br>{{ .PrevInSection.Title | truncate 50 "..."}}</a>
+          <a href="{{ .PrevInSection.Permalink }}?ref=footer"><span style="font-weight:bold;">« {{ i18n "prev" }}</span><br>{{ .PrevInSection.Title | truncate 50 "..."}}</a>
         </div>
       {{ end }}
 	    {{ if .NextInSection }}
         <div class="next-post">
-          <a href="{{ .NextInSection.Permalink }}?ref=footer"><span style="font-weight:bold;">Next »</span><br>{{ .NextInSection.Title | truncate 50 "..." }}</a>
+          <a href="{{ .NextInSection.Permalink }}?ref=footer"><span style="font-weight:bold;">{{ i18n "next" }} »</span><br>{{ .NextInSection.Title | truncate 50 "..." }}</a>
         </div>
       {{ end }}
       <div class="clear"></div>

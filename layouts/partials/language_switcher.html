@@ -1,0 +1,23 @@
+{{- if hugo.IsMultilingual -}}
+<span class="lang-switcher">
+  {{- $currentLang := .Language.Lang -}}
+  {{- $translations := .Translations -}}
+  {{- range .Site.Languages -}}
+    {{- if eq .Lang $currentLang -}}
+      <span class="lang-current" title="{{ .LanguageName }}">{{ if eq .Lang "en" }}🇬🇧{{ else }}🇮🇹{{ end }}</span>
+    {{- else -}}
+      {{- $target := "" -}}
+      {{- range $translations -}}
+        {{- if eq .Language.Lang $.Lang -}}
+          {{- $target = .RelPermalink -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if $target -}}
+        <a href="{{ $target }}" class="lang-link" title="{{ .LanguageName }}" onclick="document.cookie='lang={{ .Lang }};path=/;max-age=31536000;SameSite=Lax'">{{ if eq .Lang "en" }}🇬🇧{{ else }}🇮🇹{{ end }}</a>
+      {{- else -}}
+        <a href="{{ .Lang | absLangURL }}" class="lang-link lang-no-translation" title="{{ .LanguageName }}" onclick="document.cookie='lang={{ .Lang }};path=/;max-age=31536000;SameSite=Lax'">{{ if eq .Lang "en" }}🇬🇧{{ else }}🇮🇹{{ end }}</a>
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+</span>
+{{- end -}}

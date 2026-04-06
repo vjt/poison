@@ -5,7 +5,7 @@
 <nav id="page-nav">
 
     {{ if $pag.HasPrev }}
-    <a href="{{ $pag.Prev.URL }}" rel="prev" class="extend prev">&laquo; Previous</a>
+    <a href="{{ $pag.Prev.URL }}" rel="prev" class="extend prev">&laquo; {{ i18n "prev" }}</a>
     {{ end }}
     {{ range $pag.Pagers }}
     {{ if eq . $pag }}
@@ -16,7 +16,7 @@
     {{ end }}
 
     {{ if $pag.HasNext }}
-    <a href="{{ $pag.Next.URL }}" rel="next" class="extend next">Next &raquo;</a>
+    <a href="{{ $pag.Next.URL }}" rel="next" class="extend next">{{ i18n "next" }} &raquo;</a>
     {{ end }}
 </nav>
 {{ end }}
