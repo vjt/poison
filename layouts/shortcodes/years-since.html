@@ -1,0 +1,4 @@
+{{- $date := time (.Get 0) -}}
+{{- $diff := now.Sub $date -}}
+{{- $years := math.Floor (div $diff.Hours 8766) -}}
+{{- printf "%.0f" $years -}}

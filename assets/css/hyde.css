@@ -59,7 +59,7 @@ pre {
  */
 
 .sidebar {
-  text-align: center;
+  text-align: left;
   padding: 2rem 1rem;
   color: rgba(255,255,255,.5);
   flex-shrink: 0;
@@ -103,7 +103,7 @@ pre {
 
 /* About section */
 .sidebar-about {
-  text-align: center;
+  text-align: left;
   color: var(--sidebar-p-color);
 }
 .brand,

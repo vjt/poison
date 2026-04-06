@@ -135,12 +135,11 @@ body > .wrapper {
   color: var(--sidebar-p-color);
 }
 .sidebar-about .lead {
-  text-align: center;
+  text-align: left;
 }
 .sidebar-about img {
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
     border: 2px solid var(--sidebar-img-border-color);
     border-radius: 50%;
     height: 180px;

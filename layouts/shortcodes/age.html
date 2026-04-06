@@ -1,0 +1,14 @@
+{{- $date := time (.Get 0) -}}
+{{- $diff := now.Sub $date -}}
+{{- $months := math.Floor (div $diff.Hours 730) -}}
+{{- $years := math.Floor (div $months 12) -}}
+{{- $lang := .Page.Language.Lang -}}
+{{- if lt $months 24 -}}
+  {{- if eq $lang "it" -}}
+    {{- if eq $months 1.0 -}}1 mese{{- else -}}{{- printf "%.0f mesi" $months -}}{{- end -}}
+  {{- else -}}
+    {{- if eq $months 1.0 -}}1 month{{- else -}}{{- printf "%.0f months" $months -}}{{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- printf "%.0f" $years -}}
+{{- end -}}
