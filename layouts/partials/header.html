@@ -1,0 +1,15 @@
+<header class="site-header" data-pagefind-ignore>
+    <div class="header-left">
+        <button class="hamburger-btn" aria-label="{{ i18n "toggle_menu" | default "Toggle menu" }}" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M2 3.5h12a.5.5 0 0 1 0 1H2a.5.5 0 0 1 0-1zm0 4h12a.5.5 0 0 1 0 1H2a.5.5 0 0 1 0-1zm0 4h12a.5.5 0 0 1 0 1H2a.5.5 0 0 1 0-1z"/>
+            </svg>
+        </button>
+        <a href="{{ .Site.BaseURL }}" class="header-brand">{{ .Site.Params.brand }}</a>
+    </div>
+    <span class="header-payoff">{{ .Site.Params.description | safeHTML }}</span>
+    <div class="header-right">
+        {{ partial "language_switcher.html" . }}
+        {{ partial "light_dark.html" . }}
+    </div>
+</header>
