@@ -131,13 +131,17 @@ html { scroll-behavior: smooth; }
 
 /* --- Grid Layout --- */
 body {
+  min-height: 100vh;
+}
+
+.wrapper {
   display: grid;
   grid-template-columns: 220px 1fr 200px;
   grid-template-rows: 1fr;
   min-height: 100vh;
 }
 
-body:not(.has-toc) {
+body:not(.has-toc) .wrapper {
   grid-template-columns: 220px 1fr;
 }
 
@@ -303,7 +307,7 @@ body.menu-open .sidebar-overlay {
 
 /* --- Responsive: Tablet (600-1199px) --- */
 @media (max-width: 1199px) {
-  body {
+  .wrapper {
     display: block;
     min-height: auto;
   }
@@ -400,24 +404,46 @@ body.menu-open .sidebar-overlay {
     padding: 1.5rem;
   }
 
+  /* TOC: reorder to appear before content on tablet */
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wrapper .sidebar {
+    order: 0;
+  }
+
+  .wrapper .article-toc {
+    order: 1;
+  }
+
+  .wrapper .content.container {
+    order: 2;
+  }
+
   .article-toc {
     height: auto;
     overflow-y: visible;
     border-left: none;
     border-bottom: 1px solid var(--table-border-color);
     padding: 1rem 1.5rem;
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0;
   }
 
   .article-toc .toc-wrapper {
     position: static;
   }
 
-  .article-toc summary {
+  .article-toc h4 {
+    margin: 0 0 0.5rem;
     cursor: pointer;
-    font-weight: 500;
-    color: var(--text-color);
+  }
+
+  .article-toc h4::after {
+    content: " ▾";
+    font-size: 0.7em;
   }
 }
 
