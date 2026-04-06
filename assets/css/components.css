@@ -456,14 +456,15 @@ blockquote p:last-child {
 
 .resume-footer-images {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
 .resume-footer-images img {
-  height: 80px;
-  width: auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
 }
 
 @media (min-width: 1200px) {
