@@ -6,20 +6,21 @@
     {{- if eq .Lang $currentLang -}}
       <span class="lang-current" title="{{ .LanguageName }}">{{ if eq .Lang "en" }}🇬🇧{{ else }}🇮🇹{{ end }}</span>
     {{- else -}}
+      {{- $targetLang := .Lang -}}
       {{- $target := "" -}}
       {{- range $translations -}}
-        {{- if eq .Language.Lang $.Lang -}}
+        {{- if eq .Language.Lang $targetLang -}}
           {{- $target = .RelPermalink -}}
         {{- end -}}
       {{- end -}}
       {{- if not $target -}}
-        {{- if eq .Lang "en" -}}
+        {{- if eq $targetLang "en" -}}
           {{- $target = "/" -}}
         {{- else -}}
-          {{- $target = (printf "/%s/" .Lang) -}}
+          {{- $target = (printf "/%s/" $targetLang) -}}
         {{- end -}}
       {{- end -}}
-      <a href="{{ $target }}" class="lang-link{{ if not $target }} lang-no-translation{{ end }}" title="{{ .LanguageName }}" onclick="document.cookie='lang={{ .Lang }};path=/;max-age=31536000;SameSite=Lax'">{{ if eq .Lang "en" }}🇬🇧{{ else }}🇮🇹{{ end }}</a>
+      <a href="{{ $target }}" class="lang-link" title="{{ .LanguageName }}" onclick="document.cookie='lang={{ $targetLang }};path=/;max-age=31536000;SameSite=Lax'">{{ if eq $targetLang "en" }}🇬🇧{{ else }}🇮🇹{{ end }}</a>
     {{- end -}}
   {{- end -}}
 </span>
