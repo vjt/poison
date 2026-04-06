@@ -111,7 +111,7 @@ body.dark-theme .sun { display: block; }
   padding: 0.4rem 0;
   color: var(--sidebar-a-color);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   border-bottom: 1px solid rgba(128, 128, 128, 0.1);
 }
 
@@ -495,7 +495,7 @@ blockquote p:last-child {
 
 /* --- Footer / Copyright --- */
 .sidebar .blurb {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--sidebar-p-color);
 }
 
