@@ -13,12 +13,15 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Copy clicked closure
     copyButton.addEventListener("click", (e) => {
-      e.target.className = "copy-success";
-      setTimeout(() => {
-        e.target.className = "copy-button";
-      }, 1000);
       const code = codeblock.textContent;
-      navigator.clipboard.writeText(code);
+      navigator.clipboard.writeText(code).then(() => {
+        e.target.className = "copy-success";
+        setTimeout(() => {
+          e.target.className = "copy-button";
+        }, 1000);
+      }).catch(() => {
+        e.target.className = "copy-button";
+      });
     });
 
     // Wrap the codeblock with the container
