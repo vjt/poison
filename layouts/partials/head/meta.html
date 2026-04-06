@@ -81,10 +81,10 @@
 
 <!-- Title Tags -->
 <title itemprop="name">{{ .Scratch.Get "title" }}</title>
-<meta property="og:title" content={{ .Scratch.Get "title" }} />
-<meta name="twitter:title" content={{ .Scratch.Get "title" }} />
-<meta itemprop="name" content={{ .Scratch.Get "title" }} />
-<meta name="application-name" content={{ .Scratch.Get "title" }} />
+<meta property="og:title" content="{{ .Scratch.Get "title" }}" />
+<meta name="twitter:title" content="{{ .Scratch.Get "title" }}" />
+<meta itemprop="name" content="{{ .Scratch.Get "title" }}" />
+<meta name="application-name" content="{{ .Scratch.Get "title" }}" />
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 
 <!-- Description Tags -->
@@ -98,6 +98,14 @@
 <meta name="url" content="{{ .Permalink }}" />
 <meta name="twitter:url" content="{{ .Permalink }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
+
+<!-- Hreflang Tags -->
+{{ if hugo.IsMultilingual -}}
+<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}" />
+{{- range .Translations }}
+<link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}" />
+{{- end }}
+{{- end }}
 
 <!-- Date Tags -->
 <meta property="og:updated_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}" />
@@ -138,7 +146,7 @@
   <meta name="author" content="{{ . }}" />
 {{ end }}
 
-{{ with.Params.category }}
+{{ with .Params.category }}
   <meta name="news_keywords" content="{{ index . 0 }}" />
   <meta property="article:section" content="{{ index . 0 }}" />
 {{ end }}
