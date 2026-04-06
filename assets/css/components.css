@@ -1,103 +1,499 @@
 /* ==========================================================================
-   Typography
+   components.css — UI components
+   Replaces: poison.css + custom.css
    ========================================================================== */
 
+/* --- Typography --- */
+.post-title, .post-title a {
+  color: var(--post-title-color);
+  text-decoration: none;
+}
 
-/* ==========================================================================
-   Dark/Light Toggle
-   ========================================================================== */
+.post .post-title {
+  margin-bottom: 0.25rem;
+}
 
+.post-date {
+  display: block;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  color: var(--date-color);
+  font-size: 0.8rem;
+}
 
-/* ==========================================================================
-   Language Switcher
-   ========================================================================== */
+.read-more-link {
+  margin: 0.5rem 0 2rem;
+}
 
+.read-more-link a {
+  font-size: 0.9rem;
+}
 
-/* ==========================================================================
-   Navigation Menu
-   ========================================================================== */
+/* --- Dark/Light Toggle --- */
+.light-dark {
+  display: inline-flex;
+}
 
+.btn-light-dark {
+  background: none;
+  border: 1px solid var(--table-border-color);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  transition: background 0.15s;
+}
 
-/* ==========================================================================
-   Search (Pagefind)
-   ========================================================================== */
+.btn-light-dark:hover {
+  background: var(--table-stripe-color);
+}
 
+.moon, .sun {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
 
-/* ==========================================================================
-   Post Info & Meta
-   ========================================================================== */
+.sun { display: none; }
+body.dark-theme .moon { display: none; }
+body.dark-theme .sun { display: block; }
 
+/* --- Language Switcher --- */
+.lang-switcher {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+}
 
-/* ==========================================================================
-   Tags
-   ========================================================================== */
+.lang-current,
+.lang-link {
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  line-height: 1;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.lang-current {
+  background: var(--link-color);
+  opacity: 1;
+}
 
-/* ==========================================================================
-   Post List (index)
-   ========================================================================== */
+.lang-link {
+  background: var(--table-stripe-color);
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
 
+.lang-link:hover {
+  opacity: 1;
+  text-decoration: none;
+}
 
-/* ==========================================================================
-   Entry List (archives)
-   ========================================================================== */
+/* --- Navigation Menu --- */
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
 
+.sidebar-nav a {
+  display: block;
+  padding: 0.4rem 0;
+  color: var(--sidebar-a-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
 
-/* ==========================================================================
-   Pagination
-   ========================================================================== */
+.sidebar-nav a:hover {
+  color: var(--link-color);
+}
 
+.sidebar-nav .sidebar-nav-heading {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sidebar-p-color);
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
 
-/* ==========================================================================
-   Table of Contents
-   ========================================================================== */
+.sidebar-nav .sidebar-nav-item {
+  padding-left: 0.75rem;
+}
 
+.sidebar-nav .sidebar-nav-item .pre {
+  font-size: 0.7rem;
+  color: var(--sidebar-p-color);
+}
 
-/* ==========================================================================
-   Tables
-   ========================================================================== */
+/* --- Search (Pagefind) --- */
+#search {
+  margin-bottom: 1rem;
+}
 
+#search .pagefind-ui__search-input {
+  background: var(--bkg-color) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--table-border-color) !important;
+  border-radius: 6px !important;
+  font-size: 0.85rem !important;
+  padding: 0.5rem 0.75rem !important;
+  width: 100% !important;
+}
 
-/* ==========================================================================
-   Blockquotes
-   ========================================================================== */
+#search .pagefind-ui__search-clear {
+  color: var(--text-color) !important;
+}
 
+#search .pagefind-ui__result-link {
+  color: var(--link-color) !important;
+}
 
-/* ==========================================================================
-   Images
-   ========================================================================== */
+#search .pagefind-ui__result-excerpt {
+  color: var(--list-color) !important;
+}
 
+/* --- Post Info & Meta --- */
+.post-info .featured-image img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
 
-/* ==========================================================================
-   Post Navigation
-   ========================================================================== */
+.post-info .reading-time {
+  color: var(--date-color);
+  font-size: 0.8rem;
+}
 
+/* --- Tags --- */
+.tag-link,
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  background: var(--table-stripe-color);
+  color: var(--list-color);
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+  margin: 0.15rem 0.15rem 0.15rem 0;
+  text-decoration: none;
+  transition: background 0.15s;
+}
 
-/* ==========================================================================
-   Comments (Remark42)
-   ========================================================================== */
+.tag-link:hover,
+.tag:hover {
+  background: var(--table-border-color);
+  text-decoration: none;
+}
 
+/* --- Post List (index) --- */
+.posts .post {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--table-border-color);
+}
 
-/* ==========================================================================
-   Newsletter (Listmonk)
-   ========================================================================== */
+.posts .post:last-child {
+  border-bottom: none;
+}
 
+/* --- Entry List (archives) --- */
+.entries {
+  list-style: none;
+  padding: 0;
+}
 
-/* ==========================================================================
-   Resume Page
-   ========================================================================== */
+.entries li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.35rem 0;
+  border-bottom: 1px dotted var(--table-border-color);
+}
 
+.entries li .title {
+  flex: 1;
+  min-width: 0;
+}
 
-/* ==========================================================================
-   Socials
-   ========================================================================== */
+.entries li .title a {
+  color: var(--text-color);
+  text-decoration: none;
+}
 
+.entries li .title a:hover {
+  color: var(--link-color);
+}
 
-/* ==========================================================================
-   Footer / Copyright
-   ========================================================================== */
+.entries li .published {
+  flex-shrink: 0;
+  margin-left: 1rem;
+  color: var(--date-color);
+  font-size: 0.8rem;
+}
 
+.entries h3 {
+  margin-top: 2rem;
+  color: var(--date-color);
+  font-size: 1rem;
+  font-weight: 400;
+}
 
-/* ==========================================================================
-   Scrollbar
-   ========================================================================== */
+/* --- Pagination --- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+}
+
+.pagination a,
+.pagination span {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--table-border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.pagination a:hover {
+  background: var(--table-stripe-color);
+  text-decoration: none;
+}
+
+.pagination .active {
+  background: var(--link-color);
+  color: #fff;
+  border-color: var(--link-color);
+}
+
+/* --- Table of Contents --- */
+.article-toc h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--date-color);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+/* --- Tables --- */
+/* (table base styles are in layout.css reset) */
+
+/* --- Blockquotes --- */
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Images --- */
+.post img {
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+/* --- Post Navigation --- */
+.post-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--table-border-color);
+  font-size: 0.9rem;
+}
+
+.post-navigation .prev,
+.post-navigation .next {
+  max-width: 45%;
+}
+
+.post-navigation .label {
+  font-size: 0.75rem;
+  color: var(--date-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Categories list on post --- */
+.post-categories {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+/* --- Series --- */
+.post-series {
+  border: 1px solid var(--table-border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 1rem 0;
+  background: var(--table-stripe-color);
+}
+
+/* --- Comments (Remark42) --- */
+/* Remark42 loads its own styles, minimal overrides needed */
+
+/* --- Newsletter (Listmonk) --- */
+.newsletter-form {
+  border: 1px solid var(--table-border-color);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  background: var(--table-stripe-color);
+}
+
+.newsletter-form input[type="email"] {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--table-border-color);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  width: 100%;
+  max-width: 300px;
+  background: var(--bkg-color);
+  color: var(--text-color);
+}
+
+.newsletter-form button {
+  padding: 0.5rem 1rem;
+  background: var(--link-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* --- Resume Page --- */
+.resume-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.resume-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.resume-section {
+  margin-bottom: 2rem;
+}
+
+.resume-section h2 {
+  border-bottom: 2px solid var(--table-border-color);
+  padding-bottom: 0.25rem;
+}
+
+.resume-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.resume-buttons a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--link-color);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--link-color);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.resume-buttons a:hover {
+  background: var(--link-color);
+  color: #fff;
+}
+
+.resume-footer-images {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.resume-footer-images img {
+  height: 40px;
+  width: auto;
+}
+
+@media (min-width: 1200px) {
+  .resume-photo { display: none; }
+}
+
+/* --- Socials --- */
+.sidebar-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar-socials a {
+  color: var(--sidebar-socials-color);
+  transition: opacity 0.15s;
+}
+
+.sidebar-socials a:hover {
+  opacity: 0.7;
+}
+
+.sidebar-socials svg {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: middle;
+}
+
+/* --- Footer / Copyright --- */
+.sidebar .blurb {
+  font-size: 0.75rem;
+  color: var(--sidebar-p-color);
+}
+
+.sidebar hr {
+  border-color: rgba(128, 128, 128, 0.2);
+}
+
+.sidebar .glider-container {
+  margin-top: 1rem;
+}
+
+.sidebar .glider-container img {
+  width: 40px;
+  height: 40px;
+}
+
+/* --- Scrollbar --- */
+.content.container::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content.container::-webkit-scrollbar-track,
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content.container::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.3);
+  border-radius: 3px;
+}
