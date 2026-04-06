@@ -9,7 +9,7 @@
             <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             <p>
                 {{ if .Params.featuredImage }}
-                    <img src="{{ .Params.featuredImage }}"><br>
+                    <img src="{{ .Params.featuredImage }}" alt="{{ .Title }}"><br>
                 {{ end }}
                 {{ .Summary }}
             </p>
