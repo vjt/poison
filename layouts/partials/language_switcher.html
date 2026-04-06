@@ -12,11 +12,14 @@
           {{- $target = .RelPermalink -}}
         {{- end -}}
       {{- end -}}
-      {{- if $target -}}
-        <a href="{{ $target }}" class="lang-link" title="{{ .LanguageName }}" onclick="document.cookie='lang={{ .Lang }};path=/;max-age=31536000;SameSite=Lax'">{{ if eq .Lang "en" }}🇬🇧{{ else }}🇮🇹{{ end }}</a>
-      {{- else -}}
-        <a href="{{ .Lang | absLangURL }}" class="lang-link lang-no-translation" title="{{ .LanguageName }}" onclick="document.cookie='lang={{ .Lang }};path=/;max-age=31536000;SameSite=Lax'">{{ if eq .Lang "en" }}🇬🇧{{ else }}🇮🇹{{ end }}</a>
+      {{- if not $target -}}
+        {{- if eq .Lang "en" -}}
+          {{- $target = "/" -}}
+        {{- else -}}
+          {{- $target = (printf "/%s/" .Lang) -}}
+        {{- end -}}
       {{- end -}}
+      <a href="{{ $target }}" class="lang-link{{ if not $target }} lang-no-translation{{ end }}" title="{{ .LanguageName }}" onclick="document.cookie='lang={{ .Lang }};path=/;max-age=31536000;SameSite=Lax'">{{ if eq .Lang "en" }}🇬🇧{{ else }}🇮🇹{{ end }}</a>
     {{- end -}}
   {{- end -}}
 </span>
