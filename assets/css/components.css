@@ -393,7 +393,7 @@ blockquote p:last-child {
 /* --- Resume Page --- */
 .resume-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
