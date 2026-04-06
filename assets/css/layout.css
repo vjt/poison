@@ -1,43 +1,449 @@
 /* ==========================================================================
-   Reset & Base
+   layout.css — CSS Grid system, breakpoints, responsive layout
+   Replaces: poole.css (reset/base) + hyde.css (sidebar layout)
    ========================================================================== */
 
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-/* ==========================================================================
-   Grid Layout
-   ========================================================================== */
+html {
+  font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-text-size-adjust: 100%;
+}
 
+body {
+  margin: 0;
+  color: var(--text-color);
+  background-color: var(--bkg-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-/* ==========================================================================
-   Sidebar
-   ========================================================================== */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
 
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
 
-/* ==========================================================================
-   Content
-   ========================================================================== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-color);
+}
 
-/* ==========================================================================
-   TOC Column
-   ========================================================================== */
+h1 { font-size: 1.75rem; font-weight: 700; }
+h2 { font-size: 1.375rem; }
+h3 { font-size: 1.125rem; }
+h4, h5, h6 { font-size: 1rem; }
 
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
 
-/* ==========================================================================
-   Header Bar (< 1200px)
-   ========================================================================== */
+strong { color: var(--text-color); }
 
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
 
-/* ==========================================================================
-   Hamburger Slide-out
-   ========================================================================== */
+li { color: var(--list-color); }
+li > p { color: var(--list-color); }
 
+blockquote {
+  margin: 0 0 1rem;
+  padding: 0.5rem 1rem;
+  border-left: 3px solid var(--link-color);
+  color: var(--list-color);
+}
 
-/* ==========================================================================
-   Responsive: Tablet (600-1199px)
-   ========================================================================== */
+pre {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
 
+code {
+  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-size: 85%;
+  color: var(--code-color);
+  background-color: var(--code-background-color);
+  padding: 0.15em 0.3em;
+  border-radius: 3px;
+}
 
-/* ==========================================================================
-   Responsive: Phone (< 600px)
-   ========================================================================== */
+pre code {
+  padding: 0;
+  background-color: transparent;
+  color: var(--code-block-color);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--table-border-color);
+  margin: 1.5rem 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+thead th {
+  border-bottom: 2px solid var(--table-border-color);
+}
+
+th, td {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--table-border-color);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--table-stripe-color);
+}
+
+html { scroll-behavior: smooth; }
+
+/* --- Grid Layout --- */
+body {
+  display: grid;
+  grid-template-columns: 220px 1fr 200px;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+}
+
+body:not(.has-toc) {
+  grid-template-columns: 220px 1fr;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: var(--sidebar-bg-color);
+  border-right: 1px solid var(--table-border-color);
+  overflow-y: auto;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-sticky {
+  padding: 1.5rem 1rem;
+}
+
+.sidebar .brand {
+  font-family: "Abril Fatface", serif;
+  font-size: 1.8em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.sidebar .brand a {
+  color: var(--sidebar-h1-color);
+  text-decoration: none;
+}
+
+.sidebar .lead {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--sidebar-p-color);
+  margin: 0.25rem 0 1rem;
+}
+
+.sidebar a {
+  color: var(--sidebar-a-color);
+}
+
+.sidebar p,
+.sidebar .footnote {
+  color: var(--sidebar-p-color);
+  font-size: 0.8rem;
+}
+
+.sidebar-about img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 0.5rem;
+  border-radius: 50%;
+  border: 3px solid var(--sidebar-img-border-color);
+}
+
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(128,128,128,0.3);
+  border-radius: 3px;
+}
+
+/* Close button only shows in hamburger mode */
+.sidebar .sidebar-close {
+  display: none;
+}
+
+/* --- Content --- */
+.content.container {
+  grid-column: 2;
+  grid-row: 1;
+  overflow-y: auto;
+  height: 100vh;
+  padding: 2rem 2rem 2rem 2.5rem;
+}
+
+.content.container > * {
+  max-width: 52rem;
+}
+
+.content.container::-webkit-scrollbar { width: 6px; }
+.content.container::-webkit-scrollbar-track { background: transparent; }
+.content.container::-webkit-scrollbar-thumb {
+  background: rgba(128,128,128,0.2);
+  border-radius: 3px;
+}
+
+/* --- TOC Column --- */
+.article-toc {
+  grid-column: 3;
+  grid-row: 1;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  border-left: 1px solid var(--table-border-color);
+  font-size: 0.8rem;
+}
+
+.article-toc .toc-wrapper {
+  position: sticky;
+  top: 2rem;
+}
+
+.article-toc #TableOfContents ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.article-toc #TableOfContents ul ul {
+  padding-left: 1rem;
+}
+
+.article-toc #TableOfContents a {
+  color: var(--list-color);
+  text-decoration: none;
+  display: block;
+  padding: 0.25rem 0;
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+
+.article-toc #TableOfContents a:hover {
+  color: var(--link-color);
+}
+
+.article-toc #TableOfContents a.active {
+  color: var(--link-color);
+  font-weight: 500;
+}
+
+.article-toc .inactive a {
+  opacity: 0.5;
+}
+
+body:not(.has-toc) .article-toc {
+  display: none;
+}
+
+/* --- Header Bar (< 1200px) --- */
+.site-header {
+  display: none;
+}
+
+.mobile-header {
+  display: none;
+}
+
+/* --- Hamburger Slide-out --- */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+body.menu-open .sidebar-overlay {
+  display: block;
+}
+
+/* --- Responsive: Tablet (600-1199px) --- */
+@media (max-width: 1199px) {
+  body {
+    display: block;
+    min-height: auto;
+  }
+
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 0.6rem 1rem;
+    background: var(--bkg-color);
+    border-bottom: 1px solid var(--table-border-color);
+  }
+
+  .site-header .header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .site-header .hamburger-btn {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    color: var(--text-color);
+    line-height: 1;
+  }
+
+  .site-header .header-brand {
+    font-family: "Abril Fatface", serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-color);
+    text-decoration: none;
+  }
+
+  .site-header .header-payoff {
+    color: var(--date-color);
+    font-size: 0.8rem;
+    flex: 1;
+    text-align: center;
+    padding: 0 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .site-header .header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    height: 100vh;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    border-right: 1px solid var(--table-border-color);
+    overflow-y: auto;
+  }
+
+  body.menu-open .sidebar {
+    transform: translateX(0);
+  }
+
+  .sidebar .sidebar-close {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--sidebar-p-color);
+    line-height: 1;
+    padding: 0.25rem;
+  }
+
+  .content.container {
+    height: auto;
+    overflow-y: visible;
+    padding: 1.5rem;
+  }
+
+  .article-toc {
+    height: auto;
+    overflow-y: visible;
+    border-left: none;
+    border-bottom: 1px solid var(--table-border-color);
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .article-toc .toc-wrapper {
+    position: static;
+  }
+
+  .article-toc summary {
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+}
+
+/* --- Responsive: Phone (< 600px) --- */
+@media (max-width: 599px) {
+  .site-header {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .site-header .header-brand {
+    font-size: 1rem;
+  }
+
+  .site-header .header-payoff {
+    display: none;
+  }
+
+  .content.container {
+    padding: 1rem;
+  }
+
+  .content.container > * {
+    max-width: 100%;
+  }
+
+  .article-toc {
+    padding: 0.75rem 1rem;
+  }
+}
