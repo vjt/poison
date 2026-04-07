@@ -10,8 +10,8 @@ Forked from [Poison](https://github.com/lukeorth/poison) by Luke Orth, which was
 ### Desktop (dark)
 ![Sindrome desktop dark](images/screenshot-desktop-dark.png)
 
-### Mobile
-![Sindrome mobile](images/screenshot-mobile.png)
+### Mobile (light / dark)
+![Sindrome mobile light](images/screenshot-mobile.png) ![Sindrome mobile dark](images/screenshot-mobile-dark.png)
 
 ## Live
 
