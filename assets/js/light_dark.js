@@ -1,6 +1,6 @@
 (function() {
-    var btn = document.querySelector('.btn-light-dark');
-    if (!btn) return;
+    var btns = document.querySelectorAll('.btn-light-dark');
+    if (!btns.length) return;
 
     var prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     var saved = localStorage.getItem('theme');
@@ -25,12 +25,14 @@
     // Apply on load (supplements the no-FOUC script in <head>)
     applyTheme(getEffectiveTheme());
 
-    // Toggle button: switch to opposite of current
-    btn.addEventListener('click', function() {
-        var current = getEffectiveTheme();
-        var next = current === 'dark' ? 'light' : 'dark';
-        localStorage.setItem('theme', next);
-        applyTheme(next);
+    // Toggle button: bind to ALL instances (sidebar + header)
+    btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var current = getEffectiveTheme();
+            var next = current === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', next);
+            applyTheme(next);
+        });
     });
 
     // Listen for system preference changes (only matters when no localStorage override)
