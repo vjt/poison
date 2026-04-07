@@ -386,7 +386,40 @@ blockquote p:last-child {
 
 @media (max-width: 599px) {
   .post-nav-links {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .post-nav-card {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid var(--table-border-color);
+    padding: 0.6rem 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .post-nav-card:last-child {
+    border-bottom: none;
+  }
+
+  .post-nav-next {
+    text-align: left;
+  }
+
+  .post-nav-label {
+    white-space: nowrap;
+    font-size: 0.7rem;
+  }
+
+  .post-nav-title {
+    font-size: 0.8rem;
+  }
+
+  .post-nav-spacer {
+    display: none;
   }
 }
 
