@@ -1,15 +1,6 @@
 <hr>
 <div class="footer" data-pagefind-ignore>
-    {{ if .Params.categories }}
-      <div class="post-categories">
-        <span class="post-categories-label">{{ i18n "filed_under" }}</span>
-        {{ range .Params.categories }}
-          <a href="{{ "categories/" | absLangURL }}{{ . }}" class="category-pill">{{ . }}</a>
-        {{ end }}
-      </div>
-    {{ end }}
-
-    {{ if .Params.series }}
+{{ if .Params.series }}
     {{ $Site := .Site }}
     {{ $postTitle := .Title }}
     <p>
