@@ -80,6 +80,14 @@
 body.dark-theme .moon { display: none; }
 body.dark-theme .sun { display: block; }
 
+/* --- Sidebar Top Controls --- */
+.sidebar-top-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
 /* --- Language Switcher --- */
 .lang-switcher {
   display: inline-flex;
@@ -102,13 +110,13 @@ body.dark-theme .sun { display: block; }
 }
 
 .lang-current {
-  background: var(--link-color);
+  background: var(--table-border-color);
   opacity: 1;
 }
 
 .lang-link {
-  background: var(--table-stripe-color);
-  opacity: 0.7;
+  background: transparent;
+  opacity: 0.5;
   transition: opacity 0.15s;
 }
 
