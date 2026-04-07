@@ -444,38 +444,6 @@ blockquote p:last-child {
   }
 }
 
-/* --- Categories list on post --- */
-.post-categories {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.post-categories-label {
-  font-size: 0.8rem;
-  color: var(--date-color);
-  margin-right: 0.25rem;
-}
-
-.category-pill {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 500;
-  background: var(--link-color);
-  color: #fff;
-  padding: 0.2rem 0.7rem;
-  border-radius: 12px;
-  text-decoration: none;
-  transition: opacity 0.15s;
-}
-
-.category-pill:hover {
-  opacity: 0.85;
-  text-decoration: none;
-}
 
 /* --- Series --- */
 .post-series {
