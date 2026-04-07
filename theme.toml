@@ -1,24 +1,19 @@
-name = "Poison"
+name = "Sindrome"
 license = "GPL-3.0 License"
-licenselink = "https://github.com/lukeorth/poison/blob/master/LICENSE.md"
-description = "A pragmatic Hugo theme for bloggers.  Based on the classic \"Hyde\" design by mdo."
+licenselink = "https://github.com/vjt/hugo-sindrome-theme/blob/master/LICENSE.md"
+description = "A modern, bilingual Hugo theme with CSS Grid layout, system-aware dark mode, and a boot sequence easter egg. Forked from Poison."
 min_version = "0.101.0"
 
-# The home page of the theme, where the source can be found.
-homepage = "https://github.com/lukeorth/poison"
+homepage = "https://github.com/vjt/hugo-sindrome-theme"
 
-# If you have a running demo of the theme.
-demosite = "https://poison.lukeorth.com"
-
-tags = ["blog", "personal", "dark", "dark-mode", "light", "minimal"]
-features = ["blog", "katex", "table-of-contents", "tabs", "dark-mode", "series"]
+tags = ["blog", "personal", "dark-mode", "light", "minimal", "bilingual", "responsive", "css-grid"]
+features = ["blog", "table-of-contents", "dark-mode", "series", "i18n", "hamburger-menu", "boot-splash"]
 
 [author]
-    name = "Luke Orth"
-    homepage = "https://lukeorth.com"
+    name = "Marcello Barnaba"
+    homepage = "https://sindro.me"
 
-# If Porting existing theme
 [original]
-    author =  "mdo"
-    homepage = "http://markdotto.com/"
-    repo = "https://www.github.com/mdo/hyde"
+    author = "Luke Orth (Poison theme)"
+    homepage = "https://lukeorth.com"
+    repo = "https://github.com/lukeorth/poison"
