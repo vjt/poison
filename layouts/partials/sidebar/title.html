@@ -15,7 +15,5 @@
             </a>
         {{ end }}
     </h1>
-    <p class="lead">
-    {{ with .Site.Params.description }}{{. | safeHTML}}{{end}}
-    </p>
+    <p class="lead">{{ .Site.Params.description }}</p>
 </div>

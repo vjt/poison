@@ -1,16 +1,12 @@
 <hr>
 <div class="footer" data-pagefind-ignore>
     {{ if .Params.categories }}
-    {{ $Site := .Site }}
-    {{ $last := add (len .Params.categories) -1 }}
-      <p>{{ i18n "filed_under" }}
-      {{ range $i, $cat := .Params.categories }}
-        <a href="{{ "categories/" | absLangURL }}{{ $cat }}">{{ $cat }}</a>
-        {{ if lt $i $last }}
-        |
+      <div class="post-categories">
+        <span class="post-categories-label">{{ i18n "filed_under" }}</span>
+        {{ range .Params.categories }}
+          <a href="{{ "categories/" | absLangURL }}{{ . }}" class="category-pill">{{ . }}</a>
         {{ end }}
-      {{ end }}
-      </p>
+      </div>
     {{ end }}
 
     {{ if .Params.series }}
@@ -35,16 +31,21 @@
         </ul>
     </p>
     {{ else }}
-	    {{ if .PrevInSection }}
-        <div class="previous-post">
-          <a href="{{ .PrevInSection.Permalink }}?ref=footer"><span style="font-weight:bold;">« {{ i18n "prev" }}</span><br>{{ .PrevInSection.Title | truncate 50 "..."}}</a>
-        </div>
-      {{ end }}
-	    {{ if .NextInSection }}
-        <div class="next-post">
-          <a href="{{ .NextInSection.Permalink }}?ref=footer"><span style="font-weight:bold;">{{ i18n "next" }} »</span><br>{{ .NextInSection.Title | truncate 50 "..." }}</a>
-        </div>
-      {{ end }}
-      <div class="clear"></div>
+      <div class="post-nav-links">
+        {{ if .PrevInSection }}
+        <a href="{{ .PrevInSection.Permalink }}?ref=footer" class="post-nav-card post-nav-prev">
+          <span class="post-nav-label">« {{ i18n "prev" }}</span>
+          <span class="post-nav-title">{{ .PrevInSection.Title | truncate 60 "..." }}</span>
+        </a>
+        {{ else }}
+        <div class="post-nav-card post-nav-spacer"></div>
+        {{ end }}
+        {{ if .NextInSection }}
+        <a href="{{ .NextInSection.Permalink }}?ref=footer" class="post-nav-card post-nav-next">
+          <span class="post-nav-label">{{ i18n "next" }} »</span>
+          <span class="post-nav-title">{{ .NextInSection.Title | truncate 60 "..." }}</span>
+        </a>
+        {{ end }}
+      </div>
     {{ end }}
 </div>
