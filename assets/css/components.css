@@ -182,7 +182,7 @@ body.dark-theme .sun { display: block; }
 }
 
 #search .pagefind-ui__search-icon {
-  display: none;
+  opacity: 0.4;
 }
 
 #search .pagefind-ui__search-clear {
