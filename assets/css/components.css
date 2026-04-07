@@ -176,13 +176,9 @@ body.dark-theme .sun { display: block; }
   border: 1px solid var(--table-border-color);
   border-radius: 6px;
   font-size: 0.85rem;
-  padding: 0.5rem 0.75rem;
+  padding-left: 2.2rem;
   width: 100%;
   box-sizing: border-box;
-}
-
-#search .pagefind-ui__search-icon {
-  opacity: 0.4;
 }
 
 #search .pagefind-ui__search-clear {
