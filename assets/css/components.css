@@ -187,7 +187,15 @@ body.dark-theme .sun { display: block; }
 }
 
 #search .pagefind-ui__search-clear {
-  color: var(--text-color) !important;
+  color: var(--date-color) !important;
+  background: none !important;
+  border: none !important;
+  font-size: 0.8rem !important;
+  opacity: 0.6 !important;
+}
+
+#search .pagefind-ui__search-clear:hover {
+  opacity: 1 !important;
 }
 
 #search .pagefind-ui__result-link {
