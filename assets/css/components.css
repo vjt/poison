@@ -391,19 +391,14 @@ blockquote p:last-child {
 }
 
 /* --- Resume Page --- */
-.resume-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
 .resume-photo {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  flex-shrink: 0;
+  float: left;
+  margin: 0.25rem 1.5rem 1rem 0;
+  shape-outside: circle(50%);
 }
 
 .resume-section {

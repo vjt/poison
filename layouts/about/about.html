@@ -1,20 +1,16 @@
 {{ define "main" -}}
 <div class="resume">
-    <div class="resume-header">
-        <img src="/vjt.jpg" alt="Marcello Barnaba" class="resume-photo">
-        <div class="resume-header-text">
-            {{ with .Site.GetPage "/about" }}
-                {{ if .Pages }}
-                    {{ range .Pages }}
-                        <h2 data-pagefind-meta="title">{{ .Title }}</h2>
-                        {{ .Content }}
-                    {{ end }}
-                {{ else }}
-                    <h2 data-pagefind-meta="title">{{ .Title }}</h2>
-                    {{ .Content }}
-                {{ end }}
+    <img src="/vjt.jpg" alt="Marcello Barnaba" class="resume-photo">
+    {{ with .Site.GetPage "/about" }}
+        {{ if .Pages }}
+            {{ range .Pages }}
+                <h2 data-pagefind-meta="title">{{ .Title }}</h2>
+                {{ .Content }}
             {{ end }}
-        </div>
-    </div>
+        {{ else }}
+            <h2 data-pagefind-meta="title">{{ .Title }}</h2>
+            {{ .Content }}
+        {{ end }}
+    {{ end }}
 </div>
 {{ end }}

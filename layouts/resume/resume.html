@@ -8,12 +8,8 @@
             {{ partial "sidebar/sidebar.html" . }}
             <main class="content container">
                 <div class="resume">
-                    <div class="resume-header">
-                        <img src="/vjt.jpg" alt="Marcello Barnaba" class="resume-photo">
-                        <div class="resume-header-text">
-                            {{ .Content }}
-                        </div>
-                    </div>
+                    <img src="/vjt.jpg" alt="Marcello Barnaba" class="resume-photo">
+                    {{ .Content }}
                     <div class="resume-download">
                         <a href="/resume.pdf" class="resume-btn" download>🇬🇧 PDF</a>
                         <a href="/resume-it.pdf" class="resume-btn" download>🇮🇹 PDF</a>
