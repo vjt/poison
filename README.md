@@ -4,6 +4,15 @@ A modern, bilingual Hugo theme with CSS Grid layout, system-aware dark mode, and
 
 Forked from [Poison](https://github.com/lukeorth/poison) by Luke Orth, which was based on [Hyde](https://github.com/mdo/hyde) by mdo.
 
+### Desktop (light)
+![Sindrome desktop light](images/screenshot-desktop.png)
+
+### Desktop (dark)
+![Sindrome desktop dark](images/screenshot-desktop-dark.png)
+
+### Mobile
+![Sindrome mobile](images/screenshot-mobile.png)
+
 ## Live
 
 - **Production**: [sindro.me](https://sindro.me)
