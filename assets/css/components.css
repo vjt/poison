@@ -198,6 +198,10 @@ body.dark-theme .sun { display: block; }
   opacity: 1 !important;
 }
 
+#search .pagefind-ui__search-clear.pagefind-ui__suppressed {
+  display: none !important;
+}
+
 #search .pagefind-ui__result-link {
   color: var(--link-color) !important;
 }
