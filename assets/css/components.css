@@ -392,13 +392,17 @@ blockquote p:last-child {
 
 /* --- Resume Page --- */
 .resume-photo {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
   float: left;
-  margin: 0.25rem 1.5rem 1rem 0;
-  shape-outside: margin-box;
+  margin: 0.3rem 1.25rem 0 0;
+}
+
+/* Clear float after the first heading block */
+.resume h3:first-of-type {
+  clear: left;
 }
 
 .resume-section {
