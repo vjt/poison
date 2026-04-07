@@ -161,14 +161,24 @@ body.dark-theme .sun { display: block; }
   margin-bottom: 1rem;
 }
 
+#search .pagefind-ui__form {
+  position: relative !important;
+}
+
 #search .pagefind-ui__search-input {
   background: var(--bkg-color) !important;
   color: var(--text-color) !important;
   border: 1px solid var(--table-border-color) !important;
   border-radius: 6px !important;
   font-size: 0.85rem !important;
-  padding: 0.5rem 0.75rem !important;
+  padding: 0.5rem 0.75rem 0.5rem 2rem !important;
   width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Hide Pagefind's default icon that overlaps the input text */
+#search .pagefind-ui__search-icon {
+  display: none !important;
 }
 
 #search .pagefind-ui__search-clear {
