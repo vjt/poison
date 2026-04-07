@@ -217,11 +217,9 @@ body:not(.has-toc) .wrapper {
   grid-row: 1;
   overflow-y: auto;
   height: 100vh;
-  padding: 2rem 2rem 2rem 2.5rem;
-}
-
-.content.container > * {
+  padding: 2rem 2.5rem;
   max-width: 52rem;
+  margin: 0 auto;
 }
 
 .content.container::-webkit-scrollbar { width: 6px; }
