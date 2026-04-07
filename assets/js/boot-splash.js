@@ -1,5 +1,6 @@
 (function() {
-  if (sessionStorage.getItem('boot-done')) {
+  var lastBoot = localStorage.getItem('boot-done');
+  if (lastBoot && (Date.now() - Number(lastBoot)) < 86400000) {
     var splash = document.getElementById('boot-splash');
     if (splash) splash.remove();
     return;
@@ -48,7 +49,7 @@
         setTimeout(function() {
           splash.remove();
         }, 600);
-        sessionStorage.setItem('boot-done', '1');
+        localStorage.setItem('boot-done', Date.now());
       }, 500);
       return;
     }
