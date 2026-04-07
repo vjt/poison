@@ -4,9 +4,9 @@
     {{ if .Site.Params.remark42 }}
         <div id="remark42"></div>
         <script>
-            themeFromLS = localStorage.getItem("theme")
-            themeFromHugo = document.body.classList.contains("dark-theme") ? "dark" : "light"
-            currentTheme = themeFromLS ? themeFromLS : themeFromHugo;
+            var savedTheme = localStorage.getItem("theme");
+            var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var currentTheme = savedTheme ? savedTheme : (systemDark ? "dark" : "light");
 
             // Use English URL as canonical thread so comments are shared across languages
             var canonicalUrl = window.location.origin + {{ .RelPermalink }};

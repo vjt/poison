@@ -487,7 +487,20 @@ blockquote p:last-child {
 }
 
 /* --- Comments (Remark42) --- */
-/* Remark42 loads its own styles, minimal overrides needed */
+.comments {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--table-border-color);
+}
+
+#remark42 {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#remark42 iframe {
+  border-radius: 8px;
+}
 
 /* --- Newsletter (Listmonk) --- */
 .newsletter-form {
