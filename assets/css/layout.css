@@ -409,7 +409,7 @@ body.menu-open .sidebar-overlay {
   /* TOC: reorder to appear before content on tablet */
   /* Ensure content doesn't start under sticky header */
   html {
-    scroll-padding-top: 3.5rem;
+    scroll-padding-top: 4.5rem;
   }
 
   .wrapper {
