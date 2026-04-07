@@ -4,24 +4,14 @@
    ========================================================================== */
 
 /* --- Typography --- */
-.post-title {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 0.4rem;
-}
-
-.post-title a {
-  color: var(--post-title-color);
-  text-decoration: none;
-}
-
 .post-meta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.6rem;
-  font-size: 0.85rem;
+  gap: 0.4rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--date-color);
 }
 
@@ -29,12 +19,24 @@
   color: var(--table-border-color);
 }
 
-.post-date {
-  color: var(--date-color);
+.post-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
 }
 
-.reading-time {
-  color: var(--date-color);
+.post-title a {
+  color: var(--post-title-color);
+  text-decoration: none;
+}
+
+/* Separator after the header block */
+.info {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--table-border-color);
 }
 
 .read-more-link {
