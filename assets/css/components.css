@@ -398,7 +398,7 @@ blockquote p:last-child {
   object-fit: cover;
   float: left;
   margin: 0.25rem 1.5rem 1rem 0;
-  shape-outside: circle(50%);
+  shape-outside: margin-box;
 }
 
 .resume-section {
