@@ -218,8 +218,12 @@ body:not(.has-toc) .wrapper {
   overflow-y: auto;
   height: 100vh;
   padding: 2rem 2.5rem;
+}
+
+/* Cap reading width on single posts, let homepage/lists breathe */
+.post > *,
+.content.container > .post > * {
   max-width: 52rem;
-  margin: 0 auto;
 }
 
 .content.container::-webkit-scrollbar { width: 6px; }
