@@ -16,9 +16,7 @@
                 {{ $menuURL := $menu_item.URL }}
 
                 {{ range $sections }}
-                    {{ $trimmedURL := (lower (strings.TrimSuffix "/" (strings.TrimPrefix "/" $menuURL))) }}
-                    {{ $sectionURL := printf "/%s/" .Section }}
-                    {{ if or (eq (lower .Title) (replace $trimmedURL "-" " ")) (eq $sectionURL $menuURL) }}
+                    {{ if eq .RelPermalink $menuURL }}
                         {{ $matched = true }}
                         <li class="heading">
                             <a href="{{ $menuURL }}">{{ $menu_item.Name }}</a>
