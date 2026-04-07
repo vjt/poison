@@ -220,9 +220,8 @@ body:not(.has-toc) .wrapper {
   padding: 2rem 2.5rem;
 }
 
-/* Cap reading width on single posts, let homepage/lists breathe */
-.post > *,
-.content.container > .post > * {
+/* Cap reading width on single post pages, let homepage/lists use full width */
+.content.container > .post {
   max-width: 52rem;
 }
 
