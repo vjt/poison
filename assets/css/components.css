@@ -4,21 +4,37 @@
    ========================================================================== */
 
 /* --- Typography --- */
-.post-title, .post-title a {
+.post-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.post-title a {
   color: var(--post-title-color);
   text-decoration: none;
 }
 
-.post .post-title {
-  margin-bottom: 0.25rem;
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--date-color);
+}
+
+.post-meta-sep {
+  color: var(--table-border-color);
 }
 
 .post-date {
-  display: block;
-  margin-top: -0.5rem;
-  margin-bottom: 1rem;
   color: var(--date-color);
-  font-size: 0.8rem;
+}
+
+.reading-time {
+  color: var(--date-color);
 }
 
 .read-more-link {
