@@ -1,5 +1,15 @@
 <hr>
 <div class="footer" data-pagefind-ignore>
+    {{ if .Params.tags }}
+    <ul class="tags">
+      {{ range .Params.tags }}
+      <li class="tag-{{ . }}">
+        <a href="{{ "tags/" | absLangURL }}{{ . | urlize }}">{{ . }}</a>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+
 {{ if .Params.series }}
     {{ $Site := .Site }}
     {{ $postTitle := .Title }}
