@@ -239,7 +239,7 @@ body:not(.has-toc) .wrapper {
   overflow-y: auto;
   padding: 2rem 1rem;
   border-left: 1px solid var(--table-border-color);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .article-toc .toc-wrapper {
@@ -258,16 +258,18 @@ body:not(.has-toc) .wrapper {
 }
 
 .article-toc #TableOfContents a {
-  color: var(--list-color);
+  color: var(--text-color);
   text-decoration: none;
   display: block;
   padding: 0.25rem 0;
   line-height: 1.4;
-  transition: color 0.15s;
+  opacity: 0.75;
+  transition: color 0.15s, opacity 0.15s;
 }
 
 .article-toc #TableOfContents a:hover {
   color: var(--link-color);
+  opacity: 1;
 }
 
 .article-toc #TableOfContents a.active {
