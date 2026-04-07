@@ -12,7 +12,7 @@
 </div>
 {{- end }}
 {{ define "sidebar" }}
-  {{ if and (not .Params.hideToc) (not .Site.Params.hideToc) (.TableOfContents | findRE "<li>" 1) }}
+  {{ if and (not .Params.hideToc) (not .Site.Params.hideToc) (findRE "<li>" .TableOfContents) }}
     {{ partial "table_of_contents.html" . }}
   {{ end }}
 {{ end }}
