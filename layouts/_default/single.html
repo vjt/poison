@@ -1,7 +1,16 @@
 {{ define "main" -}}
 <div class="post">
   {{ partial "post/info.html" . }}
+  {{- if .Truncated -}}
+    {{- $rest := strings.TrimPrefix (string .Summary) (string .Content) -}}
+    {{- if ne (string .Content) $rest -}}
+  {{ .Summary }}<span id="more"></span>{{ $rest | safeHTML }}
+    {{- else -}}
   {{ .Content }}
+    {{- end -}}
+  {{- else -}}
+  {{ .Content }}
+  {{- end -}}
   {{ if (.Site.Params.listmonk) }}
     {{ partial "post/listmonk_email_newsletters.html" . }}
   {{ end }}
