@@ -1,6 +1,6 @@
 # Sindrome
 
-A modern, bilingual Hugo theme with CSS Grid layout, system-aware dark mode, and a Linux boot sequence easter egg. Powers [sindro.me](https://sindro.me).
+A modern, bilingual Hugo theme with CSS Grid layout, system-aware dark mode, and a couple of easter eggs. Powers [sindro.me](https://sindro.me).
 
 Forked from [Poison](https://github.com/lukeorth/poison) by Luke Orth, which was based on [Hyde](https://github.com/mdo/hyde) by mdo.
 
@@ -28,7 +28,8 @@ Pretty much everything except the general idea of "sidebar + content blog."
 - **Hamburger menu** below 1200px with slide-out sidebar, overlay, focus trap
 - **Collapsible TOC** on tablet/phone, full static TOC on desktop
 - **Responsive breakpoints**: 1200px (desktop), 600px (phone)
-- Old `poole.css` + `hyde.css` + `poison.css` + `custom.css` replaced by `layout.css` + `components.css`
+- Old `poole.css` + `hyde.css` + `poison.css` + `custom.css` replaced by `layout.css` + `components.css` + `codeblock.css`
+- **Post list sidebar** on index pages — right sidebar shows posts on the current page with dates and prev/next navigation
 
 ### Visual
 - **Light-first design** with system-aware dark mode (`prefers-color-scheme`)
@@ -41,15 +42,19 @@ Pretty much everything except the general idea of "sidebar + content blog."
 ### Features
 - **Full i18n** — English + Italian out of the box, language switcher with flag emojis
 - **Boot sequence splash** — Linux kernel boot animation on first visit (`sessionStorage`)
+- **Console easter egg** — hacker emblem (glider) rendered as inline SVG when you open devtools
+- **Vintage banner** — auto-generated disclaimer for posts older than 10 years, disable per-post with `hideVintage: true`
+- **Retrospective shortcode** — `{{</* retrospective year="2026" */>}}...{{</* /retrospective */>}}` for adding modern context to old posts
+- **Copy-to-clipboard** on code blocks — hover-only icon, positioned outside code flow
 - **Resume pipeline** — markdown to web page + PDF (via WeasyPrint)
 - **Pagefind** search integration
-- **Remark42** comments with cross-language thread sharing
+- **Remark42** comments with cross-language thread sharing (Disqus fallback available)
 - Theme syncs dark/light mode with Remark42
+- **`remark42_url`** — optional config param to set the canonical origin for comment threads (useful for staging environments)
 
 ### Removed
 - KaTeX (math rendering) — dead weight
 - Tabs shortcode — no CSS, no usage
-- Disqus support — Remark42 only
 
 ## Requirements
 
