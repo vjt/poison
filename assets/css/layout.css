@@ -220,7 +220,7 @@ body:not(.has-toc) .wrapper {
   overflow-y: auto;
   height: 100vh;
   padding: 2rem 2.5rem;
-  max-width: 48rem;
+  max-width: 52rem;
 }
 
 .content.container::-webkit-scrollbar { width: 6px; }
@@ -228,6 +228,15 @@ body:not(.has-toc) .wrapper {
 .content.container::-webkit-scrollbar-thumb {
   background: rgba(128,128,128,0.2);
   border-radius: 3px;
+}
+
+/* Code blocks break out wider than prose */
+.content.container .highlight pre,
+.content.container > pre {
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 /* --- TOC Column --- */
@@ -406,6 +415,15 @@ body.menu-open .sidebar-overlay {
     max-width: none;
   }
 
+  /* Reset code block breakout on tablet */
+  .content.container .highlight pre,
+  .content.container > pre {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   /* TOC: reorder to appear before content on tablet */
   /* Ensure content doesn't start under sticky header */
   html {
@@ -474,6 +492,21 @@ body.menu-open .sidebar-overlay {
 
   .content.container > * {
     max-width: 100%;
+  }
+
+  /* Code wraps on mobile — no horizontal scrolling */
+  pre {
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-x: visible;
+  }
+
+  .content.container .highlight pre,
+  .content.container > pre {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .article-toc {
