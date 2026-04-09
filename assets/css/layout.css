@@ -13,7 +13,7 @@
 html {
   font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
   -webkit-text-size-adjust: 100%;
 }
@@ -22,6 +22,9 @@ body {
   margin: 0;
   color: var(--text-color);
   background-color: var(--bkg-color);
+}
+
+body:not(.dark-theme) {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -175,7 +178,6 @@ body:not(.has-toc) .wrapper {
 
 .sidebar .lead {
   font-size: 0.9rem;
-  font-weight: 300;
   color: var(--sidebar-p-color);
   margin: 0.25rem 0 1rem;
 }
@@ -218,9 +220,8 @@ body:not(.has-toc) .wrapper {
   overflow-y: auto;
   height: 100vh;
   padding: 2rem 2.5rem;
+  max-width: 42rem;
 }
-
-/* Content fills all available space — sidebar provides left boundary */
 
 .content.container::-webkit-scrollbar { width: 6px; }
 .content.container::-webkit-scrollbar-track { background: transparent; }
