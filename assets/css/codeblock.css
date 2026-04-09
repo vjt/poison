@@ -4,15 +4,15 @@
   border: none;
 
   background-image: url("/icons/copy_success.svg");
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 6px;
+  right: 6px;
   z-index: 10;
 }
 
@@ -21,19 +21,19 @@
   border: none;
   border-radius: 4px;
 
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   background-image: url("/icons/copy_content.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 6px;
+  right: 6px;
   z-index: 10;
 
-  padding: 10px;
+  padding: 8px;
   cursor: pointer;
   transition: opacity 0.3s ease;
 }

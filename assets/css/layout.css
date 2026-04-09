@@ -87,6 +87,9 @@ pre {
   overflow-x: auto;
   font-size: 1rem;
   line-height: 1.5;
+  background-color: var(--code-block-background-color);
+  border-radius: 6px;
+  padding: 1rem;
 }
 
 code {
