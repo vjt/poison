@@ -1,5 +1,5 @@
 {{ partial "head/head.html" . }}
-    <body class="{{ if .Site.Params.dark_mode }}dark-theme{{ end }}{{ if and (eq .Kind "page") (not .Params.hideToc) (not .Site.Params.hideToc) (findRE "<li>" .TableOfContents) }} has-toc{{ end }}">
+    <body class="{{ if .Site.Params.dark_mode }}dark-theme{{ end }}{{ if or (and (eq .Kind "page") (not .Params.hideToc) (not .Site.Params.hideToc) (findRE "<li>" .TableOfContents)) (eq .Kind "home") }} has-toc{{ end }}">
         {{ partial "boot-splash.html" . }}
         <script>if(sessionStorage.getItem('boot-done'))document.getElementById('boot-splash').remove();</script>
         {{ partial "header.html" . }}

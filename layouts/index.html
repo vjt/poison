@@ -2,7 +2,7 @@
 <div class="posts">
     {{ $frontPageTypes := default (slice "posts") .Site.Params.front_page_content }}
     {{ range (.Paginate (where .Site.RegularPages "Type" "in" $frontPageTypes)).Pages }}
-    <article class="post">
+    <article class="post" id="post-{{ .File.ContentBaseName | urlize }}">
         {{ partial "post/info.html" . }}
         {{ if or (.Site.Params.noSummary) (.Params.noSummary) }}
         {{ .Content }}
@@ -22,3 +22,29 @@
 </div>
 {{ partial "pagination.html" . }}
 {{- end }}
+{{ define "sidebar" }}
+<div class="article-toc">
+    <div class="toc-wrapper toc-desktop">
+        <h4 id="contents">{{ i18n "contents" | default "Contents" }}</h4>
+        <nav id="TableOfContents">
+            <ul>
+            {{ $frontPageTypes := default (slice "posts") .Site.Params.front_page_content }}
+            {{ range (.Paginate (where .Site.RegularPages "Type" "in" $frontPageTypes)).Pages }}
+                <li><a href="#post-{{ .File.ContentBaseName | urlize }}">{{ .Title }}</a></li>
+            {{ end }}
+            </ul>
+        </nav>
+    </div>
+    <details class="toc-wrapper toc-mobile">
+        <summary>{{ i18n "contents" | default "Contents" }}</summary>
+        <nav>
+            <ul>
+            {{ $frontPageTypes := default (slice "posts") .Site.Params.front_page_content }}
+            {{ range (.Paginate (where .Site.RegularPages "Type" "in" $frontPageTypes)).Pages }}
+                <li><a href="#post-{{ .File.ContentBaseName | urlize }}">{{ .Title }}</a></li>
+            {{ end }}
+            </ul>
+        </nav>
+    </details>
+</div>
+{{ end }}
