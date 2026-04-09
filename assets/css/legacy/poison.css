@@ -337,21 +337,38 @@ div.highlight pre {
     overflow-x: auto;
 }
 #page-nav {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1rem 0;
 }
-#page-nav a {
-    margin: 0 0.2em;
-}
+#page-nav a,
 #page-nav span {
-    margin: 0 0.2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--table-border-color);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.9rem;
 }
-.next {
-    float: right;
-    display: inline;
+#page-nav a:hover {
+    background: var(--table-stripe-color);
+    text-decoration: none;
 }
-.prev {
-    float: left;
-    display: inline;
+#page-nav .current {
+    background: var(--link-color);
+    color: #fff;
+    border-color: var(--link-color);
+}
+#page-nav .extend {
+    padding: 0.4rem 1rem;
 }
 .current {
     color: var(--text-color);
