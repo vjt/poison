@@ -9,8 +9,8 @@
             var currentTheme = savedTheme ? savedTheme : (systemDark ? "dark" : "light");
 
             // Use English URL as canonical thread so comments are shared across languages
-            // Use remark42 host's origin so staging shows the same threads as prod
-            var canonicalUrl = "https://sindro.me" + {{ .RelPermalink }};
+            // remark42_url overrides baseURL so staging can point to prod threads
+            var canonicalUrl = {{ (site.Params.remark42_url | default (.Site.BaseURL | strings.TrimSuffix "/")) }} + {{ .RelPermalink }};
             {{ if eq .Language.Lang "it" }}
             canonicalUrl = canonicalUrl.replace(/\/it\//, '/');
             {{ end }}
