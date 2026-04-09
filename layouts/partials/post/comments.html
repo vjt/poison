@@ -9,7 +9,8 @@
             var currentTheme = savedTheme ? savedTheme : (systemDark ? "dark" : "light");
 
             // Use English URL as canonical thread so comments are shared across languages
-            var canonicalUrl = window.location.origin + {{ .RelPermalink }};
+            // Use site baseURL (not window.location) so staging shows prod comments
+            var canonicalUrl = {{ .Site.BaseURL | strings.TrimSuffix "/" }} + {{ .RelPermalink }};
             {{ if eq .Language.Lang "it" }}
             canonicalUrl = canonicalUrl.replace(/\/it\//, '/');
             {{ end }}
