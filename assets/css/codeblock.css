@@ -1,4 +1,8 @@
 /* Styling for the copy button displayed in code blocks */
+pre {
+  position: relative;
+}
+
 .copy-success,
 .copy-button {
   background: none;
@@ -12,14 +16,14 @@
   background-position: center;
 
   position: absolute;
-  top: -10px;
-  right: 6px;
+  top: 5px;
+  right: 5px;
   z-index: 10;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
-.code-container:hover .copy-button {
+pre:hover .copy-button {
   opacity: 0.5;
 }
 
@@ -43,7 +47,6 @@
 }
 
 .code-container {
-  position: relative;
   display: inline-block;
   width: 100%;
 }
