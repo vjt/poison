@@ -23,27 +23,43 @@
 {{ partial "pagination.html" . }}
 {{- end }}
 {{ define "sidebar" }}
+{{ $frontPageTypes := default (slice "posts") .Site.Params.front_page_content }}
+{{ $pag := .Paginate (where .Site.RegularPages "Type" "in" $frontPageTypes) }}
 <div class="article-toc">
     <div class="toc-wrapper toc-desktop">
-        <h4 id="contents">{{ i18n "contents" | default "Contents" }}</h4>
+        <h4 id="contents">{{ i18n "posts_in_page" }}</h4>
         <nav id="TableOfContents">
             <ul>
-            {{ $frontPageTypes := default (slice "posts") .Site.Params.front_page_content }}
-            {{ range (.Paginate (where .Site.RegularPages "Type" "in" $frontPageTypes)).Pages }}
-                <li><a href="#post-{{ .File.ContentBaseName | urlize }}">{{ .Title }}</a></li>
+            {{ range $pag.Pages }}
+                <li>
+                    <a href="#post-{{ .File.ContentBaseName | urlize }}">{{ .Title }}</a>
+                    <span class="post-list-date">{{ .Date | time.Format "Jan 2006" }}</span>
+                </li>
             {{ end }}
             </ul>
+            {{ if $pag.HasNext }}
+            <ul class="toc-pagination">
+                <li><a href="{{ $pag.Next.URL }}">{{ i18n "next" }} &raquo;</a></li>
+            </ul>
+            {{ end }}
         </nav>
     </div>
     <details class="toc-wrapper toc-mobile">
-        <summary>{{ i18n "contents" | default "Contents" }}</summary>
+        <summary>{{ i18n "posts_in_page" }}</summary>
         <nav>
             <ul>
-            {{ $frontPageTypes := default (slice "posts") .Site.Params.front_page_content }}
-            {{ range (.Paginate (where .Site.RegularPages "Type" "in" $frontPageTypes)).Pages }}
-                <li><a href="#post-{{ .File.ContentBaseName | urlize }}">{{ .Title }}</a></li>
+            {{ range $pag.Pages }}
+                <li>
+                    <a href="#post-{{ .File.ContentBaseName | urlize }}">{{ .Title }}</a>
+                    <span class="post-list-date">{{ .Date | time.Format "Jan 2006" }}</span>
+                </li>
             {{ end }}
             </ul>
+            {{ if $pag.HasNext }}
+            <ul class="toc-pagination">
+                <li><a href="{{ $pag.Next.URL }}">{{ i18n "next" }} &raquo;</a></li>
+            </ul>
+            {{ end }}
         </nav>
     </details>
 </div>
