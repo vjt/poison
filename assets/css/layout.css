@@ -286,6 +286,10 @@ body:not(.has-toc) .wrapper {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
   border-top: 1px solid var(--table-border-color);
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding-left: 0;
 }
 
 .article-toc #TableOfContents a.active {
