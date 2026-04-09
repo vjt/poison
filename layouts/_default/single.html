@@ -1,7 +1,7 @@
 {{ define "main" -}}
 <div class="post">
   {{ partial "post/info.html" . }}
-  {{- if and (lt (.Date.Year) 2012) (eq .Type "posts") -}}
+  {{- if and (lt (.Date.Year) 2012) (eq .Type "posts") (not .Params.hideVintage) -}}
   <div class="vintage-banner">
     <span class="vintage-icon">&#x1f4dc;</span>
     <p>{{ i18n "vintage_disclaimer" (dict "Year" (.Date.Format "2006")) }}</p>
