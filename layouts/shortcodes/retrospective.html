@@ -1,0 +1,7 @@
+<div class="retrospective">
+  <span class="retrospective-icon">&#x1f50d;</span>
+  <div class="retrospective-body">
+    <strong>{{ i18n "retrospective_title" (dict "Year" (.Get "year" | default "2026")) }}</strong>
+    {{ .Inner | markdownify }}
+  </div>
+</div>
