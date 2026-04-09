@@ -220,7 +220,7 @@ body:not(.has-toc) .wrapper {
   overflow-y: auto;
   height: 100vh;
   padding: 2rem 2.5rem;
-  max-width: 42rem;
+  max-width: 48rem;
 }
 
 .content.container::-webkit-scrollbar { width: 6px; }
