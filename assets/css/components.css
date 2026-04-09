@@ -394,23 +394,27 @@ blockquote p:last-child {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 1rem 1.25rem;
+  padding: 1.25rem 1.5rem;
   margin-bottom: 1.5rem;
-  border: 1px solid var(--table-border-color);
-  border-left: 4px solid var(--date-color);
-  border-radius: 6px;
-  background: var(--table-stripe-color);
-  font-size: 0.85rem;
-  color: var(--date-color);
+  border: 2px solid #b8860b;
+  border-radius: 8px;
+  background: rgba(184, 134, 11, 0.08);
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+body.dark-theme .vintage-banner {
+  background: rgba(184, 134, 11, 0.12);
+  border-color: #cd950c;
 }
 
 .vintage-banner p {
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .vintage-icon {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   flex-shrink: 0;
   line-height: 1;
 }
