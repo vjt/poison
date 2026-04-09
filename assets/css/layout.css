@@ -231,8 +231,7 @@ body:not(.has-toc) .wrapper {
 }
 
 /* Code blocks break out wider than prose */
-.content.container .highlight pre,
-.content.container > pre {
+.content.container pre {
   margin-left: -2rem;
   margin-right: -2rem;
   padding-left: 2rem;
@@ -416,8 +415,7 @@ body.menu-open .sidebar-overlay {
   }
 
   /* Reset code block breakout on tablet */
-  .content.container .highlight pre,
-  .content.container > pre {
+  .content.container pre {
     margin-left: 0;
     margin-right: 0;
     padding-left: 0;
@@ -501,8 +499,7 @@ body.menu-open .sidebar-overlay {
     overflow-x: visible;
   }
 
-  .content.container .highlight pre,
-  .content.container > pre {
+  .content.container pre {
     margin-left: 0;
     margin-right: 0;
     padding-left: 0;
