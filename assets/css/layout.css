@@ -223,6 +223,7 @@ body:not(.has-toc) .wrapper {
   overflow-y: auto;
   height: 100vh;
   padding: 2rem 2.5rem;
+  overflow-wrap: break-word;
   max-width: 52rem;
 }
 
