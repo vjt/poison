@@ -1,39 +1,31 @@
 /* Styling for the copy button displayed in code blocks */
-.copy-success {
-  background: none;
-  border: none;
-
-  background-image: url("/icons/copy_success.svg");
-  width: 16px;
-  height: 16px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  z-index: 10;
-}
-
+.copy-success,
 .copy-button {
   background: none;
   border: none;
   border-radius: 4px;
 
-  width: 16px;
-  height: 16px;
-  background-image: url("/icons/copy_content.svg");
+  width: 14px;
+  height: 14px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 4px;
+  right: 4px;
   z-index: 10;
+  opacity: 0.4;
+}
 
-  padding: 8px;
+.copy-success {
+  background-image: url("/icons/copy_success.svg");
+  opacity: 0.7;
+}
+
+.copy-button {
+  background-image: url("/icons/copy_content.svg");
+  padding: 0;
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
@@ -51,6 +43,10 @@
   position: relative;
   display: inline-block;
   width: 100%;
+}
+
+.code-container > code {
+  padding-right: 1.5rem;
 }
 
 .highlight pre {

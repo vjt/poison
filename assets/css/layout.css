@@ -233,14 +233,6 @@ body:not(.has-toc) .wrapper {
   border-radius: 3px;
 }
 
-/* Code blocks break out wider than prose */
-.content.container pre {
-  margin-left: -2rem;
-  margin-right: -2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 /* --- TOC Column --- */
 .article-toc {
   grid-column: 3;
@@ -417,14 +409,6 @@ body.menu-open .sidebar-overlay {
     max-width: none;
   }
 
-  /* Reset code block breakout on tablet */
-  .content.container pre {
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
   /* TOC: reorder to appear before content on tablet */
   /* Ensure content doesn't start under sticky header */
   html {
@@ -500,13 +484,6 @@ body.menu-open .sidebar-overlay {
     white-space: pre-wrap;
     word-break: break-all;
     overflow-x: visible;
-  }
-
-  .content.container pre {
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0;
   }
 
   .article-toc {
