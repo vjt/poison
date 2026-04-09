@@ -14,7 +14,7 @@
 {{ $js_bundle := $js | resources.Concat "js/bundle.js" | minify | fingerprint }}
 
 <script defer type="text/javascript" src="{{ $js_bundle.RelPermalink }}"></script>
-<script>console.log("%c .#. \n ..# \n ### \n\n%c sindro.me\n%c You found the console. You're one of us.\n Source: https://github.com/vjt/sindro.me","font-family:monospace;font-size:32px;line-height:1.2;color:#0a0","font-family:monospace;font-size:20px;font-weight:bold;color:#0a0","font-family:monospace;font-size:14px;color:#888")</script>
+<script>console.log("%c \u2588 \n  \u2588\n\u2588\u2588\u2588\n\n%c sindro.me\n%c You found the console. You're one of us.\n Source: https://github.com/vjt/sindro.me","font-family:monospace;font-size:32px;line-height:1.2;color:#0a0","font-family:monospace;font-size:20px;font-weight:bold;color:#0a0","font-family:monospace;font-size:14px;color:#888")</script>
 
 {{ if .Site.Params.plausible }}
 <script defer data-domain="{{ .Site.Params.plausible_domain }}" src="{{ .Site.Params.plausible_script }}"></script>
