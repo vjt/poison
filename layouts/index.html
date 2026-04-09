@@ -4,13 +4,7 @@
     {{ range (.Paginate (where .Site.RegularPages "Type" "in" $frontPageTypes)).Pages }}
     <article class="post" id="post-{{ .File.ContentBaseName | urlize }}">
         {{ partial "post/info.html" . }}
-        {{- $age := sub now.Year .Date.Year -}}
-        {{- if and (gt $age 10) (eq .Type "posts") (not .Params.hideVintage) -}}
-        <div class="vintage-banner">
-          <span class="vintage-icon">&#x1f4dc;</span>
-          <p>{{ i18n "vintage_disclaimer" (dict "Year" (.Date.Format "2006")) }}</p>
-        </div>
-        {{- end -}}
+        {{ partial "post/vintage-banner.html" . }}
         {{ if or (.Site.Params.noSummary) (.Params.noSummary) }}
         {{ .Content }}
         <div class="read-more-link">
