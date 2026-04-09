@@ -12,10 +12,23 @@
   background-position: center;
 
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: 6px;
+  right: 6px;
   z-index: 10;
-  opacity: 0.4;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.code-container:hover .copy-button {
+  opacity: 0.5;
+}
+
+.copy-button:hover {
+  opacity: 0.9;
+}
+
+.copy-button:active {
+  transform: scale(0.95);
 }
 
 .copy-success {
@@ -27,16 +40,6 @@
   background-image: url("/icons/copy_content.svg");
   padding: 0;
   cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-.copy-button:hover {
-  opacity: 0.8;
-}
-
-.copy-button:active {
-  transform: scale(0.95);
-  opacity: 0.7; 
 }
 
 .code-container {
@@ -45,9 +48,6 @@
   width: 100%;
 }
 
-.code-container > code {
-  padding-right: 1.5rem;
-}
 
 .highlight pre {
   border-radius: 6px;
