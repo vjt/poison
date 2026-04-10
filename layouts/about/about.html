@@ -1,5 +1,17 @@
 {{ define "main" -}}
 <div class="resume">
+    {{ with .Site.GetPage "/about" -}}
+    {{ if .Params.featuredImage }}
+    <div class="featured-image">
+        {{ $img := .Resources.GetMatch .Params.featuredImage }}
+        {{ if $img }}
+        <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}">
+        {{ else }}
+        <img src="{{ .Params.featuredImage }}" alt="{{ .Title }}">
+        {{ end }}
+    </div>
+    {{ end }}
+    {{- end }}
     <img src="/vjt.jpg" alt="Marcello Barnaba" class="resume-photo">
     {{ with .Site.GetPage "/about" }}
         {{ if .Pages }}
