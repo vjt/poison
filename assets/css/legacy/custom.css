@@ -131,21 +131,21 @@ mark {
     font-family: "Abril Fatface", serif;
 }
 
-.resume h3 {
+.resume h1 {
     font-size: 1.4rem;
     border-bottom: 2px solid var(--link-color);
     padding-bottom: 0.3rem;
     margin-top: 1.5rem;
 }
 
-.resume h4 {
+.resume h2 {
     font-size: 1.1rem;
     color: var(--link-color);
     margin-bottom: 0.2rem;
     margin-top: 1.2rem;
 }
 
-.resume h4 + p em {
+.resume h2 + p em {
     color: var(--date-color);
     font-size: 0.85rem;
 }

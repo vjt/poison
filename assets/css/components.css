@@ -603,7 +603,7 @@ body.dark-theme .vintage-banner {
 }
 
 /* Clear float after intro — sections start full width */
-.resume h3:first-of-type,
+.resume h1:first-of-type,
 .resume hr:first-of-type {
   clear: left;
 }
