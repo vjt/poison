@@ -40,4 +40,13 @@
             closeMenu();
         }
     });
+
+    // Header search button — triggers the Pagefind modal
+    var searchBtn = document.querySelector('.btn-header-search');
+    if (searchBtn) {
+        searchBtn.addEventListener('click', function() {
+            var trigger = document.querySelector('pagefind-modal-trigger .pf-trigger-btn');
+            if (trigger) trigger.click();
+        });
+    }
 })();

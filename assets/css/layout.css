@@ -385,6 +385,24 @@ body.menu-open .sidebar-overlay {
     flex-shrink: 0;
   }
 
+  .btn-header-search {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: 1px solid var(--table-border-color);
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1;
+    transition: background 0.15s;
+  }
+
+  .btn-header-search:hover {
+    background: var(--table-stripe-color);
+  }
+
   .sidebar {
     position: fixed;
     top: 0;
