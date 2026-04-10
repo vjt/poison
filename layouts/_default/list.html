@@ -1,5 +1,15 @@
 {{ define "main" -}}
 <div data-pagefind-ignore>
+{{ if .Params.featuredImage }}
+<div class="featured-image">
+    {{ $img := .Resources.GetMatch .Params.featuredImage }}
+    {{ if $img }}
+    <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}">
+    {{ else }}
+    <img src="{{ .Params.featuredImage }}" alt="{{ .Title }}">
+    {{ end }}
+</div>
+{{ end }}
 <h1 class="title">{{ .Title }}</h1>
 <ul class="entries">
     {{ range .Pages.GroupByDate "2006" }}
