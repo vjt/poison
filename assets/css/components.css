@@ -277,8 +277,9 @@ ul.tags li:hover {
   font-size: 0.8rem;
 }
 
-.entries h3 {
+.entries-year {
   margin-top: 2rem;
+  text-align: center;
   color: var(--date-color);
   font-size: 1rem;
   font-weight: 400;
@@ -365,9 +366,6 @@ ul.tags li:hover {
     content: "▾ ";
   }
 
-  .toc-mobile summary::-webkit-details-marker {
-    display: none;
-  }
 }
 
 /* --- Tables --- */

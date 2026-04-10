@@ -2,9 +2,9 @@
 <div data-pagefind-ignore>
 {{ partial "featured-image.html" . }}
 <h1 class="title">{{ .Title }}</h1>
-<ul class="entries">
-    {{ range .Pages.GroupByDate "2006" }}
-        <h3 style="text-align: center;">{{ .Key }}</h3>
+{{ range .Pages.GroupByDate "2006" }}
+    <h3 class="entries-year">{{ .Key }}</h3>
+    <ul class="entries">
         {{ range .Pages }}
             <li>
                 <span class="title">
@@ -15,7 +15,7 @@
                 </span>
             </li>
         {{ end }}
-    {{ end }}
-</ul>
+    </ul>
+{{ end }}
 </div>
 {{ end }}
