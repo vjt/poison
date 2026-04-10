@@ -6,8 +6,9 @@
     to get it working for my use case.  Thanks, Bramus!
 */
 
-let activeElement = null;
-window.addEventListener('DOMContentLoaded', () => {
+(function() {
+  let activeElement = null;
+  window.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (activeElement) {
@@ -20,7 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 activeElement = entry.target.getAttribute('id');
             }
             if (activeElement) {
-                nav_ref = document.querySelector(`nav[id='TableOfContents'] li a[href="#${activeElement}"]`);
+                const nav_ref = document.querySelector(`nav[id='TableOfContents'] li a[href="#${activeElement}"]`);
                 if (nav_ref) {
                     nav_ref.parentElement.classList.replace('inactive', 'active');
                 }
@@ -34,4 +35,5 @@ window.addEventListener('DOMContentLoaded', () => {
             observer.observe(section);
         });
     }
-});
+  });
+})();
