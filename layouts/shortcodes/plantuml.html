@@ -5,7 +5,7 @@
         (resources.Get "js/lib/plantuml-encoder.js")
         (resources.Get "js/plantuml-encoder.js")
     | resources.Concat "js/plantuml-bundle.js" | minify | fingerprint }}
-<script language="javascript" type="text/javascript" src="{{ $js_bundle.RelPermalink }}"></script>
+<script src="{{ $js_bundle.RelPermalink }}"></script>
 {{ .Page.Store.Set "hasPlantUML" true }}
 {{ end }}
 
