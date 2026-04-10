@@ -20,16 +20,6 @@
 <script defer data-domain="{{ .Site.Params.plausible_domain }}" src="{{ .Site.Params.plausible_script }}"></script>
 {{ end }}
 
-{{/* Pagefind search */}}
-<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
-<script src="/pagefind/pagefind-ui.js"></script>
-<script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        new PagefindUI({
-            element: "#search",
-            showSubResults: true,
-            showImages: false,
-            excerptLength: 15
-        });
-    });
-</script>
+{{/* Pagefind search — Component UI (web components, CSS custom properties) */}}
+<link href="/pagefind/pagefind-component-ui.css" rel="stylesheet">
+<script type="module" src="/pagefind/pagefind-component-ui.js"></script>

@@ -20,6 +20,19 @@
         --code-block-background-color: {{ with .Site.Params.code_block_background_color }}{{ . }}{{ else }}#272822{{ end }};
         --moon-sun-color: {{ with .Site.Params.moon_sun_color }}{{ . }}{{ else }}#555{{ end }};
         --moon-sun-background-color: {{ with .Site.Params.moon_sun_background_color }}{{ . }}{{ else }}#F0F0F0{{ end }};
+        /* Pagefind Component UI */
+        --pf-background: var(--bkg-color);
+        --pf-text: var(--text-color);
+        --pf-text-secondary: var(--list-color);
+        --pf-text-muted: var(--date-color);
+        --pf-border: var(--table-border-color);
+        --pf-border-focus: var(--link-color);
+        --pf-hover: var(--table-stripe-color);
+        --pf-outline-focus: var(--link-color);
+        --pf-mark: var(--text-color);
+        --pf-font: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --pf-input-font-size: 14px;
+        --pf-border-radius: 6px;
     }
     body.dark-theme,
     html.dark-theme body {
@@ -43,6 +56,16 @@
         --code-block-background-color: {{ with .Site.Params.code_block_background_color_dark }}{{ . }}{{ else }}#272822{{ end }};
         --moon-sun-color: #EEE;
         --moon-sun-background-color: #333;
+        /* Pagefind Component UI — dark */
+        --pf-background: var(--bkg-color);
+        --pf-text: var(--text-color);
+        --pf-text-secondary: var(--list-color);
+        --pf-text-muted: var(--date-color);
+        --pf-border: var(--table-border-color);
+        --pf-border-focus: var(--link-color);
+        --pf-hover: var(--table-stripe-color);
+        --pf-outline-focus: var(--link-color);
+        --pf-mark: var(--text-color);
     }
     body {
         background-color: var(--bkg-color);

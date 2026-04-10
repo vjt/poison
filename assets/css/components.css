@@ -143,48 +143,9 @@ body.dark-theme .sun { display: block; }
 }
 
 
-/* --- Search (Pagefind) --- */
-#search {
+/* --- Search (Pagefind Component UI) --- */
+pagefind-searchbox {
   margin-bottom: 1rem;
-}
-
-#search .pagefind-ui__form {
-  position: relative;
-}
-
-#search .pagefind-ui__search-input {
-  background: var(--bkg-color);
-  color: var(--text-color);
-  border: 1px solid var(--table-border-color);
-  border-radius: 6px;
-  font-size: 0.85rem;
-  padding-left: 2.2rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-#search .pagefind-ui__search-clear {
-  color: var(--date-color);
-  background: none;
-  border: none;
-  font-size: 0.8rem;
-  opacity: 0.6;
-}
-
-#search .pagefind-ui__search-clear:hover {
-  opacity: 1;
-}
-
-#search .pagefind-ui__search-clear.pagefind-ui__suppressed {
-  display: none;
-}
-
-#search .pagefind-ui__result-link {
-  color: var(--link-color);
-}
-
-#search .pagefind-ui__result-excerpt {
-  color: var(--list-color);
 }
 
 /* --- Post Info & Meta --- */
