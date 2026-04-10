@@ -1,12 +1,12 @@
 <!-- Locally hosted code for PlantUML diagrams -->
-{{ if ne (.Page.Scratch.Get "hasPlantUML") true }}
+{{ if ne (.Page.Store.Get "hasPlantUML") true }}
 {{ $js_bundle :=
     slice
         (resources.Get "js/lib/plantuml-encoder.js")
         (resources.Get "js/plantuml-encoder.js")
     | resources.Concat "js/plantuml-bundle.js" | minify | fingerprint }}
 <script language="javascript" type="text/javascript" src="{{ $js_bundle.RelPermalink }}"></script>
-{{ .Page.Scratch.Set "hasPlantUML" true }}
+{{ .Page.Store.Set "hasPlantUML" true }}
 {{ end }}
 
 <span id="plantuml-{{ .Get "id" }}" style="display:none">{{ .Inner | safeHTML | htmlUnescape }}</span>

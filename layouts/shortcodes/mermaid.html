@@ -1,5 +1,5 @@
 <!-- To automatically render mermaid diagrams -->
-{{ if ne (.Page.Scratch.Get "hasMermaid") true }}
+{{ if ne (.Page.Store.Get "hasMermaid") true }}
 <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
 
@@ -11,7 +11,7 @@
     mermaid.initialize({theme: mermaidTheme});
 </script>
 
-{{ .Page.Scratch.Set "hasMermaid" true }}
+{{ .Page.Store.Set "hasMermaid" true }}
 {{ end }}
 <div class="mermaid">
   {{- .Inner | safeHTML }}

@@ -40,8 +40,8 @@
             </ul>
             {{ if or $pag.HasPrev $pag.HasNext }}
             <ul class="toc-pagination">
-                {{ if $pag.HasPrev }}<li><a href="{{ $pag.Prev.URL }}">👈 {{ i18n "prev" }}</a></li>{{ end }}
-                {{ if $pag.HasNext }}<li><a href="{{ $pag.Next.URL }}">{{ i18n "next" }} 👉</a></li>{{ end }}
+                {{ if $pag.HasPrev }}<li><a href="{{ $pag.Prev.PageURL }}">👈 {{ i18n "prev" }}</a></li>{{ end }}
+                {{ if $pag.HasNext }}<li><a href="{{ $pag.Next.PageURL }}">{{ i18n "next" }} 👉</a></li>{{ end }}
             </ul>
             {{ end }}
         </nav>
@@ -59,8 +59,8 @@
             </ul>
             {{ if or $pag.HasPrev $pag.HasNext }}
             <ul class="toc-pagination">
-                {{ if $pag.HasPrev }}<li><a href="{{ $pag.Prev.URL }}">👈 {{ i18n "prev" }}</a></li>{{ end }}
-                {{ if $pag.HasNext }}<li><a href="{{ $pag.Next.URL }}">{{ i18n "next" }} 👉</a></li>{{ end }}
+                {{ if $pag.HasPrev }}<li><a href="{{ $pag.Prev.PageURL }}">👈 {{ i18n "prev" }}</a></li>{{ end }}
+                {{ if $pag.HasNext }}<li><a href="{{ $pag.Next.PageURL }}">{{ i18n "next" }} 👉</a></li>{{ end }}
             </ul>
             {{ end }}
         </nav>
