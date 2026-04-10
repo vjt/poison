@@ -1,6 +1,6 @@
-<div id="boot-splash" aria-hidden="true">
+<div id="boot-splash" aria-hidden="true" data-hostname="{{ .Site.Params.brand | default .Site.Title }}" data-tagline="{{ .Site.Params.description }}"{{ with .Site.Params.boot_splash_lines }} data-lines="{{ . | jsonify | htmlEscape }}"{{ end }}>
   <div id="boot-log"></div>
-  <div id="boot-brand">sindro.me</div>
+  <div id="boot-brand">{{ .Site.Params.brand | default .Site.Title }}</div>
 </div>
 <style>
   #boot-splash {

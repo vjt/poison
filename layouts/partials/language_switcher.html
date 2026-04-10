@@ -3,8 +3,9 @@
   {{- $currentLang := .Language.Lang -}}
   {{- $translations := .Translations -}}
   {{- range .Site.Languages -}}
+    {{- $flag := .Params.flag | default .LanguageName -}}
     {{- if eq .Lang $currentLang -}}
-      <span class="lang-current" title="{{ .LanguageName }}">{{ if eq .Lang "en" }}🇬🇧{{ else }}🇮🇹{{ end }}</span>
+      <span class="lang-current" title="{{ .LanguageName }}">{{ $flag }}</span>
     {{- else -}}
       {{- $targetLang := .Lang -}}
       {{- $target := "" -}}
@@ -14,13 +15,9 @@
         {{- end -}}
       {{- end -}}
       {{- if not $target -}}
-        {{- if eq $targetLang "en" -}}
-          {{- $target = "/" -}}
-        {{- else -}}
-          {{- $target = (printf "/%s/" $targetLang) -}}
-        {{- end -}}
+        {{- $target = (index $.Site.Languages $targetLang).Params.home | default (printf "/%s/" $targetLang) -}}
       {{- end -}}
-      <a href="{{ $target }}" class="lang-link" title="{{ .LanguageName }}" aria-label="{{ .LanguageName }}" onclick="document.cookie='lang={{ $targetLang }};path=/;max-age=31536000;SameSite=Lax'">{{ if eq $targetLang "en" }}🇬🇧{{ else }}🇮🇹{{ end }}</a>
+      <a href="{{ $target }}" class="lang-link" title="{{ .LanguageName }}" aria-label="{{ .LanguageName }}" onclick="document.cookie='lang={{ $targetLang }};path=/;max-age=31536000;SameSite=Lax'">{{ $flag }}</a>
     {{- end -}}
   {{- end -}}
 </span>

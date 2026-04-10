@@ -1,25 +1,28 @@
 {{ define "main" }}
 <div class="resume">
     {{ partial "featured-image.html" . }}
-    <img src="/vjt.jpg" alt="Marcello Barnaba" class="resume-photo">
+    {{ with $.Site.Params.brand_image }}<img src="{{ . }}" alt="{{ $.Site.Title }}" class="resume-photo">{{ end }}
     {{ .Content }}
+    {{ with .Params.downloads }}
     <div class="resume-download">
-        <a href="/resume.pdf" class="resume-btn" download>🇬🇧 PDF</a>
-        <a href="/resume-it.pdf" class="resume-btn" download>🇮🇹 PDF</a>
+        {{ range . }}
+        <a href="{{ .url }}" class="resume-btn" download>{{ .label }}</a>
+        {{ end }}
     </div>
+    {{ end }}
 </div>
+{{ with .Params.footer_images }}
 <div class="resume-footer">
     <div class="resume-footer-images">
+        {{ range . }}
         <div>
-            <img src="/m27-nebula.jpg" alt="M27 Dumbbell Nebula" class="resume-nebula">
-            <p class="resume-nebula-caption">M27 (Dumbbell) Planetary Nebula · {{ if eq .Language.Lang "it" }}Foto mia{{ else }}Photo by me{{ end }}</p>
+            {{ with .link }}<a href="{{ . }}">{{ end }}
+                <img src="{{ .src }}" alt="{{ .alt }}" class="resume-nebula">
+            {{ with .link }}</a>{{ end }}
+            {{ with .caption }}<p class="resume-nebula-caption">{{ . }}</p>{{ end }}
         </div>
-        <div>
-            <a href="{{ "posts/2014-02-28-il-vero-sistemista/" | absLangURL }}">
-                <img src="/posts/2014-02-28-il-vero-sistemista/cover.jpg" alt="Hands repairing a car engine" class="resume-nebula">
-            </a>
-            <p class="resume-nebula-caption"><a href="{{ "posts/2014-02-28-il-vero-sistemista/" | absLangURL }}">{{ if eq .Language.Lang "it" }}Il vero sistemista — e le sue auto sono i server.{{ else }}The real sysadmin — and his cars are servers.{{ end }}</a></p>
-        </div>
+        {{ end }}
     </div>
 </div>
+{{ end }}
 {{ end }}

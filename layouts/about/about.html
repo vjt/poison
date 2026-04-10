@@ -2,7 +2,7 @@
 <div class="about">
     {{ with .Site.GetPage "/about" -}}
     {{ partial "featured-image.html" . }}
-    <img src="/vjt.jpg" alt="Marcello Barnaba" class="about-photo">
+    {{ with $.Site.Params.brand_image }}<img src="{{ . }}" alt="{{ $.Site.Title }}" class="about-photo">{{ end }}
     {{ if .Pages }}
         {{ range .Pages }}
             <h1 data-pagefind-meta="title">{{ .Title }}</h1>
