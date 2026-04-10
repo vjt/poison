@@ -1,37 +1,25 @@
-{{ partial "head/head.html" . }}
-    <body class="{{if .Site.Params.dark_mode}}dark-theme{{end}}">
-        {{ partial "boot-splash.html" . }}
-        <script>if(sessionStorage.getItem('boot-done'))document.getElementById('boot-splash').remove();</script>
-        {{ partial "header.html" . }}
-        <div class="sidebar-overlay"></div>
-        <div class="wrapper">
-            {{ partial "sidebar/sidebar.html" . }}
-            <main class="content container">
-                <div class="resume">
-                    {{ partial "featured-image.html" . }}
-                    <img src="/vjt.jpg" alt="Marcello Barnaba" class="resume-photo">
-                    {{ .Content }}
-                    <div class="resume-download">
-                        <a href="/resume.pdf" class="resume-btn" download>🇬🇧 PDF</a>
-                        <a href="/resume-it.pdf" class="resume-btn" download>🇮🇹 PDF</a>
-                    </div>
-                </div>
-                <div class="resume-footer">
-                    <div class="resume-footer-images">
-                        <div>
-                            <img src="/m27-nebula.jpg" alt="M27 Dumbbell Nebula" class="resume-nebula">
-                            <p class="resume-nebula-caption">M27 (Dumbbell) Planetary Nebula · {{ if eq .Language.Lang "it" }}Foto mia{{ else }}Photo by me{{ end }}</p>
-                        </div>
-                        <div>
-                            <a href="{{ "posts/2014-02-28-il-vero-sistemista/" | absLangURL }}">
-                                <img src="/posts/2014-02-28-il-vero-sistemista/cover.jpg" alt="Hands repairing a car engine" class="resume-nebula">
-                            </a>
-                            <p class="resume-nebula-caption"><a href="{{ "posts/2014-02-28-il-vero-sistemista/" | absLangURL }}">{{ if eq .Language.Lang "it" }}Il vero sistemista — e le sue auto sono i server.{{ else }}The real sysadmin — and his cars are servers.{{ end }}</a></p>
-                        </div>
-                    </div>
-                </div>
-            </main>
-            {{ block "sidebar" . }}{{ end }}
+{{ define "main" }}
+<div class="resume">
+    {{ partial "featured-image.html" . }}
+    <img src="/vjt.jpg" alt="Marcello Barnaba" class="resume-photo">
+    {{ .Content }}
+    <div class="resume-download">
+        <a href="/resume.pdf" class="resume-btn" download>🇬🇧 PDF</a>
+        <a href="/resume-it.pdf" class="resume-btn" download>🇮🇹 PDF</a>
+    </div>
+</div>
+<div class="resume-footer">
+    <div class="resume-footer-images">
+        <div>
+            <img src="/m27-nebula.jpg" alt="M27 Dumbbell Nebula" class="resume-nebula">
+            <p class="resume-nebula-caption">M27 (Dumbbell) Planetary Nebula · {{ if eq .Language.Lang "it" }}Foto mia{{ else }}Photo by me{{ end }}</p>
         </div>
-    </body>
-</html>
+        <div>
+            <a href="{{ "posts/2014-02-28-il-vero-sistemista/" | absLangURL }}">
+                <img src="/posts/2014-02-28-il-vero-sistemista/cover.jpg" alt="Hands repairing a car engine" class="resume-nebula">
+            </a>
+            <p class="resume-nebula-caption"><a href="{{ "posts/2014-02-28-il-vero-sistemista/" | absLangURL }}">{{ if eq .Language.Lang "it" }}Il vero sistemista — e le sue auto sono i server.{{ else }}The real sysadmin — and his cars are servers.{{ end }}</a></p>
+        </div>
+    </div>
+</div>
+{{ end }}
