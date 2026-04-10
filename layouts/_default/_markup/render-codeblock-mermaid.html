@@ -1,0 +1,16 @@
+{{ if ne (.Page.Store.Get "hasMermaid") true }}
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    const lsTheme = localStorage.getItem("theme")
+    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+    const currTheme = lsTheme ? lsTheme : hugoTheme;
+    const mermaidTheme = currTheme == "light" ? "default" : "dark"
+
+    mermaid.initialize({theme: mermaidTheme});
+</script>
+{{ .Page.Store.Set "hasMermaid" true }}
+{{ end }}
+<div class="mermaid">
+  {{- .Inner | safeHTML }}
+</div>
