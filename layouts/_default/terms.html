@@ -1,5 +1,6 @@
 {{ define "main" -}}
 <div data-pagefind-ignore>
+{{ partial "featured-image.html" . }}
 <h1 class="title">{{ .Title }}</h1>
 <div class="tag-cloud">
     {{- $largest := 0 -}}
