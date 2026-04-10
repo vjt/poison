@@ -1,0 +1,85 @@
+/*
+ * Sindrome theme overrides for Remark42 comment widget.
+ *
+ * This file is served by nginx in place of the default remark.css.
+ * It @imports the original CSS and overrides colors, fonts, and spacing
+ * to match the sindrome theme.
+ *
+ * See remark42-nginx.conf.sample in the theme root for deployment.
+ */
+@import url("/web/remark-original.css");
+
+/* ===== Light mode ===== */
+:root {
+  /* Primary accent — sindrome link color #268bd2 = rgb(38, 139, 210) */
+  --color9: #268bd2;
+  --color15: #2076b0;
+  --color33: #4da3e0;
+  --color29: #1a6aa8;
+  --primary-color: 38, 139, 210;
+  --primary-brighter-color: 32, 118, 176;
+  --primary-darker-color: 26, 106, 168;
+
+  /* Text */
+  --color0: #111;
+  --color7: #333;
+  --color8: #262626;
+  --primary-text-color: 17, 17, 17;
+  --secondary-text-color: 85, 85, 85;
+
+  /* Backgrounds */
+  --color6: #fff;
+  --primary-background-color: 255, 255, 255;
+  --color5: #F0F0F0;
+  --color21: #F9F9F9;
+  --color41: #F0F0F0;
+
+  /* Borders */
+  --color16: #E5E5E5;
+  --color31: #ddd;
+  --line-color: var(--color16);
+
+  /* Selection highlight */
+  --color42: #d6eaf8;
+  --color43: #b7d4ea;
+
+  /* Font */
+  font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ===== Dark mode ===== */
+:root .dark {
+  /* Primary accent — sindrome dark link color #5BA3D9 = rgb(91, 163, 217) */
+  --color9: #5BA3D9;
+  --color15: #4a8fc4;
+  --color33: #7ab8e6;
+  --primary-color: 91, 163, 217;
+  --primary-brighter-color: 74, 143, 196;
+  --primary-darker-color: 56, 120, 170;
+
+  /* Text */
+  --color0: #EEE;
+  --color7: #ddd;
+  --color8: #ccc;
+  --primary-text-color: 238, 238, 238;
+  --secondary-text-color: 187, 187, 187;
+
+  /* Backgrounds */
+  --color6: #121212;
+  --primary-background-color: 18, 18, 18;
+  --color5: #1E1E1E;
+  --color21: #1A1A1A;
+  --color41: #252525;
+
+  /* Borders */
+  --color16: #2A2A2A;
+  --color31: #333;
+  --line-color: var(--color16);
+
+  /* Selection highlight */
+  --color42: #1a3a52;
+  --color43: #0f2a3d;
+
+  /* Error colors for dark */
+  --error-color: #ffa0a0;
+}
