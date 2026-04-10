@@ -143,8 +143,8 @@ body.dark-theme .sun { display: block; }
 }
 
 
-/* --- Search (Pagefind Component UI) --- */
-pagefind-searchbox {
+/* --- Search (Pagefind Component UI — modal trigger in sidebar) --- */
+pagefind-modal-trigger {
   margin-bottom: 1rem;
 }
 
