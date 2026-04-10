@@ -578,6 +578,17 @@ body.dark-theme .vintage-banner {
   margin-top: 0.5rem;
 }
 
+/* --- About Page --- */
+.about-cover {
+  margin-bottom: 1.5rem;
+}
+
+.about-cover img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
 /* --- Resume Page --- */
 .resume-photo {
   width: 130px;

@@ -1,8 +1,8 @@
 {{ define "main" -}}
-<div class="resume">
+<div class="about">
     {{ with .Site.GetPage "/about" -}}
     {{ if .Params.featuredImage }}
-    <div class="featured-image">
+    <div class="about-cover">
         {{ $img := .Resources.GetMatch .Params.featuredImage }}
         {{ if $img }}
         <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}">
@@ -11,18 +11,15 @@
         {{ end }}
     </div>
     {{ end }}
-    {{- end }}
-    <img src="/vjt.jpg" alt="Marcello Barnaba" class="resume-photo">
-    {{ with .Site.GetPage "/about" }}
-        {{ if .Pages }}
-            {{ range .Pages }}
-                <h1 data-pagefind-meta="title">{{ .Title }}</h1>
-                {{ .Content }}
-            {{ end }}
-        {{ else }}
+    {{ if .Pages }}
+        {{ range .Pages }}
             <h1 data-pagefind-meta="title">{{ .Title }}</h1>
             {{ .Content }}
         {{ end }}
+    {{ else }}
+        <h1 data-pagefind-meta="title">{{ .Title }}</h1>
+        {{ .Content }}
     {{ end }}
+    {{- end }}
 </div>
 {{ end }}
