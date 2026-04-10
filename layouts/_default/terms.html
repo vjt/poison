@@ -1,0 +1,21 @@
+{{ define "main" -}}
+<div data-pagefind-ignore>
+<h1 class="title">{{ .Title }}</h1>
+<div class="tag-cloud">
+    {{- $largest := 0 -}}
+    {{- range .Data.Terms.Alphabetical -}}
+        {{- if gt (len .Pages) $largest -}}
+            {{- $largest = len .Pages -}}
+        {{- end -}}
+    {{- end -}}
+    {{- range .Data.Terms.Alphabetical }}
+    {{- $count := len .Pages -}}
+    {{- $weight := div (mul (float $count) 4.0) (float $largest) -}}
+    {{- $size := add 0.75 $weight -}}
+    <a href="{{ .Page.RelPermalink }}" class="tag-cloud-item" style="font-size: {{ printf "%.2f" $size }}rem;">
+        {{- .Page.Title }} <sup>{{ $count }}</sup>
+    </a>
+    {{- end }}
+</div>
+</div>
+{{ end }}
