@@ -4,11 +4,6 @@
 # It intercepts the default remark.css and serves the Sindrome-themed
 # version instead, which @imports the original and overrides colors/fonts.
 #
-# Cache busting is handled via sub_filter: the iframe HTML is rewritten
-# to append a ?v= hash to the CSS URL. The CSS itself is served with
-# immutable/1yr cache. When you change the CSS, bump the hash — browsers
-# see a new URL and fetch it fresh.
-#
 # Prerequisites:
 #   - Hugo has been built (remark-sindrome.css is in public/remark42/)
 #   - The remark42 backend is proxied at http://127.0.0.1:8080
@@ -23,40 +18,11 @@ location = /web/remark-original.css {
     proxy_pass http://127.0.0.1:8080/web/remark.css;
 }
 
-# Serve the Sindrome-themed CSS (immutable — cache busted via ?v= hash)
-location ~ ^/web/remark\.css {
+# Serve the Sindrome-themed CSS at the original path
+location = /web/remark.css {
     # Point this to your Hugo build output
     alias /srv/www/sindro.me/prod/public/remark42/remark-sindrome.css;
-    add_header Cache-Control "public, max-age=31536000, immutable";
-}
 
-# Rewrite CSS path in iframe HTML to include cache-busting hash.
-# This ensures browsers fetch the new CSS when it changes, without
-# users needing to clear their cache.
-#
-# When updating the CSS, regenerate the hash and update ?v= below:
-#   md5 -q public/remark42/remark-sindrome.css | cut -c1-8
-location = /web/iframe.html {
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header Host $http_host;
-    proxy_pass http://127.0.0.1:8080/web/iframe.html;
-    proxy_set_header Accept-Encoding "";
-    sub_filter "remark.css" "remark.css?v=ac801111";
-    sub_filter_once on;
-    proxy_hide_header Cache-Control;
-    add_header Cache-Control "no-cache" always;
-}
-
-# Rewrite CSS path in iframe HTML to include cache-busting hash
-location = /web/iframe.html {
-    proxy_set_header X-Forwarded-Proto $scheme;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header Host $http_host;
-    proxy_pass http://127.0.0.1:8080/web/iframe.html;
-    proxy_set_header Accept-Encoding "";
-    sub_filter "remark.css" "remark.css?v=ac801111";
-    sub_filter_once on;
+    # Cache for 1 hour — CSS changes are rare
+    add_header Cache-Control "public, max-age=3600";
 }

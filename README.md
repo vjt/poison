@@ -50,7 +50,7 @@ Pretty much everything except the general idea of "sidebar + content blog."
 - **Pagefind** search integration
 - **Remark42** comments with cross-language thread sharing (Disqus fallback available)
 - Theme syncs dark/light mode with Remark42
-- **Custom Remark42 CSS** — `static/remark42/remark-sindrome.css` overrides Remark42's default colors/fonts to match the theme. Served via nginx `sub_filter` with cache-busting — see `remark42-nginx.conf.sample` for deployment
+- **Custom Remark42 CSS** — `static/remark42/remark-sindrome.css` overrides Remark42's default colors/fonts to match the theme. Served via nginx — see `remark42-nginx.conf.sample` for deployment
 - **`remark42_url`** — optional config param to set the canonical origin for comment threads (useful for staging environments)
 
 ### Removed
