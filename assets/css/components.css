@@ -589,6 +589,19 @@ body.dark-theme .vintage-banner {
   border-radius: 6px;
 }
 
+.about-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  float: left;
+  margin: 0 1.5rem 0.5rem 0;
+}
+
+@media (min-width: 1200px) {
+  .about-photo { display: none; }
+}
+
 /* --- Resume Page --- */
 .resume-photo {
   width: 130px;
