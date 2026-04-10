@@ -5,7 +5,7 @@
                 <path d="M2 3.5h12a.5.5 0 0 1 0 1H2a.5.5 0 0 1 0-1zm0 4h12a.5.5 0 0 1 0 1H2a.5.5 0 0 1 0-1zm0 4h12a.5.5 0 0 1 0 1H2a.5.5 0 0 1 0-1z"/>
             </svg>
         </button>
-        <a href="{{ .Site.BaseURL }}" class="header-brand">{{ .Site.Params.brand }}</a>
+        <a href="{{ .Site.Home.RelPermalink }}" class="header-brand">{{ .Site.Params.brand }}</a>
     </div>
     <span class="header-payoff">{{ .Site.Params.description }}</span>
     <div class="header-right">

@@ -1,4 +1,4 @@
 {{ define "main" -}}
 <h1>{{ i18n "not_found_title" }}</h1>
-<p class="lead">{{ i18n "not_found_text" }} <a href="{{ .Site.BaseURL }}">{{ i18n "not_found_link" }}</a>.</p>
+<p class="lead">{{ i18n "not_found_text" }} <a href="{{ .Site.Home.RelPermalink }}">{{ i18n "not_found_link" }}</a>.</p>
 {{- end }}

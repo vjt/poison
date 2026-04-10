@@ -1,16 +1,16 @@
 <div class="sidebar-about" data-pagefind-ignore>
     <h1 class="brand">
         {{ if .Site.Params.remote_brand_image }}
-            <a href="{{ .Site.BaseURL }}">
+            <a href="{{ .Site.Home.RelPermalink }}">
                 <img src="{{ .Site.Params.remote_brand_image }}" alt="brand image">
             </a>
         {{ else if .Site.Params.brand_image }}
-            <a href="{{ .Site.BaseURL }}">
+            <a href="{{ .Site.Home.RelPermalink }}">
                 <img src="{{ .Site.Params.brand_image }}" alt="brand image">
             </a>
         {{ end }}
         {{ if .Site.Params.brand }}
-            <a href="{{ .Site.BaseURL }}">
+            <a href="{{ .Site.Home.RelPermalink }}">
                 {{ .Site.Params.brand }}
             </a>
         {{ end }}
