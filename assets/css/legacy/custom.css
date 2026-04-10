@@ -132,13 +132,17 @@ mark {
 }
 
 .resume h3 {
+    font-size: 1.4rem;
     border-bottom: 2px solid var(--link-color);
     padding-bottom: 0.3rem;
+    margin-top: 1.5rem;
 }
 
 .resume h4 {
+    font-size: 1.1rem;
     color: var(--link-color);
     margin-bottom: 0.2rem;
+    margin-top: 1.2rem;
 }
 
 .resume h4 + p em {
