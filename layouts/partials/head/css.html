@@ -20,19 +20,10 @@
         --code-block-background-color: {{ with .Site.Params.code_block_background_color }}{{ . }}{{ else }}#272822{{ end }};
         --moon-sun-color: {{ with .Site.Params.moon_sun_color }}{{ . }}{{ else }}#555{{ end }};
         --moon-sun-background-color: {{ with .Site.Params.moon_sun_background_color }}{{ . }}{{ else }}#F0F0F0{{ end }};
-        /* Pagefind Component UI */
-        --pf-background: var(--bkg-color);
-        --pf-text: var(--text-color);
-        --pf-text-secondary: var(--list-color);
-        --pf-text-muted: var(--date-color);
-        --pf-border: var(--table-border-color);
-        --pf-border-focus: var(--link-color);
-        --pf-hover: var(--table-stripe-color);
-        --pf-outline-focus: var(--link-color);
-        --pf-mark: var(--text-color);
+        /* Pagefind Component UI — only override what differs from defaults */
         --pf-font: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        --pf-input-font-size: 14px;
-        --pf-border-radius: 6px;
+        --pf-mark: var(--link-color);
+        --pf-modal-max-width: 680px;
     }
     body.dark-theme,
     html.dark-theme body {
@@ -56,16 +47,23 @@
         --code-block-background-color: {{ with .Site.Params.code_block_background_color_dark }}{{ . }}{{ else }}#272822{{ end }};
         --moon-sun-color: #EEE;
         --moon-sun-background-color: #333;
-        /* Pagefind Component UI — dark */
-        --pf-background: var(--bkg-color);
+        /* Pagefind Component UI — dark (mirrors [data-pf-theme="dark"]) */
         --pf-text: var(--text-color);
         --pf-text-secondary: var(--list-color);
         --pf-text-muted: var(--date-color);
+        --pf-background: var(--bkg-color);
         --pf-border: var(--table-border-color);
         --pf-border-focus: var(--link-color);
+        --pf-skeleton: #2a2a2a;
+        --pf-skeleton-shine: #333;
         --pf-hover: var(--table-stripe-color);
+        --pf-mark: var(--link-color);
+        --pf-scroll-shadow: rgba(255, 255, 255, 0.1);
         --pf-outline-focus: var(--link-color);
-        --pf-mark: var(--text-color);
+        --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+        --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+        --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+        --pf-modal-backdrop: rgba(0, 0, 0, 0.7);
     }
     body {
         background-color: var(--bkg-color);
