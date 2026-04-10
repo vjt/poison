@@ -145,7 +145,13 @@ body.dark-theme .sun { display: block; }
 
 /* --- Search (Pagefind Component UI — modal trigger in sidebar) --- */
 pagefind-modal-trigger {
+  display: block;
   margin-bottom: 1rem;
+}
+
+pagefind-modal-trigger .pf-trigger-btn {
+  border: none;
+  background: transparent;
 }
 
 /* --- Post Info & Meta --- */
