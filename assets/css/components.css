@@ -206,7 +206,7 @@ body.dark-theme .sun { display: block; }
 }
 
 /* --- Post Info & Meta --- */
-.post-info .featured-image img {
+.featured-image img {
   width: 100%;
   border-radius: 6px;
   margin-bottom: 1rem;
@@ -579,16 +579,6 @@ body.dark-theme .vintage-banner {
 }
 
 /* --- About Page --- */
-.about-cover {
-  margin-bottom: 1.5rem;
-}
-
-.about-cover img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-}
-
 .about-photo {
   width: 130px;
   height: 130px;

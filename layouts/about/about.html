@@ -1,16 +1,7 @@
 {{ define "main" -}}
 <div class="about">
     {{ with .Site.GetPage "/about" -}}
-    {{ if .Params.featuredImage }}
-    <div class="about-cover">
-        {{ $img := .Resources.GetMatch .Params.featuredImage }}
-        {{ if $img }}
-        <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}">
-        {{ else }}
-        <img src="{{ .Params.featuredImage }}" alt="{{ .Title }}">
-        {{ end }}
-    </div>
-    {{ end }}
+    {{ partial "featured-image.html" . }}
     <img src="/vjt.jpg" alt="Marcello Barnaba" class="about-photo">
     {{ if .Pages }}
         {{ range .Pages }}

@@ -1,0 +1,10 @@
+{{ if .Params.featuredImage }}
+<div class="featured-image">
+    {{ $img := .Resources.GetMatch .Params.featuredImage }}
+    {{ if $img }}
+    <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}">
+    {{ else }}
+    <img src="{{ .Params.featuredImage }}" alt="{{ .Title }}">
+    {{ end }}
+</div>
+{{ end }}
