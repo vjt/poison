@@ -30,39 +30,13 @@
     <div class="toc-wrapper toc-desktop">
         <h4 id="contents">{{ i18n "posts_in_page" }}</h4>
         <nav id="TableOfContents">
-            <ul>
-            {{ range $pag.Pages }}
-                <li>
-                    <a href="#post-{{ .File.ContentBaseName | urlize }}">{{ .Title }}</a>
-                    <span class="post-list-date">{{ .Date | time.Format "Jan 2006" }}</span>
-                </li>
-            {{ end }}
-            </ul>
-            {{ if or $pag.HasPrev $pag.HasNext }}
-            <ul class="toc-pagination">
-                {{ if $pag.HasPrev }}<li><a href="{{ $pag.Prev.URL }}">👈 {{ i18n "prev" }}</a></li>{{ end }}
-                {{ if $pag.HasNext }}<li><a href="{{ $pag.Next.URL }}">{{ i18n "next" }} 👉</a></li>{{ end }}
-            </ul>
-            {{ end }}
+            {{ partial "home-toc-inner.html" $pag }}
         </nav>
     </div>
     <details class="toc-wrapper toc-mobile">
         <summary>{{ i18n "posts_in_page" }}</summary>
         <nav>
-            <ul>
-            {{ range $pag.Pages }}
-                <li>
-                    <a href="#post-{{ .File.ContentBaseName | urlize }}">{{ .Title }}</a>
-                    <span class="post-list-date">{{ .Date | time.Format "Jan 2006" }}</span>
-                </li>
-            {{ end }}
-            </ul>
-            {{ if or $pag.HasPrev $pag.HasNext }}
-            <ul class="toc-pagination">
-                {{ if $pag.HasPrev }}<li><a href="{{ $pag.Prev.URL }}">👈 {{ i18n "prev" }}</a></li>{{ end }}
-                {{ if $pag.HasNext }}<li><a href="{{ $pag.Next.URL }}">{{ i18n "next" }} 👉</a></li>{{ end }}
-            </ul>
-            {{ end }}
+            {{ partial "home-toc-inner.html" $pag }}
         </nav>
     </details>
 </div>
