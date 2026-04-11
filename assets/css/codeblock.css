@@ -150,6 +150,10 @@ body.dark-theme .chroma .kn { color:#ff7b72 }
 body.dark-theme .chroma .kp { color:#79c0ff }
 body.dark-theme .chroma .kr { color:#ff7b72 }
 body.dark-theme .chroma .kt { color:#ff7b72 }
+body.dark-theme .chroma .na { color:#79c0ff }
+body.dark-theme .chroma .nb { color:#d2a8ff }
+body.dark-theme .chroma .bp { color:#8b949e }
+body.dark-theme .chroma .nx { color:#e6edf3 }
 body.dark-theme .chroma .nc { color:#f0883e;font-weight:bold }
 body.dark-theme .chroma .no { color:#79c0ff;font-weight:bold }
 body.dark-theme .chroma .nd { color:#d2a8ff;font-weight:bold }
@@ -191,6 +195,7 @@ body.dark-theme .chroma .il { color:#a5d6ff }
 body.dark-theme .chroma .mo { color:#a5d6ff }
 body.dark-theme .chroma .o { color:#ff7b72;font-weight:bold }
 body.dark-theme .chroma .ow { color:#ff7b72;font-weight:bold }
+body.dark-theme .chroma .p { color:#e6edf3 }
 body.dark-theme .chroma .c { color:#8b949e;font-style:italic }
 body.dark-theme .chroma .ch { color:#8b949e;font-style:italic }
 body.dark-theme .chroma .cm { color:#8b949e;font-style:italic }
