@@ -3,6 +3,44 @@
    Replaces: poison.css + custom.css
    ========================================================================== */
 
+/* --- Heading Anchors --- */
+.heading-anchor {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 400;
+  margin-left: 0.3em;
+  font-size: 0.75em;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.heading-anchor:hover {
+  text-decoration: none;
+}
+
+h1:hover > .heading-anchor,
+h2:hover > .heading-anchor,
+h3:hover > .heading-anchor,
+h4:hover > .heading-anchor,
+h5:hover > .heading-anchor,
+h6:hover > .heading-anchor {
+  opacity: 0.6;
+}
+
+.heading-anchor:hover {
+  opacity: 1 !important;
+}
+
+@media (max-width: 1199px) {
+  .heading-anchor {
+    opacity: 0.25;
+  }
+
+  .heading-anchor:active {
+    opacity: 1;
+  }
+}
+
 /* --- Typography --- */
 .post-meta {
   display: flex;
