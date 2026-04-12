@@ -9,12 +9,15 @@
 (function() {
   let activeElement = null;
   window.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll("nav[id='TableOfContents'] li");
+    if (!navItems.length) return;
+
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (activeElement) {
-                document.querySelectorAll("nav[id='TableOfContents'] li").forEach((node) => {
+                navItems.forEach((node) => {
+                    node.classList.remove('active');
                     node.classList.add('inactive');
-                    node.classList.replace('active', 'inactive');
                 });
             }
             if (entry.intersectionRatio > 0) {
@@ -23,7 +26,8 @@
             if (activeElement) {
                 const nav_ref = document.querySelector(`nav[id='TableOfContents'] li a[href="#${activeElement}"]`);
                 if (nav_ref) {
-                    nav_ref.parentElement.classList.replace('inactive', 'active');
+                    nav_ref.parentElement.classList.remove('inactive');
+                    nav_ref.parentElement.classList.add('active');
                 }
             }
         });
