@@ -52,23 +52,35 @@ pre:hover .copy-button {
 }
 
 
-/* Non-highlighted code blocks (no language specified) — match Chroma defaults */
-pre { color:#1f2328; background-color:#f7f7f7; }
-body.dark-theme pre { color:#e6edf3; background-color:#0d1117; }
-
 .highlight pre {
   border-radius: 6px;
 }
 
 /* ==========================================================================
-   Syntax highlighting — GitHub theme (Chroma)
-   Light: github | Dark: github-dark
-   Generated via: hugo gen chromastyles --style=github[-dark]
+   Syntax highlighting — Chroma (GitHub theme)
+   ==========================================================================
+   To switch theme, regenerate and paste:
+
+     hugo gen chromastyles --style=github        → LIGHT section below
+     hugo gen chromastyles --style=github-dark    → DARK section below
+
+   After pasting:
+   1. Add `color:<text>` to `.chroma` in the light section (Hugo omits it)
+   2. Prefix every rule in the dark section with `body.dark-theme `
+   3. Fix `.chroma .w` if the generator sets it to #fff (Chroma bug)
+
+   Non-highlighted <pre> blocks (no language) inherit from .chroma via the
+   two rules immediately below. Update those colors to match .chroma when
+   switching themes.
    ========================================================================== */
 
-/* --- GitHub Light --- */
+/* Non-highlighted code blocks — must match .chroma base colors */
+pre { color:#1f2328; background-color:#f7f7f7; }
+body.dark-theme pre { color:#e6edf3; background-color:#0d1117; }
+
+/* --- GitHub Light (hugo gen chromastyles --style=github) --- */
 .bg { background-color:#f7f7f7; }
-.chroma { background-color:#f7f7f7; }
+.chroma { color:#1f2328; background-color:#f7f7f7; }
 .chroma .err { color:#f6f8fa;background-color:#82071e }
 .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
 .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
@@ -140,7 +152,7 @@ body.dark-theme pre { color:#e6edf3; background-color:#0d1117; }
 .chroma .gl { text-decoration:underline }
 .chroma .w { color:#1f2328 }
 
-/* --- GitHub Dark (scoped to dark-theme) --- */
+/* --- GitHub Dark (hugo gen chromastyles --style=github-dark) --- */
 body.dark-theme .bg { color:#e6edf3;background-color:#0d1117; }
 body.dark-theme .chroma { color:#e6edf3;background-color:#0d1117; }
 body.dark-theme .chroma .err { color:#f85149 }
