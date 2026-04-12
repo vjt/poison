@@ -26,8 +26,11 @@
   {{- if $lazy }} loading="lazy"{{ else }} fetchpriority="high"{{ end }}>
 {{- else -}}
 
-{{- /* Standard breakpoints — browser picks based on sizes + DPR */ -}}
-{{- $breakpoints := slice 640 1024 1536 -}}
+{{- /* Standard breakpoints — browser picks based on sizes + DPR.
+       768  → desktop 1x (752px content) + phone 2x (~686px)
+       1024 → tablet 1x mid-range
+       1536 → desktop 2x (1504px) */ -}}
+{{- $breakpoints := slice 768 1024 1536 -}}
 {{- $srcset := slice -}}
 {{- $srcsetWebp := slice -}}
 
@@ -47,8 +50,8 @@
 
 {{- /* Smallest variant for src fallback + dimensions */ -}}
 {{- $fallback := $img -}}
-{{- if gt $img.Width 640 -}}
-  {{- $fallback = $img.Resize "640x" -}}
+{{- if gt $img.Width 768 -}}
+  {{- $fallback = $img.Resize "768x" -}}
 {{- end -}}
 
 {{- /* sizes mirrors the CSS layout breakpoints exactly */ -}}
