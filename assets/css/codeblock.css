@@ -134,7 +134,7 @@ pre:hover .copy-button {
 .chroma .gi { color:#116329;background-color:#dafbe1 }
 .chroma .go { color:#1f2328 }
 .chroma .gl { text-decoration:underline }
-.chroma .w { color:#fff }
+.chroma .w { color:#1f2328 }
 
 /* --- GitHub Dark (scoped to dark-theme) --- */
 body.dark-theme .bg { color:#e6edf3;background-color:#0d1117; }
