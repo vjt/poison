@@ -2,7 +2,7 @@
 <div class="featured-image">
     {{ $img := .Resources.GetMatch .Params.featuredImage }}
     {{ if $img }}
-    <img src="{{ $img.RelPermalink }}" alt="{{ .Title }}">
+    {{- partial "responsive-image.html" (dict "img" $img "alt" .Title "lazy" false) -}}
     {{ else }}
     <img src="{{ .Params.featuredImage }}" alt="{{ .Title }}">
     {{ end }}

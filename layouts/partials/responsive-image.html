@@ -1,0 +1,69 @@
+{{/*
+  responsive-image.html — shared partial for responsive <picture> output
+
+  Generates srcset at standard breakpoints + WebP via <picture>.
+  The sizes attribute mirrors the theme's CSS layout — CSS is the source of truth:
+    - Desktop (>1199px): content max-width 52rem - 5rem padding = 47rem
+    - Tablet (≤1199px): full viewport - 3rem padding
+    - Phone (≤599px): full viewport - 2rem padding
+
+  Parameters (pass as dict):
+    .img    — Hugo image resource (required)
+    .alt    — alt text (required)
+    .title  — title attribute (optional)
+    .lazy   — true for loading="lazy", false for fetchpriority="high" (default true)
+*/}}
+{{- $img := .img -}}
+{{- $alt := .alt | default "" -}}
+{{- $title := .title | default "" -}}
+{{- $lazy := true -}}
+{{- if isset . "lazy" -}}{{ $lazy = .lazy }}{{- end -}}
+
+{{- $ext := path.Ext $img.Name | strings.ToLower -}}
+{{- if or (eq $ext ".svg") (eq $ext ".gif") -}}
+<img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $alt }}"
+  {{- if $title }} title="{{ $title }}"{{ end -}}
+  {{- if $lazy }} loading="lazy"{{ else }} fetchpriority="high"{{ end }}>
+{{- else -}}
+
+{{- /* Standard breakpoints — browser picks based on sizes + DPR */ -}}
+{{- $breakpoints := slice 640 1024 1536 -}}
+{{- $srcset := slice -}}
+{{- $srcsetWebp := slice -}}
+
+{{- range $bp := $breakpoints -}}
+  {{- if gt $img.Width $bp -}}
+    {{- $resized := $img.Resize (printf "%dx" $bp) -}}
+    {{- $webp := $resized.Resize (printf "%dx webp" $resized.Width) -}}
+    {{- $srcset = $srcset | append (printf "%s %dw" $resized.RelPermalink $resized.Width) -}}
+    {{- $srcsetWebp = $srcsetWebp | append (printf "%s %dw" $webp.RelPermalink $webp.Width) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Always include the original (or WebP of original) as the largest option */ -}}
+{{- $webpOrig := $img.Resize (printf "%dx webp" $img.Width) -}}
+{{- $srcset = $srcset | append (printf "%s %dw" $img.RelPermalink $img.Width) -}}
+{{- $srcsetWebp = $srcsetWebp | append (printf "%s %dw" $webpOrig.RelPermalink $webpOrig.Width) -}}
+
+{{- /* Smallest variant for src fallback + dimensions */ -}}
+{{- $fallback := $img -}}
+{{- if gt $img.Width 640 -}}
+  {{- $fallback = $img.Resize "640x" -}}
+{{- end -}}
+
+{{- /* sizes mirrors the CSS layout breakpoints exactly */ -}}
+{{- $sizes := "(max-width: 599px) calc(100vw - 2rem), (max-width: 1199px) calc(100vw - 3rem), 47rem" -}}
+
+<picture>
+  <source type="image/webp"
+    srcset="{{ delimit $srcsetWebp ", " }}"
+    sizes="{{ $sizes }}">
+  <img src="{{ $fallback.RelPermalink }}"
+    srcset="{{ delimit $srcset ", " }}"
+    sizes="{{ $sizes }}"
+    width="{{ $fallback.Width }}" height="{{ $fallback.Height }}"
+    alt="{{ $alt }}"
+    {{- if $title }} title="{{ $title }}"{{ end -}}
+    {{- if $lazy }} loading="lazy"{{ else }} fetchpriority="high"{{ end }}>
+</picture>
+{{- end -}}
