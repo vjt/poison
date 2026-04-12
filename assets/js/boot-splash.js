@@ -38,7 +38,13 @@
   ];
 
   var customLines = splash.getAttribute('data-lines');
-  var lines = customLines ? JSON.parse(customLines) : defaultLines;
+  var lines;
+  if (customLines) {
+    try { lines = JSON.parse(customLines); }
+    catch (e) { lines = defaultLines; }
+  } else {
+    lines = defaultLines;
+  }
 
   var log = document.getElementById('boot-log');
   var brand = document.getElementById('boot-brand');
