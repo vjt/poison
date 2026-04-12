@@ -52,6 +52,10 @@ pre:hover .copy-button {
 }
 
 
+/* Non-highlighted code blocks (no language specified) — match Chroma defaults */
+pre { color:#1f2328; background-color:#f7f7f7; }
+body.dark-theme pre { color:#e6edf3; background-color:#0d1117; }
+
 .highlight pre {
   border-radius: 6px;
 }
