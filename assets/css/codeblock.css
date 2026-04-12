@@ -82,7 +82,8 @@ body.dark-theme pre { color:#e6edf3; background-color:#0d1117; }
 .bg { background-color:#f7f7f7; }
 .chroma { color:#1f2328; background-color:#f7f7f7; }
 .chroma .err { color:#f6f8fa;background-color:#82071e }
-.chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
+.chroma .lnlinks { text-decoration:none;color:inherit }
+.chroma .lnlinks:focus { outline:2px solid var(--link-color);outline-offset:1px }
 .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
 .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
 .chroma .hl { background-color:#dedede }

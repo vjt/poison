@@ -12,9 +12,9 @@
 <div class="glider-container">
 {{ if and (.Site.Params.foot_image) (.Site.Params.foot_link) }}
 <a href="{{ .Site.Params.foot_link }}" target="_blank" rel="noopener noreferrer">
-  <img src="{{ .Site.Params.foot_image }}"/>
+  <img src="{{ .Site.Params.foot_image }}" alt=""/>
 </a>
 {{ else if .Site.Params.foot_image }}
-  <img src="{{ .Site.Params.foot_image }}"/>
+  <img src="{{ .Site.Params.foot_image }}" alt=""/>
 {{ end }}
 </div>
