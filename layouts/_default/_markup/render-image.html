@@ -1,4 +1,8 @@
 {{- $img := .Page.Resources.GetMatch .Destination -}}
+{{- if not $img -}}
+  {{- /* Try bare filename — markdown may use full path like /posts/slug/image.jpg */ -}}
+  {{- $img = .Page.Resources.GetMatch (path.Base .Destination) -}}
+{{- end -}}
 {{- if $img -}}
   {{- partial "responsive-image.html" (dict "img" $img "alt" .Text "title" .Title "lazy" true) -}}
 {{- else -}}
