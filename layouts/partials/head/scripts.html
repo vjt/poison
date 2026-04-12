@@ -20,6 +20,6 @@
 <script defer data-domain="{{ .Site.Params.plausible_domain }}" src="{{ .Site.Params.plausible_script }}"></script>
 {{ end }}
 
-{{/* Pagefind search — Component UI (web components, CSS custom properties) */}}
-<link href="/pagefind/pagefind-component-ui.css" rel="stylesheet">
+{{/* Pagefind search — Component UI (deferred, not needed for first paint) */}}
+<link href="/pagefind/pagefind-component-ui.css" rel="stylesheet" media="print" onload="this.media='all'">
 <script type="module" src="/pagefind/pagefind-component-ui.js"></script>

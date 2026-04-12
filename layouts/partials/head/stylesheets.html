@@ -3,6 +3,6 @@
     (resources.Get "css/components.css")
     (resources.Get "css/codeblock.css")
     (resources.Get "css/fonts.css")
-  | resources.Concat "css/bundle.css" | minify | fingerprint }}
+  | resources.Concat "css/bundle.css" | minify }}
 
-<link type="text/css" rel="stylesheet" href="{{ $css_bundle.RelPermalink }}">
+<style>{{ $css_bundle.Content | safeCSS }}</style>
