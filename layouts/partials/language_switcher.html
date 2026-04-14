@@ -15,7 +15,7 @@
         {{- end -}}
       {{- end -}}
       {{- if not $target -}}
-        {{- $target = (index $.Site.Languages $targetLang).Params.home | default (printf "/%s/" $targetLang) -}}
+        {{- $target = .Params.home | default (printf "/%s/" $targetLang) -}}
       {{- end -}}
       <a href="{{ $target }}" class="lang-link" title="{{ .LanguageName }}" aria-label="{{ .LanguageName }}" onclick="document.cookie='lang={{ $targetLang }};path=/;max-age=31536000;SameSite=Lax'">{{ $flag }}</a>
     {{- end -}}
