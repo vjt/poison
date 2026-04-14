@@ -474,7 +474,9 @@ body.menu-open .sidebar-overlay {
     position: sticky;
     top: 3rem;
     z-index: 40;
-    background: var(--bg-color);
+    background: color-mix(in srgb, var(--bg-color) 85%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .article-toc .toc-wrapper {
