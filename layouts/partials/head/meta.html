@@ -20,8 +20,21 @@
 {{- $og_image_height := 0 -}}
 {{- $og_image_type := "" -}}
 
-{{/* 1. Explicit frontmatter image field */ -}}
-{{- if .Params.image -}}
+{{/* 1. featuredImage or image from page bundle resources */ -}}
+{{- $candidate := .Params.featuredImage | default .Params.image -}}
+{{- if $candidate -}}
+  {{- $img := .Resources.GetMatch $candidate -}}
+  {{- if $img -}}
+    {{- $og_image = $img.Permalink -}}
+    {{- $og_image_width = $img.Width -}}
+    {{- $og_image_height = $img.Height -}}
+    {{- $ext := trim (path.Ext $img.Name | lower) "." -}}
+    {{- $og_image_type = (printf "image/%s" (replaceRE `^jpg$` `jpeg` $ext)) -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* 2. Fallback: image param from assets/ (non-bundle pages) */ -}}
+{{- if and (not $og_image) .Params.image -}}
   {{- $image_path := .Params.image -}}
   {{- $image_path_local := printf "assets/%s" $image_path -}}
   {{- if fileExists $image_path_local -}}
@@ -40,7 +53,7 @@
   {{- end -}}
 {{- end -}}
 
-{{/* 2. First image from page bundle resources */ -}}
+{{/* 3. Fallback: first image from page bundle resources */ -}}
 {{- if not $og_image -}}
   {{- range .Resources.ByType "image" -}}
     {{- if and (not $og_image) (gt .Width 0) -}}
