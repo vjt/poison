@@ -10,6 +10,12 @@
   let activeElement = null;
 
   window.addEventListener('DOMContentLoaded', () => {
+    // Measure header height and set CSS variable for sticky TOC offset
+    const header = document.querySelector('.site-header');
+    if (header) {
+      document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+    }
+
     const navItems = document.querySelectorAll("#TableOfContents li");
     if (!navItems.length) return;
 
