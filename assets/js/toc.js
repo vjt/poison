@@ -43,8 +43,11 @@
     function updateScrollspy() {
       // Activate a heading once it scrolls past the sticky header/TOC bar.
       // Measure the bar dynamically so it works on both mobile and desktop.
-      const stickyBar = document.querySelector('.toc-mobile-bar') || document.querySelector('.sticky-top');
-      const offset = stickyBar ? stickyBar.getBoundingClientRect().bottom + 1 : 64;
+      // Use scroll-padding-top as the threshold — this is the same value the
+      // browser uses when navigating to an anchor, so clicked headings land
+      // exactly at the scrollspy activation line. Add a few px of slack.
+      const spt = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 64;
+      const offset = spt + 2;
 
       let current = null;
       for (const heading of headings) {
