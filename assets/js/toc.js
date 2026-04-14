@@ -22,11 +22,10 @@
     let ticking = false;
 
     function updateScrollspy() {
-      // Find the heading closest to (but above) the top of the viewport.
-      // Use a generous offset so the heading activates once it's scrolled
-      // past the sticky header/TOC bar area.
-      const scrollTop = window.scrollY;
-      const offset = window.innerHeight * 0.2;
+      // Activate a heading once it scrolls past the sticky header/TOC bar.
+      // Measure the bar dynamically so it works on both mobile and desktop.
+      const stickyBar = document.querySelector('.toc-mobile-bar') || document.querySelector('.sticky-top');
+      const offset = stickyBar ? stickyBar.getBoundingClientRect().bottom + 1 : 64;
 
       let current = null;
       for (const heading of headings) {
