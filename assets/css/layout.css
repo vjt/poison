@@ -249,17 +249,17 @@ body:not(.has-toc) .wrapper {
   top: 2rem;
 }
 
-#TableOfContents ul {
+:is(#TableOfContents, #MobileTableOfContents) ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
 
-#TableOfContents ul ul {
+:is(#TableOfContents, #MobileTableOfContents) ul ul {
   padding-left: 1rem;
 }
 
-#TableOfContents a {
+:is(#TableOfContents, #MobileTableOfContents) a {
   color: var(--text-color);
   text-decoration: none;
   display: block;
@@ -269,18 +269,18 @@ body:not(.has-toc) .wrapper {
   transition: color 0.15s, opacity 0.15s;
 }
 
-#TableOfContents a:hover {
+:is(#TableOfContents, #MobileTableOfContents) a:hover {
   color: var(--link-color);
   opacity: 1;
 }
 
-#TableOfContents li.active > a {
+:is(#TableOfContents, #MobileTableOfContents) li.active > a {
   color: var(--link-color);
   font-weight: 500;
   opacity: 1;
 }
 
-#TableOfContents li.inactive > a {
+:is(#TableOfContents, #MobileTableOfContents) li.inactive > a {
   opacity: 0.5;
 }
 
@@ -305,8 +305,12 @@ body:not(.has-toc) .article-toc {
   display: none;
 }
 
-/* --- Header Bar (< 1200px) --- */
+/* --- Header Bar + Mobile TOC (< 1200px only) --- */
 .site-header {
+  display: none;
+}
+
+.toc-mobile-bar {
   display: none;
 }
 
@@ -347,6 +351,7 @@ body.menu-open .sidebar-overlay {
   }
 
   .toc-mobile-bar {
+    display: block;
     font-size: 0.85rem;
     padding: 0.4rem 1rem;
     border-bottom: 1px solid var(--table-border-color);

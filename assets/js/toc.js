@@ -8,18 +8,18 @@
 
 (function() {
   let activeElement = null;
+  const TOC = '#TableOfContents, #MobileTableOfContents';
 
   window.addEventListener('DOMContentLoaded', () => {
-    const navItems = document.querySelectorAll("#TableOfContents li");
+    const navItems = document.querySelectorAll(TOC.split(', ').map(s => s + ' li').join(', '));
     if (!navItems.length) return;
 
-    // Grab the mobile TOC summary to update with current section name
-    const mobileSummary = document.querySelector(".toc-mobile-bar > summary");
+    const mobileSummary = document.querySelector('.toc-mobile-bar > summary');
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (activeElement) {
-                navItems.forEach((node) => {
+                navItems.forEach(node => {
                     node.classList.remove('active');
                     node.classList.add('inactive');
                 });
@@ -28,18 +28,15 @@
                 activeElement = entry.target.getAttribute('id');
             }
             if (activeElement) {
-                // Update all matching nav items (desktop + mobile TOCs)
-                document.querySelectorAll(`#TableOfContents li a[href="#${activeElement}"]`).forEach(nav_ref => {
+                const sel = TOC.split(', ').map(s => `${s} li a[href="#${activeElement}"]`).join(', ');
+                document.querySelectorAll(sel).forEach(nav_ref => {
                     nav_ref.parentElement.classList.remove('inactive');
                     nav_ref.parentElement.classList.add('active');
                 });
 
-                // Update mobile summary with current section name
                 if (mobileSummary) {
-                    const activeLink = document.querySelector(`#TableOfContents li a[href="#${activeElement}"]`);
-                    if (activeLink) {
-                        mobileSummary.textContent = activeLink.textContent;
-                    }
+                    const link = document.querySelector(`#MobileTableOfContents li a[href="#${activeElement}"]`);
+                    if (link) mobileSummary.textContent = link.textContent;
                 }
             }
         });
@@ -47,18 +44,16 @@
 
     const post = document.querySelector(".post");
     if (post) {
-        post.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]").forEach((section) => {
+        post.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]").forEach(section => {
             observer.observe(section);
         });
     }
 
-    // Auto-close mobile TOC when a link is clicked
-    const mobileDetails = document.querySelector(".toc-mobile-bar");
-    if (mobileDetails) {
-        mobileDetails.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                mobileDetails.removeAttribute("open");
-            });
+    // Auto-close mobile TOC on link click
+    const mobileBar = document.querySelector('.toc-mobile-bar');
+    if (mobileBar) {
+        mobileBar.addEventListener('click', e => {
+            if (e.target.tagName === 'A') mobileBar.removeAttribute('open');
         });
     }
   });
