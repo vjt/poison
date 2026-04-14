@@ -8,9 +8,6 @@
   const TOC = '#TableOfContents, #MobileTableOfContents';
 
   window.addEventListener('DOMContentLoaded', () => {
-    const navItems = document.querySelectorAll(TOC.split(', ').map(s => s + ' li').join(', '));
-    if (!navItems.length) return;
-
     const post = document.querySelector('.post');
     if (!post) return;
 
@@ -18,7 +15,29 @@
     if (!headings.length) return;
 
     const mobileSummary = document.querySelector('.toc-mobile-bar > summary');
+    const isItalian = document.documentElement.lang === 'it';
 
+    // Inject "Top" and "Comments" links into each TOC
+    document.querySelectorAll('#TableOfContents, #MobileTableOfContents').forEach(toc => {
+      const topUl = toc.querySelector('ul');
+      if (!topUl) return;
+
+      // Top link
+      const topLi = document.createElement('li');
+      topLi.innerHTML = `<a href="#">${isItalian ? 'Inizio' : 'Top'}</a>`;
+      topLi.classList.add('toc-top');
+      topUl.insertBefore(topLi, topUl.firstChild);
+
+      // Comments link
+      if (document.getElementById('comments')) {
+        const commLi = document.createElement('li');
+        commLi.innerHTML = `<a href="#comments">${isItalian ? 'Commenti' : 'Comments'}</a>`;
+        commLi.classList.add('toc-comments');
+        topUl.appendChild(commLi);
+      }
+    });
+
+    const navItems = document.querySelectorAll(TOC.split(', ').map(s => s + ' li').join(', '));
     let ticking = false;
 
     function updateScrollspy() {
@@ -36,23 +55,41 @@
         }
       }
 
+      // Check if we've scrolled to the comments section
+      const comments = document.getElementById('comments');
+      const atComments = comments && comments.getBoundingClientRect().top <= offset;
+
       // Clear all
       navItems.forEach(node => {
         node.classList.remove('active');
         node.classList.add('inactive');
       });
 
-      if (current) {
+      if (atComments) {
+        // Highlight Comments
+        document.querySelectorAll('.toc-comments').forEach(el => {
+          el.classList.remove('inactive');
+          el.classList.add('active');
+        });
+        if (mobileSummary) mobileSummary.textContent = isItalian ? 'Commenti' : 'Comments';
+      } else if (current) {
+        // Highlight current heading
         const sel = TOC.split(', ').map(s => `${s} li a[href="#${current}"]`).join(', ');
         document.querySelectorAll(sel).forEach(nav_ref => {
           nav_ref.parentElement.classList.remove('inactive');
           nav_ref.parentElement.classList.add('active');
         });
-
         if (mobileSummary) {
           const link = document.querySelector(`#MobileTableOfContents li a[href="#${current}"]`);
           if (link) mobileSummary.textContent = link.textContent;
         }
+      } else {
+        // At the top — highlight Top
+        document.querySelectorAll('.toc-top').forEach(el => {
+          el.classList.remove('inactive');
+          el.classList.add('active');
+        });
+        if (mobileSummary) mobileSummary.textContent = isItalian ? 'Inizio' : 'Top';
       }
 
       ticking = false;
