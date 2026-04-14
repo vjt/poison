@@ -484,7 +484,7 @@ body.menu-open .sidebar-overlay {
   /* TOC: reorder to appear before content on tablet */
   /* Ensure anchors scroll past sticky header + TOC bar */
   html {
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
   }
 
   .wrapper {
