@@ -249,17 +249,17 @@ body:not(.has-toc) .wrapper {
   top: 2rem;
 }
 
-.article-toc #TableOfContents ul {
+#TableOfContents ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
 
-.article-toc #TableOfContents ul ul {
+#TableOfContents ul ul {
   padding-left: 1rem;
 }
 
-.article-toc #TableOfContents a {
+#TableOfContents a {
   color: var(--text-color);
   text-decoration: none;
   display: block;
@@ -269,9 +269,19 @@ body:not(.has-toc) .wrapper {
   transition: color 0.15s, opacity 0.15s;
 }
 
-.article-toc #TableOfContents a:hover {
+#TableOfContents a:hover {
   color: var(--link-color);
   opacity: 1;
+}
+
+#TableOfContents li.active > a {
+  color: var(--link-color);
+  font-weight: 500;
+  opacity: 1;
+}
+
+#TableOfContents li.inactive > a {
+  opacity: 0.5;
 }
 
 .article-toc .post-list-date {
@@ -289,15 +299,6 @@ body:not(.has-toc) .wrapper {
   justify-content: space-between;
   list-style: none;
   padding-left: 0;
-}
-
-.article-toc #TableOfContents a.active {
-  color: var(--link-color);
-  font-weight: 500;
-}
-
-.article-toc .inactive a {
-  opacity: 0.5;
 }
 
 body:not(.has-toc) .article-toc {
@@ -329,16 +330,51 @@ body.menu-open .sidebar-overlay {
     min-height: auto;
   }
 
+  .sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg-color);
+  }
+
   .site-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 50;
     padding: 0.6rem 1rem;
     background: var(--bkg-color);
     border-bottom: 1px solid var(--table-border-color);
+  }
+
+  .toc-mobile-bar {
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    border-bottom: 1px solid var(--table-border-color);
+  }
+
+  .toc-mobile-bar summary {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .toc-mobile-bar summary::before {
+    content: "▸ ";
+  }
+
+  .toc-mobile-bar[open] summary::before {
+    content: "▾ ";
+  }
+
+  .toc-mobile-bar[open] nav {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .toc-mobile-bar li.active > a::before {
+    content: "→ ";
   }
 
   .site-header .header-left {
@@ -441,9 +477,9 @@ body.menu-open .sidebar-overlay {
   }
 
   /* TOC: reorder to appear before content on tablet */
-  /* Ensure content doesn't start under sticky header + sticky TOC */
+  /* Ensure anchors scroll past sticky header + TOC bar */
   html {
-    scroll-padding-top: calc(var(--header-height, 2.5rem) + 3.5rem);
+    scroll-padding-top: 5rem;
   }
 
   .wrapper {
@@ -467,29 +503,9 @@ body.menu-open .sidebar-overlay {
     height: auto;
     overflow-y: visible;
     border-left: none;
-    border-bottom: 1px solid var(--table-border-color);
-    padding: 0.5rem 1.5rem;
-    font-size: 0.85rem;
+    padding: 0;
     margin-bottom: 0;
-    position: sticky;
-    top: var(--header-height, 2.5rem);
-    z-index: 40;
-    background: var(--bg-color);
-  }
-
-  .article-toc .toc-wrapper {
-    position: static;
-  }
-
-  /* Limit open TOC height on mobile so it doesn't cover everything */
-  .toc-mobile[open] nav {
-    max-height: 60vh;
-    overflow-y: auto;
-  }
-
-  /* Current section arrow on mobile */
-  .toc-mobile li.active > a::before {
-    content: "→ ";
+    display: none;
   }
 
   .article-toc h4 {

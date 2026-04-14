@@ -10,17 +10,11 @@
   let activeElement = null;
 
   window.addEventListener('DOMContentLoaded', () => {
-    // Measure header height and set CSS variable for sticky TOC offset
-    const header = document.querySelector('.site-header');
-    if (header) {
-      document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
-    }
-
     const navItems = document.querySelectorAll("#TableOfContents li");
     if (!navItems.length) return;
 
-    // Grab the mobile summary element to update with current section
-    const mobileSummary = document.querySelector(".toc-mobile > summary");
+    // Grab the mobile TOC summary to update with current section name
+    const mobileSummary = document.querySelector(".toc-mobile-bar > summary");
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -34,14 +28,17 @@
                 activeElement = entry.target.getAttribute('id');
             }
             if (activeElement) {
-                const nav_ref = document.querySelector(`#TableOfContents li a[href="#${activeElement}"]`);
-                if (nav_ref) {
+                // Update all matching nav items (desktop + mobile TOCs)
+                document.querySelectorAll(`#TableOfContents li a[href="#${activeElement}"]`).forEach(nav_ref => {
                     nav_ref.parentElement.classList.remove('inactive');
                     nav_ref.parentElement.classList.add('active');
+                });
 
-                    // Update mobile summary with current section name
-                    if (mobileSummary) {
-                        mobileSummary.textContent = nav_ref.textContent;
+                // Update mobile summary with current section name
+                if (mobileSummary) {
+                    const activeLink = document.querySelector(`#TableOfContents li a[href="#${activeElement}"]`);
+                    if (activeLink) {
+                        mobileSummary.textContent = activeLink.textContent;
                     }
                 }
             }
@@ -56,7 +53,7 @@
     }
 
     // Auto-close mobile TOC when a link is clicked
-    const mobileDetails = document.querySelector(".toc-mobile");
+    const mobileDetails = document.querySelector(".toc-mobile-bar");
     if (mobileDetails) {
         mobileDetails.querySelectorAll("a").forEach(link => {
             link.addEventListener("click", () => {
