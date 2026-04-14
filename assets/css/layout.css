@@ -472,8 +472,8 @@ body.menu-open .sidebar-overlay {
     font-size: 0.85rem;
     margin-bottom: 0;
     position: sticky;
-    top: 0;
-    z-index: 100;
+    top: 3rem;
+    z-index: 40;
     background: var(--bg-color);
   }
 
