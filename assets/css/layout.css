@@ -441,9 +441,9 @@ body.menu-open .sidebar-overlay {
   }
 
   /* TOC: reorder to appear before content on tablet */
-  /* Ensure content doesn't start under sticky header */
+  /* Ensure content doesn't start under sticky header + sticky TOC */
   html {
-    scroll-padding-top: 4.5rem;
+    scroll-padding-top: 7rem;
   }
 
   .wrapper {
@@ -468,13 +468,28 @@ body.menu-open .sidebar-overlay {
     overflow-y: visible;
     border-left: none;
     border-bottom: 1px solid var(--table-border-color);
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     font-size: 0.85rem;
     margin-bottom: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-color);
   }
 
   .article-toc .toc-wrapper {
     position: static;
+  }
+
+  /* Limit open TOC height on mobile so it doesn't cover everything */
+  .toc-mobile[open] nav {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  /* Current section arrow on mobile */
+  .toc-mobile li.active > a::before {
+    content: "→ ";
   }
 
   .article-toc h4 {
