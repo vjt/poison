@@ -58,9 +58,10 @@
         }
       }
 
-      // Check if we've scrolled to the comments section
+      // Check if we've scrolled to the comments section or hit the page bottom
       const comments = document.getElementById('comments');
-      const atComments = comments && comments.getBoundingClientRect().top <= offset;
+      const atBottom = (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50);
+      const atComments = comments && (comments.getBoundingClientRect().top <= offset || atBottom);
 
       // Clear all
       navItems.forEach(node => {
