@@ -1,9 +1,12 @@
 {{/* JS bundle: light/dark + hamburger + toc + codeblock */}}
 {{ $js := slice
-    (resources.Get "js/boot-splash.js")
     (resources.Get "js/light_dark.js")
     (resources.Get "js/hamburger.js")
 }}
+
+{{ if .Site.Params.boot_splash }}
+    {{ $js = $js | append (resources.Get "js/boot-splash.js") }}
+{{ end }}
 
 {{ if not .Site.Params.hideToc }}
     {{ $js = $js | append (resources.Get "js/toc.js") }}
