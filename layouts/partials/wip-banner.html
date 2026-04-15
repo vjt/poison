@@ -58,5 +58,13 @@
       {{- end }}
     </span>
   </div>
+  <script>
+    document.querySelector('.wip-marquee').addEventListener('animationend', function() {
+      this.style.animation = 'none';
+      this.style.transform = 'none';
+      this.parentElement.style.whiteSpace = 'normal';
+      this.parentElement.style.overflow = 'visible';
+    });
+  </script>
 </div>
 {{- end }}
