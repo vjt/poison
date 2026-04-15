@@ -3,7 +3,7 @@
 
 {{- if eq .Kind "home" -}}
   {{- $title = $.Site.Params.brand -}}
-  {{- $description = .Site.Params.Description -}}
+  {{- $description = .Site.Params.description -}}
 {{- end -}}
 
 {{- if .IsSection -}}
@@ -131,7 +131,6 @@
 <!-- Social Media Tags -->
 <meta name="twitter:site" content="{{ .Site.Params.twitter_url }}" />
 <meta name="twitter:creator" content="{{ .Site.Params.twitter_url }}" />
-{{ with .Site.Params.fb.admins }}<meta property="fb:admins" content="{{ . }}" />{{ end }}
 
 <!-- Other Tags -->
 <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}" />
