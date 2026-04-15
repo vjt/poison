@@ -4,8 +4,9 @@
     (resources.Get "js/hamburger.js")
 }}
 
-{{ if .Site.Params.boot_splash }}
-    {{ $js = $js | append (resources.Get "js/boot-splash.js") }}
+{{ $bootJs := resources.Get "js/boot-splash.js" }}
+{{ if and .Site.Params.boot_splash $bootJs }}
+    {{ $js = $js | append $bootJs }}
 {{ end }}
 
 {{ if not .Site.Params.hideToc }}

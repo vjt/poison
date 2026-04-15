@@ -1,7 +1,7 @@
 {{ partial "head/head.html" . }}
     <body class="{{ if .Site.Params.dark_mode }}dark-theme{{ end }}{{ if or (and (eq .Kind "page") (not .Params.hideToc) (not .Site.Params.hideToc) (findRE "<li>" .TableOfContents)) (eq .Kind "home") }} has-toc{{ end }}">
         {{ partial "wip-banner.html" . }}
-        {{- if .Site.Params.boot_splash }}
+        {{- if and .Site.Params.boot_splash (templates.Exists "partials/boot-splash.html") }}
         {{ partial "boot-splash.html" . }}
         <script>if(localStorage.getItem('boot-done')&&(Date.now()-Number(localStorage.getItem('boot-done')))<86400000)document.getElementById('boot-splash').remove();</script>
         {{- end }}
