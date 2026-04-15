@@ -25,11 +25,12 @@
 {{- if $candidate -}}
   {{- $img := .Resources.GetMatch $candidate -}}
   {{- if $img -}}
-    {{- $og_image = $img.Permalink -}}
-    {{- $og_image_width = $img.Width -}}
-    {{- $og_image_height = $img.Height -}}
-    {{- $ext := trim (path.Ext $img.Name | lower) "." -}}
-    {{- $og_image_type = (printf "image/%s" (replaceRE `^jpg$` `jpeg` $ext)) -}}
+    {{/* Resize for og:image — social platforms reject large files */ -}}
+    {{- $resized := $img.Fit "1200x630 q85" -}}
+    {{- $og_image = $resized.Permalink -}}
+    {{- $og_image_width = $resized.Width -}}
+    {{- $og_image_height = $resized.Height -}}
+    {{- $og_image_type = "image/jpeg" -}}
   {{- end -}}
 {{- end -}}
 
