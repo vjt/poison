@@ -100,6 +100,7 @@ code {
   background-color: var(--code-background-color);
   padding: 0.15em 0.3em;
   border-radius: 3px;
+  overflow-wrap: break-word;
 }
 
 a code {
