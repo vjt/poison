@@ -113,6 +113,18 @@
       }
     }, { passive: true });
 
+    // "Top" link: scroll the correct container
+    document.querySelectorAll('.toc-top a').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        if (isContainerScroll) {
+          contentContainer.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+
     // Initial run
     updateScrollspy();
 
