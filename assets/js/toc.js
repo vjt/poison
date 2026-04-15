@@ -17,6 +17,14 @@
     const mobileSummary = document.querySelector('.toc-mobile-bar > summary');
     const isItalian = document.documentElement.lang === 'it';
 
+    // On desktop, .content.container is the scroll container (overflow-y: auto, height: 100vh).
+    // On mobile/tablet, the window scrolls (overflow-y: visible on .content.container).
+    const contentContainer = document.querySelector('.content.container');
+    const isContainerScroll = contentContainer &&
+      getComputedStyle(contentContainer).overflowY !== 'visible' &&
+      contentContainer.scrollHeight > contentContainer.clientHeight;
+    const scrollTarget = isContainerScroll ? contentContainer : window;
+
     // Inject "Top" and "Comments" links into each TOC
     document.querySelectorAll('#TableOfContents, #MobileTableOfContents').forEach(toc => {
       const topUl = toc.querySelector('ul');
@@ -42,10 +50,8 @@
 
     function updateScrollspy() {
       // Activate a heading once it scrolls past the sticky header/TOC bar.
-      // Measure the bar dynamically so it works on both mobile and desktop.
-      // Use scroll-padding-top as the threshold — this is the same value the
-      // browser uses when navigating to an anchor, so clicked headings land
-      // exactly at the scrollspy activation line. Add a few px of slack.
+      // Use scroll-padding-top as the threshold on mobile (where window scrolls).
+      // On desktop the content container scrolls — use a fixed offset.
       const spt = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 64;
       const offset = spt + 2;
 
@@ -58,9 +64,10 @@
         }
       }
 
-      // Check if we've scrolled to the comments section or hit the page bottom
+      // Check if we've scrolled to the comments section or hit the bottom
       const comments = document.getElementById('comments');
-      const atBottom = (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 50);
+      const scrollEl = isContainerScroll ? contentContainer : document.documentElement;
+      const atBottom = (scrollEl.scrollTop + scrollEl.clientHeight) >= (scrollEl.scrollHeight - 50);
       const atComments = comments && (comments.getBoundingClientRect().top <= offset || atBottom);
 
       // Clear all
@@ -99,7 +106,7 @@
       ticking = false;
     }
 
-    window.addEventListener('scroll', () => {
+    scrollTarget.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(updateScrollspy);
         ticking = true;
