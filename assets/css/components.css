@@ -443,6 +443,7 @@ body.dark-theme .vintage-banner {
 
 .retrospective-body {
   flex: 1;
+  min-width: 0;
 }
 
 .retrospective-body p {
