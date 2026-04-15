@@ -27,12 +27,11 @@
     }
     .wip-marquee {
       display: inline-block;
-      animation: wip-scroll 15s linear infinite;
-      padding-left: 100%;
+      animation: wip-scroll 8s linear forwards;
     }
     @keyframes wip-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+      0%   { transform: translateX(100vw); }
+      100% { transform: translateX(0); }
     }
     .wip-banner-inner a {
       color: #0000ff;
@@ -53,11 +52,6 @@
   <div class="wip-banner-inner">
     <span class="wip-marquee">
       &#x1F6A7; <span class="wip-blink">UNDER CONSTRUCTION</span> &#x1F6A7;
-      This is a staging site &mdash;
-      {{- with .Site.Params.produrl }}
-      visit the real thing at <a href="{{ . }}">{{ . | replaceRE "^https?://" "" | strings.TrimRight "/" }}</a> &#x1F6A7;
-      {{- end }}
-      <span class="wip-blink">UNDER CONSTRUCTION</span> &#x1F6A7;
       This is a staging site &mdash;
       {{- with .Site.Params.produrl }}
       visit the real thing at <a href="{{ . }}">{{ . | replaceRE "^https?://" "" | strings.TrimRight "/" }}</a>
