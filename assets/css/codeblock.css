@@ -47,8 +47,8 @@ pre:hover .copy-button {
 }
 
 .code-container {
-  display: block;
-  overflow-x: auto;
+  display: inline-block;
+  width: 100%;
 }
 
 

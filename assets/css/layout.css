@@ -468,6 +468,7 @@ body.menu-open .sidebar-overlay {
     overflow-y: visible;
     padding: 1.5rem;
     max-width: none;
+    width: 100%;
   }
 
   /* TOC: reorder to appear before content on tablet */
