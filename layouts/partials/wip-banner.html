@@ -1,4 +1,4 @@
-{{- if .Site.Params.wip_banner }}
+{{- if .Site.Params.staging }}
 <div class="wip-banner">
   <style>
     .wip-banner {
@@ -41,7 +41,7 @@
   <div class="wip-banner-inner">
     &#x1F6A7; <span class="wip-blink">UNDER CONSTRUCTION</span> &#x1F6A7;
     This is a staging site.
-    {{- with .Site.Params.wip_banner_url }}
+    {{- with .Site.Params.produrl }}
     Visit the real thing at <a href="{{ . }}">{{ . | replaceRE "^https?://" "" | strings.TrimRight "/" }}</a>
     {{- end }}
   </div>
