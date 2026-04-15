@@ -219,34 +219,23 @@ body:not(.has-toc) .wrapper {
 .content.container {
   grid-column: 2;
   grid-row: 1;
-  overflow-y: auto;
-  height: 100vh;
   padding: 2rem 2.5rem;
   overflow-wrap: break-word;
   max-width: 52rem;
-}
-
-.content.container::-webkit-scrollbar { width: 6px; }
-.content.container::-webkit-scrollbar-track { background: transparent; }
-.content.container::-webkit-scrollbar-thumb {
-  background: rgba(128,128,128,0.2);
-  border-radius: 3px;
+  margin: 0 auto;
 }
 
 /* --- TOC Column --- */
 .article-toc {
   grid-column: 3;
   grid-row: 1;
+  position: sticky;
+  top: 0;
   height: 100vh;
   overflow-y: auto;
   padding: 2rem 1rem;
   border-left: 1px solid var(--table-border-color);
   font-size: 0.9rem;
-}
-
-.article-toc .toc-wrapper {
-  position: sticky;
-  top: 2rem;
 }
 
 :is(#TableOfContents, #MobileTableOfContents) ul {
