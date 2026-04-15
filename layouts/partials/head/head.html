@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- favicon -->
-    <link rel="icon" href={{ .Site.Params.favicon | default "/favicon.png" }}>
+    <link rel="icon" href={{ .Site.Params.favicon | default "/favicon.svg" }} type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- META -->
     {{ partial "head/meta.html" . }}
