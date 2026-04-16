@@ -1,10 +1,12 @@
 {{ if .Params.featuredImage }}
 <div class="featured-image">
+    <a href="{{ .Permalink }}" aria-label="{{ .Title }}">
     {{ $img := .Resources.GetMatch .Params.featuredImage }}
     {{ if $img }}
     {{- partial "responsive-image.html" (dict "img" $img "alt" .Title "lazy" false) -}}
     {{ else }}
     <img src="{{ .Params.featuredImage }}" alt="{{ .Title }}">
     {{ end }}
+    </a>
 </div>
 {{ end }}
