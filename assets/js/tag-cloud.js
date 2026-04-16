@@ -23,6 +23,7 @@
     sortBtn.addEventListener('click', () => {
       const next = sortBtn.dataset.mode === 'alpha' ? 'count' : 'alpha';
       sortBtn.dataset.mode = next;
+      sortBtn.setAttribute('aria-pressed', next === 'count' ? 'true' : 'false');
       sortBtn.textContent = next === 'alpha'
         ? sortBtn.dataset.labelAlpha
         : sortBtn.dataset.labelCount;

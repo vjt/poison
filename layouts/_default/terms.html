@@ -14,14 +14,15 @@
 {{- $range := cond (eq $max $min) 1 (sub $max $min) -}}
 
 <div class="tag-filter-bar">
-  <input type="search" class="tag-filter-input"
+  <input id="tag-filter-input" type="search" class="tag-filter-input"
          placeholder="{{ i18n "tag_filter_placeholder" }}"
          autocomplete="off"
          aria-label="{{ i18n "tag_filter_placeholder" }}">
   <button type="button" class="tag-sort-btn"
           data-mode="alpha"
           data-label-alpha="{{ i18n "sort_alpha" }}"
-          data-label-count="{{ i18n "sort_count" }}">
+          data-label-count="{{ i18n "sort_count" }}"
+          aria-pressed="false">
     {{ i18n "sort_alpha" }}
   </button>
 </div>

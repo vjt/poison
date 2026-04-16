@@ -654,6 +654,12 @@ body.dark-theme .vintage-banner {
   margin-bottom: 1rem;
 }
 
+@media (max-width: 1199px) {
+  .tag-filter-bar {
+    top: calc(var(--banner-height, 0px) + 60px);
+  }
+}
+
 .tag-filter-input {
   flex: 1;
   min-width: 0;
@@ -663,12 +669,13 @@ body.dark-theme .vintage-banner {
   border-radius: 6px;
   background: var(--bkg-color);
   color: var(--text-color);
-  outline: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, outline-color 0.15s;
 }
 
-.tag-filter-input:focus {
+.tag-filter-input:focus-visible {
   border-color: var(--link-color);
+  outline: 2px solid var(--link-color);
+  outline-offset: 1px;
 }
 
 .tag-sort-btn {
