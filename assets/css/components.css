@@ -641,28 +641,110 @@ body.dark-theme .vintage-banner {
 }
 
 /* --- Tag Cloud --- */
+.tag-filter-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.75rem 0;
+  background: var(--bkg-color);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  margin-bottom: 1rem;
+}
+
+.tag-filter-input {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 6px;
+  background: var(--bkg-color);
+  color: var(--text-color);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.tag-filter-input:focus {
+  border-color: var(--link-color);
+}
+
+.tag-sort-btn {
+  min-height: 44px;
+  padding: 0 1rem;
+  background: transparent;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  color: var(--text-color);
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.tag-sort-btn:hover,
+.tag-sort-btn:focus-visible {
+  border-color: var(--link-color);
+  color: var(--link-color);
+  outline: none;
+}
+
 .tag-cloud {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.4rem 0.8rem;
+  gap: 0.25rem 0.65rem;
   justify-content: center;
-  padding: 1rem 0;
+  padding: 1rem 0.25rem;
+  text-align: center;
 }
 
 .tag-cloud-item {
   display: inline-block;
-  line-height: 1.6;
-  transition: opacity 0.15s;
+  padding: 0.15rem 0.35rem;
+  color: var(--link-color);
+  text-decoration: none;
+  line-height: 1.4;
+  border-radius: 4px;
+  transition: transform 0.15s, opacity 0.15s;
+  animation: tagFadeIn 0.4s both;
+  animation-delay: calc(var(--anim-delay, 0) * 12ms);
 }
 
 .tag-cloud-item:hover {
-  opacity: 0.7;
+  transform: translateY(-2px);
+  text-decoration: underline;
+}
+
+.tag-cloud-item[hidden] {
+  display: none;
 }
 
 .tag-cloud-item sup {
-  font-size: 0.6em;
+  font-size: 0.55em;
   opacity: 0.5;
+  margin-left: 0.1em;
+  vertical-align: super;
+}
+
+.tag-cloud-empty {
+  text-align: center;
+  color: var(--text-color);
+  opacity: 0.6;
+  padding: 2rem 1rem;
+  margin: 0;
+}
+
+@keyframes tagFadeIn {
+  from { transform: translateY(4px); }
+  to   { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tag-cloud-item { animation: none; }
 }
 
 /* --- Footer / Copyright --- */

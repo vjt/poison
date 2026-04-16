@@ -2,21 +2,51 @@
 <div data-pagefind-ignore>
 {{ partial "featured-image.html" . }}
 <h1 class="title">{{ .Title }}</h1>
-<div class="tag-cloud">
-    {{- $largest := 0 -}}
-    {{- range .Data.Terms.Alphabetical -}}
-        {{- if gt (len .Pages) $largest -}}
-            {{- $largest = len .Pages -}}
-        {{- end -}}
-    {{- end -}}
-    {{- range .Data.Terms.Alphabetical }}
-    {{- $count := len .Pages -}}
-    {{- $weight := div (mul (float $count) 4.0) (float $largest) -}}
-    {{- $size := add 0.75 $weight -}}
-    <a href="{{ .Page.RelPermalink }}" class="tag-cloud-item" style="font-size: {{ printf "%.2f" $size }}rem;">
-        {{- .Page.Title }} <sup>{{ $count }}</sup>
-    </a>
-    {{- end }}
+
+{{- /* Compute min/max post counts across all terms for scaling */ -}}
+{{- $min := 0 -}}
+{{- $max := 0 -}}
+{{- range $i, $term := .Data.Terms.Alphabetical -}}
+  {{- $c := len .Pages -}}
+  {{- if or (eq $i 0) (lt $c $min) -}}{{- $min = $c -}}{{- end -}}
+  {{- if gt $c $max -}}{{- $max = $c -}}{{- end -}}
+{{- end -}}
+{{- $range := cond (eq $max $min) 1 (sub $max $min) -}}
+
+<div class="tag-filter-bar">
+  <input type="search" class="tag-filter-input"
+         placeholder="{{ i18n "tag_filter_placeholder" }}"
+         autocomplete="off"
+         aria-label="{{ i18n "tag_filter_placeholder" }}">
+  <button type="button" class="tag-sort-btn"
+          data-mode="alpha"
+          data-label-alpha="{{ i18n "sort_alpha" }}"
+          data-label-count="{{ i18n "sort_count" }}">
+    {{ i18n "sort_alpha" }}
+  </button>
 </div>
+<noscript><style>.tag-filter-bar{display:none}</style></noscript>
+
+<div class="tag-cloud">
+{{- range $i, $term := .Data.Terms.Alphabetical }}
+  {{- $count := len .Pages -}}
+  {{- $raw := div (float (sub $count $min)) (float $range) -}}
+  {{- $t := math.Sqrt $raw -}}
+  {{- $size := add 0.75 (mul $t 1.45) -}}
+  {{- $opacity := add 0.55 (mul $t 0.45) -}}
+  {{- $weight := int (add 400 (mul (math.Round (mul $raw 3.0)) 100)) -}}
+  <a href="{{ .Page.RelPermalink }}"
+     class="tag-cloud-item"
+     data-name="{{ lower .Name }}"
+     data-count="{{ $count }}"
+     style="font-size:{{ printf "%.2f" $size }}rem;font-weight:{{ $weight }};opacity:{{ printf "%.2f" $opacity }};--anim-delay:{{ $i }};">
+    {{- .Page.Title }}<sup>{{ $count }}</sup>
+  </a>
+{{- end }}
+</div>
+<p class="tag-cloud-empty" hidden>{{ i18n "tag_cloud_empty" }}</p>
+
+{{- $tagCloudJs := resources.Get "js/tag-cloud.js" | minify | fingerprint }}
+<script defer src="{{ $tagCloudJs.RelPermalink }}"></script>
 </div>
 {{ end }}
