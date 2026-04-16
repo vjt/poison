@@ -472,6 +472,16 @@ body.dark-theme .vintage-banner {
   height: auto;
 }
 
+.post .mermaid {
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
+.post .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
 .post figure figcaption {
   margin-top: 0.5rem;
   font-size: 0.85rem;
