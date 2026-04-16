@@ -295,6 +295,14 @@ body:not(.has-toc) .article-toc {
   display: none;
 }
 
+/* --- Sticky top (banner + header on mobile, banner-only on desktop) --- */
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bkg-color);
+}
+
 /* --- Header Bar + Mobile TOC (< 1200px only) --- */
 .site-header {
   display: none;
@@ -322,13 +330,6 @@ body.menu-open .sidebar-overlay {
   .wrapper {
     display: block;
     min-height: auto;
-  }
-
-  .sticky-top {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: var(--bkg-color);
   }
 
   .site-header {
