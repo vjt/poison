@@ -59,12 +59,22 @@
     </span>
   </div>
   <script>
-    document.querySelector('.wip-marquee').addEventListener('animationend', function() {
-      this.style.animation = 'none';
-      this.style.transform = 'none';
-      this.parentElement.style.whiteSpace = 'normal';
-      this.parentElement.style.overflow = 'visible';
-    });
+    (function () {
+      var banner = document.querySelector('.wip-banner');
+      function sync() {
+        document.documentElement.style.setProperty('--banner-height', banner.offsetHeight + 'px');
+      }
+      sync();
+      window.addEventListener('resize', sync);
+      var marquee = document.querySelector('.wip-marquee');
+      marquee.addEventListener('animationend', function () {
+        this.style.animation = 'none';
+        this.style.transform = 'none';
+        this.parentElement.style.whiteSpace = 'normal';
+        this.parentElement.style.overflow = 'visible';
+        sync();
+      });
+    })();
   </script>
 </div>
 {{- end }}
