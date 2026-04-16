@@ -1,12 +1,18 @@
-{{ if .Params.featuredImage }}
+{{- $page := . -}}
+{{- $linkable := true -}}
+{{- if reflect.IsMap . -}}
+  {{- $page = .page -}}
+  {{- $linkable = .linkable -}}
+{{- end -}}
+{{ if $page.Params.featuredImage }}
 <div class="featured-image">
-    <a href="{{ .Permalink }}" aria-label="{{ .Title }}">
-    {{ $img := .Resources.GetMatch .Params.featuredImage }}
+    {{ if $linkable }}<a href="{{ $page.Permalink }}" aria-label="{{ $page.Title }}">{{ end }}
+    {{ $img := $page.Resources.GetMatch $page.Params.featuredImage }}
     {{ if $img }}
-    {{- partial "responsive-image.html" (dict "img" $img "alt" .Title "lazy" false) -}}
+    {{- partial "responsive-image.html" (dict "img" $img "alt" $page.Title "lazy" false) -}}
     {{ else }}
-    <img src="{{ .Params.featuredImage }}" alt="{{ .Title }}">
+    <img src="{{ $page.Params.featuredImage }}" alt="{{ $page.Title }}">
     {{ end }}
-    </a>
+    {{ if $linkable }}</a>{{ end }}
 </div>
 {{ end }}

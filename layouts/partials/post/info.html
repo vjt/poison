@@ -1,21 +1,27 @@
+{{- $page := . -}}
+{{- $linkable := true -}}
+{{- if reflect.IsMap . -}}
+  {{- $page = .page -}}
+  {{- $linkable = .linkable -}}
+{{- end -}}
 <div class="info">
   <div class="post-meta">
-    {{ if .Date }}
-    <time datetime="{{ .Date.Format " 2006-01-02T15:04:05Z0700" }}" class="post-date">
-      {{ .Date | time.Format ":date_long" }}
+    {{ if $page.Date }}
+    <time datetime="{{ $page.Date.Format " 2006-01-02T15:04:05Z0700" }}" class="post-date">
+      {{ $page.Date | time.Format ":date_long" }}
     </time>
     {{ end }}
     <span class="post-meta-sep">·</span>
-    <span class="reading-time">{{ .ReadingTime }} {{ i18n "min_read" }}</span>
+    <span class="reading-time">{{ $page.ReadingTime }} {{ i18n "min_read" }}</span>
   </div>
 
   <h1 class="post-title" data-pagefind-meta="title">
-    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    <a href="{{ $page.Permalink }}">{{ $page.Title }}</a>
   </h1>
 
-  {{ if .Params.tags }}
+  {{ if $page.Params.tags }}
   <ul class="tags">
-    {{ range .Params.tags }}
+    {{ range $page.Params.tags }}
     <li class="tag-{{ . }}">
       <a href="{{ "tags/" | absLangURL }}{{ . | urlize }}">{{ . }}</a>
     </li>
@@ -23,11 +29,11 @@
   </ul>
   {{ end }}
 
-  {{ if .Params.series }}
+  {{ if $page.Params.series }}
   <p class="seriesname">
-    {{ i18n "series_label" }}: <a href="{{ "series/" | absLangURL }}{{ .Params.series | urlize }}">{{ .Params.series }}</a>
+    {{ i18n "series_label" }}: <a href="{{ "series/" | absLangURL }}{{ $page.Params.series | urlize }}">{{ $page.Params.series }}</a>
   </p>
   {{ end }}
 
-  {{ partial "featured-image.html" . }}
+  {{ partial "featured-image.html" (dict "page" $page "linkable" $linkable) }}
 </div>

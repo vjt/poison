@@ -1,6 +1,6 @@
 {{ define "main" -}}
 <div class="post">
-  {{ partial "post/info.html" . }}
+  {{ partial "post/info.html" (dict "page" . "linkable" false) }}
   {{ partial "post/vintage-banner.html" . }}
   {{- if .Truncated -}}
     {{- $rest := strings.TrimPrefix (string .Summary) (string .Content) -}}
