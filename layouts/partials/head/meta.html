@@ -1,17 +1,15 @@
-{{- $title := .Site.Title -}}
-{{- $description := .Description -}}
+{{- $title := $.Site.Params.brand -}}
+{{- $description := .Site.Params.description -}}
 
-{{- if eq .Kind "home" -}}
-  {{- $title = $.Site.Params.brand -}}
-  {{- $description = .Site.Params.description -}}
-{{- end -}}
-
-{{- if .IsSection -}}
-  {{- $title = printf "%s - %s" $.Site.Params.brand .LinkTitle -}}
-{{- end -}}
-
-{{- if .IsPage -}}
-  {{- $title = printf "%s - %s" $.Site.Params.brand .LinkTitle -}}
+{{- if eq .Kind "404" -}}
+  {{- $title = printf "%s - %s" $.Site.Params.brand (i18n "not_found_title") -}}
+{{- else if ne .Kind "home" -}}
+  {{- with .LinkTitle -}}
+    {{- $title = printf "%s - %s" $.Site.Params.brand . -}}
+  {{- end -}}
+  {{- with $.Description -}}
+    {{- $description = . -}}
+  {{- end -}}
 {{- end -}}
 
 {{ "<!-- Open Graph image and Twitter Card metadata -->" | safeHTML }}
