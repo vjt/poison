@@ -98,11 +98,12 @@
       if (!ticking) { requestAnimationFrame(updateScrollspy); ticking = true; }
     }, { passive: true });
 
-    // Top link: scroll the correct container
+    // Top link: scroll the correct container and clear any URL fragment
     document.querySelectorAll('.toc-top a').forEach(a => {
       a.addEventListener('click', e => {
         e.preventDefault();
         scrollTarget.scrollTo({ top: 0, behavior: 'smooth' });
+        history.replaceState(null, '', window.location.pathname + window.location.search);
       });
     });
 
