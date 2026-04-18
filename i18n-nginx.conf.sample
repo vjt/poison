@@ -1,0 +1,64 @@
+# Language redirect nginx configuration for the Sindrome theme.
+#
+# Hugo multilingual setup with defaultContentLanguageInSubdir = false
+# (English at /, Italian at /it/). This sample makes nginx:
+#   1. Detect the visitor's preferred language from Accept-Language
+#   2. Respect a `lang` cookie set by the theme's language switcher
+#   3. 302-redirect bare / to /it/ when the preferred language is Italian
+#
+# Without the cookie override, visitors can't switch back to English on the
+# homepage — the browser keeps negotiating Italian via Accept-Language.
+#
+# ---------------------------------------------------------------------------
+# CRITICAL: the 302 MUST include `Vary: Cookie, Accept-Language` AND
+# `Cache-Control: no-store`, otherwise browsers cache the redirect and
+# short-circuit future requests without ever sending the cookie to nginx.
+# The cookie override then works server-side but is invisible to the user.
+# ---------------------------------------------------------------------------
+#
+# nginx quirk: `add_header` inside an `if` block REPLACES parent add_headers
+# for that response. Re-list every header you want on each branch below.
+#
+# Usage:
+#   1. Drop the `map` blocks into an http-context file (e.g. conf.d/i18n.conf)
+#   2. Drop the `location = /` block inside your site's server block
+#   3. nginx -t && nginx -s reload
+#
+# Test:
+#   curl -sI -H 'Accept-Language: it' https://site/
+#     -> 302 /it/ with Vary: Cookie, Accept-Language + Cache-Control: no-store
+#   curl -sI -H 'Accept-Language: it' -H 'Cookie: lang=en' https://site/
+#     -> 200 with Vary: Cookie, Accept-Language
+
+# --- http context (e.g. /etc/nginx/conf.d/i18n.conf) -----------------------
+
+# 1. Accept-Language -> default language
+map $http_accept_language $lang_header {
+    default "en";
+    "~^it"  "it";
+}
+
+# 2. Cookie override wins; fall back to Accept-Language
+map $cookie_lang $preferred_lang {
+    "it"    "it";
+    "en"    "en";
+    default $lang_header;
+}
+
+# --- server context (inside your site's server { ... } block) --------------
+
+# Language redirect on bare / only.
+# Vary + no-store on the 302: browser must not cache the redirect,
+# else switching language via cookie never reaches nginx.
+location = / {
+    if ($preferred_lang = "it") {
+        add_header Vary "Cookie, Accept-Language" always;
+        add_header Cache-Control "no-store" always;
+        return 302 /it/;
+    }
+    # Matching Vary on the 200 so the positive response is
+    # differentiated in any downstream cache.
+    add_header Vary "Cookie, Accept-Language" always;
+    add_header Cache-Control "public, max-age=3600" always;
+    try_files /index.html =404;
+}

@@ -40,7 +40,7 @@ Pretty much everything except the general idea of "sidebar + content blog."
 - Bigger language switcher tap targets (44px minimum, WCAG)
 
 ### Features
-- **Full i18n** — English + Italian out of the box, language switcher with flag emojis
+- **Full i18n** — English + Italian out of the box, language switcher with flag emojis (see `i18n-nginx.conf.sample` for the server-side Accept-Language + cookie redirect config)
 - **Boot sequence splash** — Linux kernel boot animation on first visit (`sessionStorage`)
 - **Console easter egg** — hacker emblem (glider) rendered as inline SVG when you open devtools
 - **Vintage banner** — auto-generated disclaimer for posts older than 10 years, disable per-post with `hideVintage: true`
