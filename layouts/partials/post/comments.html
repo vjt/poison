@@ -22,7 +22,40 @@
                 max_shown_comments: 100,
             }
         </script>
-        <script>!function(e,n){for(var o=0;o<e.length;o++){var r=n.createElement("script"),c=".js",d=n.head||n.body;"noModule"in r?(r.type="module",c=".mjs"):r.async=!0,r.defer=!0,r.src=remark_config.host+"/web/"+e[o]+c,d.appendChild(r)}}(remark_config.components||["embed"],document);</script>
+        <script>
+            (function() {
+                var loaded = false;
+                function loadRemark42() {
+                    if (loaded) return;
+                    loaded = true;
+                    var components = remark_config.components || ["embed"];
+                    for (var i = 0; i < components.length; i++) {
+                        var s = document.createElement("script");
+                        var ext = ".js";
+                        var parent = document.head || document.body;
+                        if ("noModule" in s) { s.type = "module"; ext = ".mjs"; }
+                        else { s.async = true; s.defer = true; }
+                        s.src = remark_config.host + "/web/" + components[i] + ext;
+                        parent.appendChild(s);
+                    }
+                }
+                var target = document.getElementById('remark42');
+                if ('IntersectionObserver' in window && target) {
+                    var io = new IntersectionObserver(function(entries) {
+                        for (var j = 0; j < entries.length; j++) {
+                            if (entries[j].isIntersecting) {
+                                loadRemark42();
+                                io.disconnect();
+                                return;
+                            }
+                        }
+                    }, { rootMargin: '150px' });
+                    io.observe(target);
+                } else {
+                    loadRemark42();
+                }
+            })();
+        </script>
     {{ else if .Site.DisqusShortname }}
         {{ template "_internal/disqus.html" . }}
     {{ end }}
