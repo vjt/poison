@@ -86,7 +86,9 @@ blockquote {
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
-  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-x: visible;
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 6px;
@@ -536,13 +538,6 @@ body.menu-open .sidebar-overlay {
 
   .content.container > * {
     max-width: 100%;
-  }
-
-  /* Code wraps on mobile — no horizontal scrolling */
-  pre {
-    white-space: pre-wrap;
-    word-break: break-all;
-    overflow-x: visible;
   }
 
   .article-toc {
