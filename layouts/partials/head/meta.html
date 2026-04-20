@@ -23,8 +23,13 @@
 {{- if $candidate -}}
   {{- $img := .Resources.GetMatch $candidate -}}
   {{- if $img -}}
-    {{/* Resize for og:image — social platforms reject large files */ -}}
-    {{- $resized := $img.Fit "1200x630 q85" -}}
+    {{/* Resize + force JPEG for og:image — social scrapers (WhatsApp/FB)
+         reject large files and reject mismatches between og:image:type and
+         the served content-type. Forcing `jpg` in the Fit spec guarantees
+         the processed output is a JPEG regardless of source format (PNG
+         transparency is flattened onto white). q85 keeps files small
+         (~100-300KB for 1200x630). */ -}}
+    {{- $resized := $img.Fit "1200x630 q85 jpg #ffffff" -}}
     {{- $og_image = $resized.Permalink -}}
     {{- $og_image_width = $resized.Width -}}
     {{- $og_image_height = $resized.Height -}}
