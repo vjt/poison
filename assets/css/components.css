@@ -460,6 +460,16 @@ body.dark-theme .vintage-banner {
   margin: 1rem 0;
 }
 
+.post a.img-zoom {
+  display: block;
+  cursor: zoom-in;
+  line-height: 0;
+}
+
+.post a.img-zoom img {
+  margin: 0;
+}
+
 .post figure {
   margin: 1.5rem auto;
   text-align: center;

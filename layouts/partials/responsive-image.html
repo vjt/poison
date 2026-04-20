@@ -21,9 +21,11 @@
 
 {{- $ext := path.Ext $img.Name | strings.ToLower -}}
 {{- if or (eq $ext ".svg") (eq $ext ".gif") -}}
+<a href="{{ $img.RelPermalink }}" target="_blank" rel="noopener" class="img-zoom">
 <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $alt }}"
   {{- if $title }} title="{{ $title }}"{{ end -}}
   {{- if $lazy }} loading="lazy"{{ else }} fetchpriority="high"{{ end }}>
+</a>
 {{- else -}}
 
 {{- /* Standard breakpoints — browser picks based on sizes + DPR.
@@ -57,6 +59,7 @@
 {{- /* sizes mirrors the CSS layout breakpoints exactly */ -}}
 {{- $sizes := "(max-width: 599px) calc(100vw - 2rem), (max-width: 1199px) calc(100vw - 3rem), 47rem" -}}
 
+<a href="{{ $img.RelPermalink }}" target="_blank" rel="noopener" class="img-zoom">
 <picture>
   <source type="image/webp"
     srcset="{{ delimit $srcsetWebp ", " }}"
@@ -69,4 +72,5 @@
     {{- if $title }} title="{{ $title }}"{{ end -}}
     {{- if $lazy }} loading="lazy"{{ else }} fetchpriority="high"{{ end }}>
 </picture>
+</a>
 {{- end -}}
