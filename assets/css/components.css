@@ -462,7 +462,7 @@ body.dark-theme .vintage-banner {
 
 .post a.img-zoom {
   display: block;
-  cursor: zoom-in;
+  cursor: pointer;
   line-height: 0;
 }
 
