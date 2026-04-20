@@ -1,0 +1,65 @@
+{{- /*
+  figure.html — overrides Hugo's built-in figure shortcode so images go
+  through responsive-image.html (srcset + WebP) and are click-to-zoom
+  by default.
+
+  Attributes (superset of built-in):
+    src     — image path (required). Resolved against page bundle via
+              Resources.GetMatch, with a path.Base fallback.
+    alt     — alt text (optional)
+    title   — title attribute (optional)
+    caption — figcaption content; markdownified (optional)
+    link    — if set, overrides the click-to-zoom behaviour and links
+              the image to this URL instead. Matches the built-in attr.
+    target  — anchor target (when `link` is set)
+    rel     — anchor rel (when `link` is set)
+    attr    — attribution text inside the figcaption (optional)
+    attrlink — attribution link (optional)
+*/ -}}
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+{{- $title := .Get "title" -}}
+{{- $caption := .Get "caption" -}}
+{{- $linkAttr := .Get "link" -}}
+{{- $attr := .Get "attr" -}}
+{{- $attrlink := .Get "attrlink" -}}
+
+{{- $img := .Page.Resources.GetMatch $src -}}
+{{- if not $img -}}
+  {{- $img = .Page.Resources.GetMatch (path.Base $src) -}}
+{{- end -}}
+
+<figure>
+  {{- if $linkAttr -}}
+    <a href="{{ $linkAttr }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
+  {{- end -}}
+
+  {{- if $img -}}
+    {{- /* If the caller provided its own link attr, don't wrap again — pass link=false */ -}}
+    {{- $zoom := true -}}
+    {{- if $linkAttr -}}{{ $zoom = false }}{{- end -}}
+    {{- partial "responsive-image.html" (dict "img" $img "alt" $alt "title" $title "lazy" true "link" $zoom) -}}
+  {{- else -}}
+    {{- /* External or otherwise unresolved src — fall back to a plain <img>, still click-to-zoom unless overridden */ -}}
+    {{- if and (not $linkAttr) $src -}}
+      <a href="{{ $src | safeURL }}" target="_blank" rel="noopener" class="img-zoom">
+    {{- end -}}
+    <img src="{{ $src | safeURL }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="lazy">
+    {{- if and (not $linkAttr) $src -}}
+      </a>
+    {{- end -}}
+  {{- end -}}
+
+  {{- if $linkAttr -}}</a>{{- end -}}
+
+  {{- if or $caption $attr -}}
+    <figcaption>
+      {{- with $caption -}}{{ . | markdownify }}{{- end -}}
+      {{- if $attr -}}
+        {{ with $attrlink }}<a href="{{ . | safeURL }}">{{ end -}}
+        {{- $attr | markdownify -}}
+        {{- with $attrlink }}</a>{{ end }}
+      {{- end -}}
+    </figcaption>
+  {{- end -}}
+</figure>
