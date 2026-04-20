@@ -12,20 +12,25 @@
     .alt    — alt text (required)
     .title  — title attribute (optional)
     .lazy   — true for loading="lazy", false for fetchpriority="high" (default true)
+    .link   — true wraps the <picture>/<img> in an anchor to the original full-size image (default true).
+              Pass false when the caller already wraps the image in its own anchor (e.g. featured-image
+              linking to the post permalink on list pages) — nested anchors are invalid HTML.
 */}}
 {{- $img := .img -}}
 {{- $alt := .alt | default "" -}}
 {{- $title := .title | default "" -}}
 {{- $lazy := true -}}
 {{- if isset . "lazy" -}}{{ $lazy = .lazy }}{{- end -}}
+{{- $link := true -}}
+{{- if isset . "link" -}}{{ $link = .link }}{{- end -}}
 
 {{- $ext := path.Ext $img.Name | strings.ToLower -}}
 {{- if or (eq $ext ".svg") (eq $ext ".gif") -}}
-<a href="{{ $img.RelPermalink }}" target="_blank" rel="noopener" class="img-zoom">
+{{- if $link }}<a href="{{ $img.RelPermalink }}" target="_blank" rel="noopener" class="img-zoom">{{ end }}
 <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $alt }}"
   {{- if $title }} title="{{ $title }}"{{ end -}}
   {{- if $lazy }} loading="lazy"{{ else }} fetchpriority="high"{{ end }}>
-</a>
+{{- if $link }}</a>{{ end }}
 {{- else -}}
 
 {{- /* Standard breakpoints — browser picks based on sizes + DPR.
@@ -59,7 +64,7 @@
 {{- /* sizes mirrors the CSS layout breakpoints exactly */ -}}
 {{- $sizes := "(max-width: 599px) calc(100vw - 2rem), (max-width: 1199px) calc(100vw - 3rem), 47rem" -}}
 
-<a href="{{ $img.RelPermalink }}" target="_blank" rel="noopener" class="img-zoom">
+{{- if $link }}<a href="{{ $img.RelPermalink }}" target="_blank" rel="noopener" class="img-zoom">{{ end }}
 <picture>
   <source type="image/webp"
     srcset="{{ delimit $srcsetWebp ", " }}"
@@ -72,5 +77,5 @@
     {{- if $title }} title="{{ $title }}"{{ end -}}
     {{- if $lazy }} loading="lazy"{{ else }} fetchpriority="high"{{ end }}>
 </picture>
-</a>
+{{- if $link }}</a>{{ end }}
 {{- end -}}
