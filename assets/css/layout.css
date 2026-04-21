@@ -66,6 +66,7 @@ p {
 }
 
 strong { color: var(--text-color); }
+a strong, a b { color: inherit; }
 
 ul, ol {
   margin-top: 0;
