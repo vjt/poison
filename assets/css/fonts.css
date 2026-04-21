@@ -38,14 +38,6 @@
   font-display: swap;
   src: url('/fonts/fira-sans-v18-latin-500.woff2') format('woff2');
 }
-/* fira-sans-600 - latin */
-@font-face {
-  font-family: 'Fira Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/fira-sans-v18-latin-600.woff2') format('woff2');
-}
 /* abril-fatface-regular - latin */
 @font-face {
   font-family: 'Abril Fatface';

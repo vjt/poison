@@ -364,7 +364,7 @@ ul.tags li:hover {
 
   .toc-mobile summary {
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--date-color);
@@ -531,7 +531,7 @@ body.dark-theme .vintage-banner {
 
 .post-nav-label {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--link-color);
   text-transform: uppercase;
   letter-spacing: 0.03em;

@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-color);
 }
 
-h1 { font-size: 1.9rem; font-weight: 600; }
+h1 { font-size: 1.9rem; font-weight: 500; }
 h2 { font-size: 1.375rem; }
 h3 { font-size: 1.125rem; }
 h4, h5, h6 { font-size: 1rem; }
@@ -65,7 +65,7 @@ p {
   margin-bottom: 1rem;
 }
 
-strong, b { font-weight: 600; color: var(--text-color); }
+strong, b { font-weight: 500; color: var(--text-color); }
 a strong, a b { color: inherit; }
 
 ul, ol {
@@ -352,7 +352,7 @@ body.menu-open .sidebar-overlay {
   }
 
   .toc-mobile-bar summary {
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     cursor: pointer;
