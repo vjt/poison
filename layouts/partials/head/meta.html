@@ -70,9 +70,23 @@
   {{- end -}}
 {{- end -}}
 
-{{/* 3. Site-wide fallback from og_image param (absolute URL to static file) */ -}}
+{{/* 3. Site-wide fallback from og_image param (path to static file) */ -}}
 {{- if and (not $og_image) .Site.Params.og_image -}}
-  {{- $og_image = (.Site.Params.og_image | absURL) -}}
+  {{- $site_og := .Site.Params.og_image -}}
+  {{- $og_image = ($site_og | absURL) -}}
+  {{- $static_path := printf "static%s" $site_og -}}
+  {{- if fileExists $static_path -}}
+    {{- $ext := trim (path.Ext $site_og | lower) "." -}}
+    {{- if eq $ext "svg" -}}
+      {{- $og_image_type = "image/svg+xml" -}}
+    {{- else -}}
+      {{- $og_image_type = (printf "image/%s" (replaceRE `^jpg$` `jpeg` $ext)) -}}
+      {{- with (imageConfig $static_path) -}}
+        {{- $og_image_width = .Width -}}
+        {{- $og_image_height = .Height -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 
 {{- if $og_image -}}
