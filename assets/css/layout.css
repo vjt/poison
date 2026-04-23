@@ -612,3 +612,18 @@ body.menu-open .sidebar-overlay {
   margin: .5rem 0 0;
   color: var(--list-color, var(--text-color));
 }
+
+/* Gallery shortcode — {{< gallery folder="photos" [thumb="320x"] >}} */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: .5rem;
+  margin: 1.5rem 0;
+}
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+}

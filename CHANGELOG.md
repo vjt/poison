@@ -52,6 +52,20 @@ The dispatch reads both `.Params.list_layout` (section-scoped) and `site.Params.
 
 **Action:** none required. Opt in only.
 
+### Add gallery shortcode
+
+`{{</* gallery folder="photos" */>}}` renders a CSS-grid gallery from a page-bundle subfolder. Each thumbnail links to the full-size image. Images auto-resolve from `.Page.Resources.Match "<folder>/*"`, so keep gallery images inside the bundle (not under `static/`).
+
+**New files:** `layouts/shortcodes/gallery.html`, CSS in `assets/css/layout.css` (`.gallery`, `.gallery-item`).
+
+**Attributes:**
+- `folder` (default `gallery`) — subfolder name inside the page bundle.
+- `thumb` (optional) — Hugo image process spec, e.g. `320x`, `600x400`. When set, thumbnails are resized; links still target the full-size originals.
+
+**Default:** no effect unless used.
+
+**Action:** none required.
+
 ## 2026-04-21
 
 ### Parameterize dark-mode sidebar + moon/sun colors
