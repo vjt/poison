@@ -1,5 +1,5 @@
 {{ define "main" -}}
-{{- if .Site.Params.hero_posts }}
+<div class="post hero-post">
   {{- $coverName := .Params.cover | default .Params.featuredImage -}}
   {{- with $coverName -}}
     {{- $cover := $.Resources.GetMatch . -}}
@@ -7,10 +7,14 @@
       <figure class="hero-cover">
         <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="eager">
       </figure>
+    {{- else }}
+      {{- if hasPrefix $coverName "/" }}
+      <figure class="hero-cover">
+        <img src="{{ $coverName }}" alt="{{ $.Title }}" loading="eager">
+      </figure>
+      {{- end }}
     {{- end -}}
   {{- end }}
-{{- end -}}
-<div class="post{{ if .Site.Params.hero_posts }} hero-post{{ end }}">
   {{ partial "post/info.html" (dict "page" . "linkable" false) }}
   {{ partial "post/vintage-banner.html" . }}
   {{- if .Truncated -}}

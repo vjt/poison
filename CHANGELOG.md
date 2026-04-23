@@ -16,6 +16,24 @@ Replaced the deprecated `.Site.DisqusShortname` template field (removed from Hug
 
 **Action:** none required. If your build still breaks on the old field, pull this commit.
 
+### Add hero post layout
+
+New opt-in layout for image-driven posts: renders the page's cover image full-width above the title and metadata. Useful for travelogues and photo-heavy posts where the image sets the scene.
+
+**New files:** `layouts/_default/hero.html`, CSS in `assets/css/layout.css` (`.hero-post`, `.hero-cover`).
+
+**Touched:** `layouts/_default/single.html` (adds a conditional hero-cover block when `site.Params.hero_posts` is true).
+
+**Params (all optional):**
+- Per-post: `layout = "hero"` in front matter — uses the dedicated `hero.html`.
+- Site-wide: `[params] hero_posts = true` — adds the hero cover + class to every post via `single.html`.
+
+The layout reads `cover` first, then falls back to `featuredImage`. Bundle resource or absolute path both work.
+
+**Default:** unchanged. Sites that don't set `layout = "hero"` or `hero_posts` render exactly as before.
+
+**Action:** none required. Opt in only.
+
 ## 2026-04-21
 
 ### Parameterize dark-mode sidebar + moon/sun colors
