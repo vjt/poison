@@ -27,6 +27,7 @@
   {{ if or (.Site.Params.remark42) (site.Config.Services.Disqus.Shortname) }}
     {{ partial "post/comments.html" . }}
   {{ end }}
+  {{ partial "post/legacy-comments.html" . }}
 </div>
 {{- end }}
 {{ define "sidebar" }}

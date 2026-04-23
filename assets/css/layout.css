@@ -627,3 +627,39 @@ body.menu-open .sidebar-overlay {
   display: block;
   border-radius: 2px;
 }
+
+/* Legacy comments archive — opt-in via [params] legacy_comments = true */
+.legacy-comments {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--table-border-color);
+}
+.legacy-comments h2 {
+  font-size: 1.3rem;
+  color: var(--post-title-color, var(--text-color));
+  margin-bottom: 1rem;
+}
+.legacy-comments ol.comments {
+  list-style: none;
+  padding-left: 0;
+}
+.legacy-comments ol.comments ol.comments {
+  padding-left: 2rem;
+  border-left: 2px solid var(--table-border-color);
+  margin: .75rem 0;
+}
+.legacy-comments li {
+  margin: .75rem 0;
+}
+.legacy-comments .c header {
+  font-size: .9rem;
+  color: var(--date-color, var(--text-color));
+  margin-bottom: .25rem;
+}
+.legacy-comments .c .author {
+  color: var(--post-title-color, var(--text-color));
+  font-weight: 600;
+}
+.legacy-comments .c .body {
+  color: var(--text-color);
+}

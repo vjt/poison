@@ -1,0 +1,11 @@
+{{/* Render a page-bundle comments.html resource as a read-only archive.
+     Opt-in via [params] legacy_comments = true. No-op otherwise. */}}
+{{ if site.Params.legacy_comments }}
+  {{ $file := .Resources.GetMatch "comments.html" }}
+  {{ with $file }}
+    <section class="legacy-comments">
+      <h2>{{ i18n "legacy_comments_heading" | default "Archivio commenti" }}</h2>
+      {{ .Content | safeHTML }}
+    </section>
+  {{ end }}
+{{ end }}

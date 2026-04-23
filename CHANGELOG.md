@@ -66,6 +66,21 @@ The dispatch reads both `.Params.list_layout` (section-scoped) and `site.Params.
 
 **Action:** none required.
 
+### Add legacy_comments partial
+
+Renders a page-bundle `comments.html` resource inline at the bottom of the post as a read-only "Archivio commenti" section. Intended for static archival of comments imported from a legacy CMS — no submission form, no interactivity. Hooked into both `single.html` and `hero.html`; no-op when `legacy_comments` is unset or the bundle has no `comments.html`.
+
+**New files:** `layouts/partials/post/legacy-comments.html`, CSS in `assets/css/layout.css` (`.legacy-comments`).
+
+**Touched:** `layouts/_default/single.html`, `layouts/_default/hero.html` (each call the partial after the live-comments block); `i18n/en.yaml`, `i18n/it.yaml` (`legacy_comments_heading`).
+
+**Params:**
+- `[params] legacy_comments = true` — enables rendering site-wide.
+
+**Default:** unchanged. Partial is a no-op when `legacy_comments` is unset, even though it is always called — and a no-op even when enabled if the page bundle has no `comments.html` resource.
+
+**Action:** none required. Opt in only. Expects the bundle's `comments.html` to emit nested `<ol class="comments">` + `<article class="c">` markup (the CSS targets that structure).
+
 ## 2026-04-21
 
 ### Parameterize dark-mode sidebar + moon/sun colors
