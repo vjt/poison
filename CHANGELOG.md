@@ -4,6 +4,18 @@ User-facing changes to the Sindrome theme. Consumers (sindro.me, noema, …) pul
 
 Format: one section per dated batch of changes. "Action" lines flag work consumers may need to do; "Default" lines note the fallback behavior so existing sites don't drift unless they opt in.
 
+## 2026-04-23
+
+### Fix Disqus reference for Hugo v0.154+
+
+Replaced the deprecated `.Site.DisqusShortname` template field (removed from Hugo's multilingual site type in recent releases — builds errored with `can't evaluate field DisqusShortname in type page.Site`) with the current canonical path `site.Config.Services.Disqus.Shortname`.
+
+**Touched:** `layouts/_default/single.html`, `layouts/partials/post/comments.html`.
+
+**Default:** unchanged behavior for sites that have `[services.disqus]` configured (the new path reads the same Disqus shortname). Sites that never used Disqus see nothing new.
+
+**Action:** none required. If your build still breaks on the old field, pull this commit.
+
 ## 2026-04-21
 
 ### Parameterize dark-mode sidebar + moon/sun colors

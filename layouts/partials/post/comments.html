@@ -56,7 +56,7 @@
                 }
             })();
         </script>
-    {{ else if .Site.DisqusShortname }}
+    {{ else if site.Config.Services.Disqus.Shortname }}
         {{ template "_internal/disqus.html" . }}
     {{ end }}
 </div>
