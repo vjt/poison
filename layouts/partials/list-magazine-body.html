@@ -1,0 +1,28 @@
+<section class="magazine-list" data-pagefind-ignore>
+  <h1 class="list-title title">{{ .Title }}</h1>
+  {{ $pages := .Pages }}
+  {{ if .IsHome }}{{ $pages = where site.RegularPages "Section" "posts" }}{{ end }}
+  <div class="magazine-grid">
+    {{ range $pages }}
+      <a class="magazine-card" href="{{ .RelPermalink }}">
+        {{ with .Params.cover }}
+          {{ $cover := $.Resources.GetMatch . }}
+          {{ with $cover }}
+            <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy">
+          {{ else }}
+            {{ if hasPrefix . "/" }}
+              <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        <div class="magazine-card-body">
+          <h2 class="magazine-card-title">{{ .Title }}</h2>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date | time.Format ":date_long" }}
+          </time>
+          {{ with .Description }}<p class="magazine-card-desc">{{ . }}</p>{{ end }}
+        </div>
+      </a>
+    {{ end }}
+  </div>
+</section>

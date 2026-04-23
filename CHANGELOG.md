@@ -34,6 +34,24 @@ The layout reads `cover` first, then falls back to `featuredImage`. Bundle resou
 
 **Action:** none required. Opt in only.
 
+### Add magazine list layout
+
+New opt-in list layout: a photo-grid index using each post's `cover` image, useful for image-driven sections (travelogues, portfolios). Falls back gracefully on posts without a cover — card renders title + date + description.
+
+**New files:** `layouts/partials/list-magazine-body.html`, CSS in `assets/css/layout.css` (`.magazine-grid`, `.magazine-card`).
+
+**Touched:** `layouts/_default/list.html` (wraps existing body with a dispatch on `list_layout`).
+
+**Params:**
+- Per-section (in `_index.md`): `list_layout = "magazine"`.
+- Site-wide: `[params] list_layout = "magazine"`.
+
+The dispatch reads both `.Params.list_layout` (section-scoped) and `site.Params.list_layout` (site-wide). Reads `.Params.cover` for each card; an absolute path (starting `/`) or a bundle resource both work.
+
+**Default:** unchanged. Sections/sites without the param render with the existing year-grouped list.
+
+**Action:** none required. Opt in only.
+
 ## 2026-04-21
 
 ### Parameterize dark-mode sidebar + moon/sun colors

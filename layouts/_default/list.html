@@ -1,4 +1,7 @@
 {{ define "main" -}}
+{{- if or (eq .Params.list_layout "magazine") (eq site.Params.list_layout "magazine") -}}
+{{ partial "list-magazine-body.html" . }}
+{{- else -}}
 <div data-pagefind-ignore>
 {{ partial "featured-image.html" . }}
 <h1 class="title">{{ .Title }}</h1>
@@ -18,4 +21,5 @@
     </ul>
 {{ end }}
 </div>
-{{ end }}
+{{- end -}}
+{{- end }}

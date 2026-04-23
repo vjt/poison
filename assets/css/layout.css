@@ -563,3 +563,52 @@ body.menu-open .sidebar-overlay {
 .hero-post .info {
   margin-top: 0;
 }
+
+/* Magazine list layout — opt-in via [params] list_layout = "magazine" (site-wide)
+   or list_layout: magazine in a section's _index.md */
+.magazine-list .list-title {
+  margin-bottom: 1rem;
+}
+.magazine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.magazine-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--table-stripe-color);
+  border: 1px solid var(--table-border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.magazine-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,.08);
+}
+.magazine-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+.magazine-card-body {
+  padding: 1rem;
+}
+.magazine-card-title {
+  margin: 0 0 .25rem;
+  font-size: 1.15rem;
+  color: var(--post-title-color, var(--text-color));
+}
+.magazine-card time {
+  color: var(--date-color, var(--text-color));
+  font-size: .85rem;
+}
+.magazine-card-desc {
+  margin: .5rem 0 0;
+  color: var(--list-color, var(--text-color));
+}
