@@ -12,6 +12,11 @@
     <link rel="icon" href={{ .Site.Params.favicon | default "/favicon.svg" }} type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+    <!-- Preload above-the-fold fonts so they arrive with the inlined CSS, not after it parses -->
+    <link rel="preload" href="/fonts/fira-sans-v16-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/fira-sans-v18-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/abril-fatface-v19-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
     <!-- META -->
     {{ partial "head/meta.html" . }}
 
