@@ -58,8 +58,10 @@
   --primary-darker-color: 56, 120, 170;
 
   /* Text — only override dedicated text variables.
-     Do NOT override --color7 or --color8 here: Remark42 uses them
-     for dark-mode form backgrounds (.comment-form_theme_dark). */
+     Do NOT override --color5, --color7, or --color8 here: Remark42 reuses
+     them in dark-mode forms — color7/color8 as backgrounds and color5 as
+     the textarea text color (.comment-form_theme_dark .comment-form__field).
+     Overriding --color5 to a dark value gives dark text on dark bg. */
   --color0: #EEE;
   --primary-text-color: 238, 238, 238;
   --secondary-text-color: 187, 187, 187;
@@ -67,7 +69,6 @@
   /* Backgrounds */
   --color6: #121212;
   --primary-background-color: 18, 18, 18;
-  --color5: #1E1E1E;
   --color21: #1A1A1A;
   --color41: #252525;
 
