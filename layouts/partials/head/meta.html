@@ -3,7 +3,11 @@
 
 {{- if eq .Kind "404" -}}
   {{- $title = printf "%s - %s" $.Site.Params.brand (i18n "not_found_title") -}}
-{{- else if ne .Kind "home" -}}
+{{- else if eq .Kind "home" -}}
+  {{- with $.Site.Params.blurb -}}
+    {{- $description = . -}}
+  {{- end -}}
+{{- else -}}
   {{- with .LinkTitle -}}
     {{- $title = printf "%s - %s" $.Site.Params.brand . -}}
   {{- end -}}
