@@ -4,7 +4,7 @@
   {{- $img = .Page.Resources.GetMatch (path.Base .Destination) -}}
 {{- end -}}
 {{- if $img -}}
-  {{- partial "responsive-image.html" (dict "img" $img "alt" .Text "title" .Title "lazy" true) -}}
+  {{- partial "responsive-image.html" (dict "img" $img "alt" .Text "title" .Title "lazy" false) -}}
 {{- else -}}
-  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}>
 {{- end -}}
