@@ -5,7 +5,9 @@
     {{- $cover := $.Resources.GetMatch . -}}
     {{- with $cover }}
       <figure class="hero-cover">
-        <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="eager">
+        <a href="{{ .RelPermalink }}" target="_blank" rel="noopener" class="img-zoom" aria-label="View full size">
+          <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="eager">
+        </a>
       </figure>
     {{- end -}}
   {{- end }}

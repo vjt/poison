@@ -559,6 +559,11 @@ body.menu-open .sidebar-overlay {
   object-fit: cover;
   display: block;
 }
+.hero-cover a.img-zoom {
+  display: block;
+  cursor: pointer;
+  line-height: 0;
+}
 .hero-post .post-title,
 .hero-post .info {
   margin-top: 0;
