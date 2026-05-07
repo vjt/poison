@@ -5,14 +5,20 @@
   {{- $linkable = .linkable -}}
 {{- end -}}
 {{ if $page.Params.featuredImage }}
+{{- $img := $page.Resources.GetMatch $page.Params.featuredImage -}}
 <div class="featured-image">
-    {{ if $linkable }}<a href="{{ $page.Permalink }}" aria-label="{{ $page.Title }}">{{ end }}
-    {{ $img := $page.Resources.GetMatch $page.Params.featuredImage }}
+    {{- if $linkable -}}
+    <a href="{{ $page.Permalink }}" aria-label="{{ $page.Title }}">
+    {{- else if $img -}}
+    <a href="{{ $img.RelPermalink }}" target="_blank" rel="noopener" class="img-zoom" aria-label="{{ $page.Title }} — view full size">
+    {{- else -}}
+    <a href="{{ $page.Params.featuredImage }}" target="_blank" rel="noopener" class="img-zoom" aria-label="{{ $page.Title }} — view full size">
+    {{- end }}
     {{ if $img }}
     {{- partial "responsive-image.html" (dict "img" $img "alt" $page.Title "lazy" false "link" false) -}}
     {{ else }}
     <img src="{{ $page.Params.featuredImage }}" alt="{{ $page.Title }}">
     {{ end }}
-    {{ if $linkable }}</a>{{ end }}
+    </a>
 </div>
 {{ end }}
