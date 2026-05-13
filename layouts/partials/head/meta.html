@@ -5,7 +5,7 @@
   {{- $title = printf "%s - %s" $.Site.Params.brand (i18n "not_found_title") -}}
 {{- else if eq .Kind "home" -}}
   {{- with $.Site.Params.blurb -}}
-    {{- $description = . -}}
+    {{- $description = . | markdownify | plainify -}}
   {{- end -}}
 {{- else -}}
   {{- with .LinkTitle -}}

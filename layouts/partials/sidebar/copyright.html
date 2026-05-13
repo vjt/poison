@@ -1,6 +1,6 @@
 {{ if .Site.Params.blurb }}
 <hr/>
-<p class="blurb">{{ with .Site.Params.blurb }}{{.}}{{end}}</p>
+<p class="blurb">{{ with .Site.Params.blurb }}{{ . | markdownify }}{{end}}</p>
 {{ end }}
 
 <p class="footnote">
