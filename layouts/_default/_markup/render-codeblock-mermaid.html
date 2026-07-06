@@ -1,13 +1,18 @@
 {{ if ne (.Page.Store.Get "hasMermaid") true }}
-<script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+{{/* Self-hosted mermaid (pinned 10.9.6 UMD) — served from /js on this origin.
+     Do NOT hot-link a CDN here: readers behind egress/adblock/DNS filters that
+     drop cdn.jsdelivr.net & co. would get raw diagram text instead of an SVG. */}}
+<script src="/js/mermaid.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const lsTheme = localStorage.getItem("theme")
+        const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
+        const currTheme = lsTheme ? lsTheme : hugoTheme;
+        const mermaidTheme = currTheme == "light" ? "default" : "dark"
 
-    const lsTheme = localStorage.getItem("theme")
-    const hugoTheme = document.body.classList.contains("dark-theme") ? "dark" : null
-    const currTheme = lsTheme ? lsTheme : hugoTheme;
-    const mermaidTheme = currTheme == "light" ? "default" : "dark"
-
-    mermaid.initialize({theme: mermaidTheme});
+        mermaid.initialize({startOnLoad: false, theme: mermaidTheme});
+        mermaid.run();
+    });
 </script>
 {{ .Page.Store.Set "hasMermaid" true }}
 {{ end }}
